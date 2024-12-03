@@ -25,13 +25,13 @@
         <!-- Centered Links -->
         <ul class="navbar-nav mx-auto">
           <li class="nav-item">
-            <a class="nav-link text-white active" href="#">Home</a>
+            <a class="nav-link text-white active" href="Home.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="#">Shop</a>
+            <a class="nav-link text-white" href="Shop.php">Shop</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="#">Contact</a>
+            <a class="nav-link text-white" href="Contact.php">Contact</a>
           </li>
         </ul>
         <!-- Right-aligned Icons -->
