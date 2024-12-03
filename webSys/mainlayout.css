@@ -1,0 +1,111 @@
+/* Navbar */
+.navbar {
+    background-color: black;
+    padding: 10px 0;
+    border-bottom: 2px solid orange; /* Orange underline */
+  }
+  
+  .navbar-brand {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar-logo {
+    height: 80px; /* Increase the logo size */
+    width: auto; /* Maintain aspect ratio */
+    margin-right: 10px; /* Add spacing between the logo and links */
+  }
+  
+  .navbar-nav .nav-link {
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0 10px;
+    position: relative;
+  }
+  
+  .navbar-nav .nav-link.active {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  
+  .navbar-nav .nav-link:hover {
+    color: orange;
+  }
+  
+  .navbar .fa-search,
+  .navbar .fa-user,
+  .navbar .fa-shopping-bag {
+    color: white;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar .fa-search:hover,
+  .navbar .fa-user:hover,
+  .navbar .fa-shopping-bag:hover {
+    color: orange;
+  }
+  
+
+  /* Footer Styles */
+.footer {
+    background-color: black;
+    color: white;
+    border-top: 3px solid orange; /* Orange border at the top */
+    font-size: 0.9rem;
+  }
+  
+  .footer h5 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .footer-link {
+    color: white;
+    margin: 0 10px;
+    font-size: 0.9rem;
+    text-decoration: none;
+  }
+  
+  .footer-link:hover {
+    color: orange;
+  }
+  
+  .footer-icon {
+    color: white;
+    font-size: 1.5rem;
+    margin: 0 10px;
+    text-decoration: none;
+  }
+  
+  .footer-icon:hover {
+    color: orange;
+  }
+  
+  .payment-icon {
+    height: 30px;
+    margin: 0 5px;
+    vertical-align: middle;
+  }
+  
+  .payment-icon:hover {
+    opacity: 0.8;
+  }
+  
+  /* Utility Classes */
+  .text-center {
+    text-align: center;
+  }
+  
+  .mb-0 {
+    margin-bottom: 0;
+  }
+  
+  .mb-3 {
+    margin-bottom: 20px;
+  }
+  
+  .py-4 {
+    padding: 20px 0;
+  }
