@@ -40,10 +40,10 @@
           <a href="#" class="text-white me-3">
             <i class="fas fa-search fa-lg"></i>
           </a>
-          <a href="#" class="text-white me-3">
+          <a href="Login.php" class="text-white me-3">
             <i class="fas fa-user fa-lg"></i>
           </a>
-          <a href="#" class="text-white">
+          <a href="Cart.php" class="text-white">
             <i class="fas fa-shopping-bag fa-lg"></i>
           </a>
         </div>
@@ -73,53 +73,75 @@
   </div>
 </div>
 
-  <!-- Popular Products Section -->
-  <div class="container my-5">
-    <h2 class="text-center fw-bold">Popular Products</h2>
-    <div class="row mt-4">
-      <!-- Product Card 1 -->
-      <div class="col-md-3">
-        <div class="card border-orange">
-          <img src="images/MicroLite.jpeg" class="card-img-top" alt="Product 1">
-          <div class="card-body">
-            <h5 class="card-title">MICRO with Artwork Case (Clear or Smoke)</h5>
-            <p class="text-muted"><del>$220.00</del> <span class="fw-bold">$165.00</span></p>
-          </div>
+ <!-- Popular Products Section -->
+<div class="container my-5">
+  <h2 class="text-center fw-bold">Popular Products</h2>
+  <div class="row mt-4">
+    <!-- Product Card 1 -->
+    <div class="col-md-3">
+      <div class="card product-card">
+        <img src="images/MicroLite.jpeg" class="card-img-top product-img" alt="Product 1">
+        <div class="card-body">
+          <h5 class="card-title">Micro Lite</h5>
+          <p class="text-muted"><del>₱3,000.00</del> <span class="fw-bold">₱2,000.00</span></p>
         </div>
       </div>
-      <!-- Product Card 2 -->
-      <div class="col-md-3">
-        <div class="card border-orange">
-          <img src="images/Cosmox.jpg" class="card-img-top" alt="Product 2">
-          <div class="card-body">
-            <h5 class="card-title">MICRO LITE Starter Kit</h5>
-            <p class="fw-bold">$120.00</p>
-          </div>
+    </div>
+    <!-- Product Card 2 -->
+    <div class="col-md-3">
+      <div class="card product-card">
+        <img src="images/Cosmox.jpg" class="card-img-top product-img" alt="Product 2">
+        <div class="card-body">
+          <h5 class="card-title">Cosmox</h5>
+          <p class="fw-bold">₱3,000.00</p>
         </div>
       </div>
-      <!-- Product Card 3 -->
-      <div class="col-md-3">
-        <div class="card border-orange">
-          <img src="images/Skullbox.jpeg" class="card-img-top" alt="Product 3">
-          <div class="card-body">
-            <h5 class="card-title">MICRO LITE (PC / Switch)</h5>
-            <p class="fw-bold">$99.00</p>
-          </div>
+    </div>
+    <!-- Product Card 3 -->
+    <div class="col-md-3">
+      <div class="card product-card">
+        <img src="images/Skullbox.jpeg" class="card-img-top product-img" alt="Product 3">
+        <div class="card-body">
+          <h5 class="card-title">Skullbox</h5>
+          <p class="fw-bold">₱3,000.00</p>
         </div>
       </div>
-      <!-- Product Card 4 -->
-      <div class="col-md-3">
-        <div class="card border-orange">
-          <img src="images/Razer Kitsune.JPG" class="card-img-top" alt="Product 4">
-          <div class="card-body">
-            <h5 class="card-title">MICRO with One-piece Case</h5>
-            <p class="text-muted"><del>$255.00</del> <span class="fw-bold">$155.00</span></p>
-          </div>
+    </div>
+    <!-- Product Card 4 -->
+    <div class="col-md-3">
+      <div class="card product-card">
+        <img src="images/Razer Kitsune.JPG" class="card-img-top product-img" alt="Product 4">
+        <div class="card-body">
+          <h5 class="card-title">Razer Kitsune</h5>
+          <p class="text-muted"><del>₱25,000.00</del> <span class="fw-bold">₱18,999.00</span></p>
         </div>
       </div>
     </div>
   </div>
+</div>
 
+<!-- Why Choose TapTek Section -->
+<div class="why-taptek container my-5">
+  <div class="row align-items-center">
+    <!-- Text Content -->
+    <div class="col-md-6">
+      <h2 class="fw-bold">Why Choose TapTek</h2>
+      <p>
+        TapTek is your ultimate destination for cutting-edge gaming controllers. Our products are designed with precision, speed, and comfort in mind, ensuring you have the competitive edge in every match.
+      </p>
+      <p>
+        With TapTek, you gain access to innovative leverless controllers that redefine gaming performance. Whether you're a casual gamer or a professional competitor, our controllers are built to help you achieve your best.
+      </p>
+      <p>
+        Explore our <a href="Shop.php" class="text-orange">Shop</a> to find the perfect controller for your needs and take your gaming to the next level.
+      </p>
+    </div>
+    <!-- Image Content -->
+    <div class="col-md-6">
+      <img src="images/Main.jpg" alt="TapTek Controller" class="img-fluid rounded">
+    </div>
+  </div>
+</div>
 
 <!-- Footer -->
 <footer class="footer bg-black text-white">

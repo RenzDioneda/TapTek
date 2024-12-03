@@ -1,109 +1,162 @@
-/* General Styles */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #ffffff;
-  }
-  
 
-  /* Utility Classes */
-  .text-orange {
-    color: orange;
-  }
-  
-  /* Hero Section */
-  .hero {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #1E3E62;
-    color: white;
-    padding: 50px;
-    border-radius: 10px;
-  }
-  .hero img {
-    max-width: 100%;
-    border-radius: 10px;
-  }
-  .hero-content {
-    max-width: 50%;
-  }
-  .hero-content h1 {
-    font-size: 3rem;
-    font-weight: bold;
-    margin-bottom: 20px;
-  }
-  .hero-content p {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-  }
-  .hero-content .btn {
-    background-color: white;
-    color: black;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1rem;
-    border-radius: 5px;
-    text-transform: uppercase;
-    font-weight: bold;
-  }
-  .hero-content .btn:hover {
-    background-color: #f2f2f2;
-  }
-  
-  /* Popular Products Section */
-  .container {
-    margin-top: 50px;
-  }
-  h2 {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 20px;
+  body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #ffffff;
+    }
+    
+
+    .text-orange {
+      color: orange;
+    }
+    
+    /* Hero Section */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #1E3E62;
+      color: white;
+      padding: 50px;
+      border-radius: 10px;
+    }
+    .hero img {
+      max-width: 100%;
+      border-radius: 10px;
+    }
+    .hero-content {
+      max-width: 50%;
+    }
+    .hero-content h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .hero-content p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+    .hero-content .btn {
+      background-color: white;
+      color: black;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border-radius: 5px;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+    .hero-content .btn:hover {
+      background-color: #f2f2f2;
+    }
+    
+    /* Popular Products Section */
+.container {
+  margin-top: 50px;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Product Card Styles */
+.product-card {
+  height: 100%; 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 2px solid #FF6500; 
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+.product-img {
+  height: 200px; 
+  object-fit: cover; 
+  width: 100%; 
+}
+
+
+.card-body {
+  text-align: center;
+}
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.card-body p {
+  margin: 0;
+}
+
+.card-body .text-muted {
+  color: gray;
+  font-size: 0.9rem;
+}
+
+.card-body .fw-bold {
+  font-size: 1.1rem;
+  color: black;
+}
+
+/* Why Choose TapTek Section */
+.why-taptek {
+  background-color: #f9f9f9; 
+  padding: 50px;
+  border-radius: 10px;
+}
+
+.why-taptek h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333; 
+}
+
+.why-taptek p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #555; 
+  margin-bottom: 20px;
+}
+
+.why-taptek a {
+  color: #ff4500; 
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.why-taptek a:hover {
+  text-decoration: underline;
+}
+
+.why-taptek img {
+  width: 100%; 
+  border-radius: 10px; 
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .why-taptek .row {
+    flex-direction: column;
     text-align: center;
   }
-  .card {
-    border: 2px solid #FF6500; /* Orange border */
-    border-radius: 10px;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  }
-  .card-header {
-    background-color: #FF6500; /* Orange background */
-    color: white;
-    font-weight: bold;
-    text-align: center;
-  }
-  .card-title {
-    font-size: 1rem;
-    font-weight: bold;
-    margin-top: 10px;
-  }
-  .card-body p {
-    margin: 0;
-  }
-  .card-body .text-muted {
-    color: gray;
-    font-size: 0.9rem;
-  }
-  .card-body .fw-bold {
-    font-size: 1.1rem;
-    color: black;
-  }
-  
-  /* Utility Classes */
-  .text-orange {
-    color: #FF6500;
-  }
-  .border-orange {
-    border-color: #FF6500 !important;
-  }
-  .bg-orange {
-    background-color: #FF6500 !important;
-  }
 
- 
+  .why-taptek img {
+    margin-top: 20px; 
+  }
+}

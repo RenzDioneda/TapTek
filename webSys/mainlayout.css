@@ -1,8 +1,8 @@
 /* Navbar */
 .navbar {
     background-color: black;
-    padding: 10px 0;
-    border-bottom: 2px solid orange; /* Orange underline */
+    padding: 5px 0;
+    border-bottom: 2px solid orange; 
   }
   
   .navbar-brand {
@@ -11,9 +11,9 @@
   }
   
   .navbar-logo {
-    height: 80px; /* Increase the logo size */
-    width: auto; /* Maintain aspect ratio */
-    margin-right: 10px; /* Add spacing between the logo and links */
+    height: 80px;
+    width: auto; 
+    margin-right: 10px; 
   }
   
   .navbar-nav .nav-link {
@@ -51,9 +51,9 @@
 .footer {
   background-color: black;
   color: white;
-  border-top: 3px solid orange; /* Orange border at the top */
+  border-top: 3px solid orange; 
   font-size: 0.9rem;
-  width: 100%; /* Ensure the footer spans the full width */
+  width: 100%; 
 }
 
 .footer h5 {
@@ -111,7 +111,7 @@
   padding: 20px 0;
 }
 
-/* Ensure footer stays at the bottom of the page */
+
 html {
   height: 100%;
 }
@@ -124,5 +124,5 @@ body {
 }
 
 main {
-  flex: 1; /* Pushes the footer to the bottom when content is short */
+  flex: 1; 
 }

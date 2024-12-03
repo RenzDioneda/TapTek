@@ -8,7 +8,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="mainlayout.css">
-
+  <link rel="stylesheet" href="Login.css">
 </head>
 <body>
 
@@ -50,6 +50,51 @@
       </div>
     </div>
   </nav>
+
+<!-- Login Form -->
+<div class="login-container">
+  <form class="login-form">
+    <h2>Login</h2>
+    <!-- Email Input -->
+    <div class="form-group">
+      <label for="email" class="form-label">Email Address</label>
+      <input 
+        type="email" 
+        class="form-control" 
+        id="email" 
+        placeholder="Enter your email" 
+        required 
+        style="color: #FFFFFF; background-color: #1E3E62; border: 1px solid #FF6500; caret-color: #FF6500;" 
+        onfocus="this.placeholder = ''" 
+        onblur="this.placeholder = 'Enter your email'" 
+      >
+    </div>
+    <!-- Password Input -->
+    <div class="form-group">
+      <label for="password" class="form-label">Password</label>
+      <input 
+        type="password" 
+        class="form-control" 
+        id="password" 
+        placeholder="Enter your password" 
+        required 
+        style="color: #FFFFFF; background-color: #1E3E62; border: 1px solid #FF6500; caret-color: #FF6500;" 
+        onfocus="this.placeholder = ''" 
+        onblur="this.placeholder = 'Enter your password'" 
+      >
+    </div>
+    <!-- Login Button -->
+    <button type="submit" class="btn btn-primary w-100" style="background-color: #FF6500; border: none;">Log In</button>
+    <!-- Forgot Password -->
+    <div class="forgot-password mt-3 text-center">
+      <a href="ResetPassword.php" style="color: #FF6500; text-decoration: none;">Forgot Password?</a>
+    </div>
+    <!-- Sign Up Link -->
+    <div class="signup-link mt-3 text-center">
+      Don't have an account? <a href="Signup.php" style="color: #FF6500; text-decoration: none;">Sign Up</a>
+    </div>
+  </form>
+</div>
 
   <!-- Footer -->
 <footer class="footer bg-black text-white">
