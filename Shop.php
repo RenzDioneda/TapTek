@@ -8,48 +8,293 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="mainlayout.css">
-
+  <link rel="stylesheet" href="Login.css">
+  <link rel="stylesheet" href="Shop.css">
 </head>
 <body>
 
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-black">
-    <div class="container">
-      <!-- Logo -->
-      <a class="navbar-brand" href="Home.php">
-        <img src="images/Logo.png" alt="Junk Food Logo" class="navbar-logo">
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <!-- Centered Links -->
-        <ul class="navbar-nav mx-auto">
-          <li class="nav-item">
-            <a class="nav-link text-white active" href="Home.php">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white" href="Shop.php">Shop</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white" href="Contact.php">Contact</a>
-          </li>
-        </ul>
-        <!-- Right-aligned Icons -->
-        <div class="d-flex align-items-center">
+  <div class="container">
+    <!-- Logo -->
+    <a class="navbar-brand" href="Home.php">
+      <img src="images/Logo.png" alt="Junk Food Logo" class="navbar-logo">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <!-- Centered Links -->
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item">
+          <a class="nav-link text-white active" href="Home.php">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="Shop.php">Shop</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="Contact.php">Contact</a>
+        </li>
+      </ul>
+      <!-- Right-aligned Icons -->
+      <div class="d-flex align-items-center">
           <a href="#" class="text-white me-3">
             <i class="fas fa-search fa-lg"></i>
           </a>
-          <a href="#" class="text-white me-3">
-            <i class="fas fa-user fa-lg"></i>
-          </a>
-          <a href="#" class="text-white">
-            <i class="fas fa-shopping-bag fa-lg"></i>
-          </a>
+      <div class="d-flex align-items-center">
+        <a href="#" class="text-white me-3" data-bs-toggle="modal" data-bs-target="#loginModal">
+          <i class="fas fa-user fa-lg"></i>
+        </a>
+        <a href="Cart.php" class="text-white">
+          <i class="fas fa-shopping-bag fa-lg"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+  <!-- Login Modal -->
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="loginModalLabel">Login</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <!-- Username Input -->
+            <div class="form-group">
+              <i class="fas fa-user"></i>
+              <input 
+                type="text" 
+                class="form-control" 
+                id="username" 
+                placeholder="Username" 
+                required 
+              >
+            </div>
+            <!-- Password Input -->
+            <div class="form-group">
+              <i class="fas fa-lock"></i>
+              <input 
+                type="password" 
+                class="form-control" 
+                id="password" 
+                placeholder="Password" 
+                required 
+              >
+            </div>
+            <!-- Buttons -->
+            <div class="d-flex justify-content-between">
+              <button type="submit" class="btn btn-primary">Login</button>
+              <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#signupModal" data-bs-dismiss="modal">Sign Up</button>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <div class="forgot-password w-100">
+            <a href="#" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal" data-bs-dismiss="modal">Forgot Password?</a>
+          </div>
         </div>
       </div>
     </div>
-  </nav>
+  </div>
+
+  <!-- Sign-Up Modal -->
+  <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="signupModalLabel">Sign Up</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <!-- First Name -->
+            <div class="form-group">
+              <i class="fas fa-user"></i>
+              <input type="text" class="form-control" placeholder="First Name" required>
+            </div>
+            <!-- Last Name -->
+            <div class="form-group">
+              <i class="fas fa-user"></i>
+              <input type="text" class="form-control" placeholder="Last Name" required>
+            </div>
+            <!-- Birthday -->
+            <div class="form-group">
+              <i class="fas fa-calendar"></i>
+                <input type="text" class="form-control"placeholder="Birthday" onfocus="(this.type='date')" onblur="(this.type='text'); this.value ? '' : this.placeholder='Birthday'" required>
+             </div>
+            <!-- Age -->
+            <div class="form-group">
+              <i class="fas fa-sort-numeric-up"></i>
+              <input type="number" class="form-control" placeholder="Age" required>
+            </div>
+            <!-- Email -->
+            <div class="form-group">
+              <i class="fas fa-envelope"></i>
+              <input type="email" class="form-control" placeholder="Email" required>
+            </div>
+            <!-- Password -->
+            <div class="form-group">
+              <i class="fas fa-lock"></i>
+              <input type="password" class="form-control" placeholder="Password" required>
+            </div>
+            <!-- Confirm Password -->
+            <div class="form-group">
+              <i class="fas fa-lock"></i>
+              <input type="password" class="form-control" placeholder="Confirm Password" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+            <button type="button" class="btn btn-secondary w-100 mt-2" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-dismiss="modal">Back</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Forgot Password Modal -->
+  <div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="forgotPasswordModalLabel">Forgot Password</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <!-- Email Input -->
+            <div class="form-group">
+              <i class="fas fa-envelope"></i>
+              <input type="email" class="form-control" placeholder="Enter Email Address" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Submit</button>
+            <button type="button" class="btn btn-secondary w-100 mt-2" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-dismiss="modal">Back</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ <!--Main Body-->
+   <!-- Independent Title -->
+   <div class="title">
+    <h1>Controllers</h1>
+  </div>
+
+<!-- Product Grid -->
+<div class="container">
+  <div class="row g-4 justify-content-center"> <!-- Center the products -->
+    <!-- Product 1 -->
+    <div class="col-lg-2 col-md-4 col-sm-6">
+      <div class="product-card">
+        <img src="images/Hitbox.webp" alt="Product 1">
+        <div class="card-body">
+          <a href="#" class="card-title">MICRO with Artwork Case (Clear or Smoke)</a>
+          <p class="price"><span class="original-price">$220.00</span> $165.00</p>
+        </div>
+      </div>
+    </div>
+    <!-- Product 2 -->
+    <div class="col-lg-2 col-md-4 col-sm-6">
+      <div class="product-card">
+        <img src="images/Skullbox.jpeg" alt="Product 2">
+        <div class="card-body">
+          <a href="#" class="card-title">MICRO LITE Starter Kit</a>
+          <p class="price">$120.00</p>
+        </div>
+      </div>
+    </div>
+    <!-- Product 3 -->
+    <div class="col-lg-2 col-md-4 col-sm-6">
+      <div class="product-card">
+        <img src="images/Razer Kitsune.jpg" alt="Product 3">
+        <div class="card-body">
+          <a href="#" class="card-title">MICRO LITE (PC / Switch)</a>
+          <p class="price">$99.00</p>
+        </div>
+      </div>
+    </div>
+    <!-- Product 4 -->
+    <div class="col-lg-2 col-md-4 col-sm-6">
+      <div class="product-card">
+        <img src="images/VictrixKO.webp" alt="Product 4">
+        <div class="card-body">
+          <a href="#" class="card-title">MICRO with One-piece Case</a>
+          <p class="price"><span class="original-price">$255.00</span> $155.00</p>
+        </div>
+      </div>
+    </div>
+    <!-- Product 5 -->
+    <div class="col-lg-2 col-md-4 col-sm-6">
+      <div class="product-card">
+        <img src="images/Overdrive.webp" alt="Product 5">
+        <div class="card-body">
+          <a href="#" class="card-title">NEW! PS5 and Xbox Series version of the M2 PCB</a>
+          <p class="price">$99.99</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row g-4 justify-content-center">
+    <!-- Product 6 -->
+    <div class="col-lg-2 col-md-4 col-sm-6">
+      <div class="product-card">
+        <img src="images/VictrixLL.webp" alt="Product 1">
+        <div class="card-body">
+          <a href="#" class="card-title">MICRO with Artwork Case (Clear or Smoke)</a>
+          <p class="price"><span class="original-price">$220.00</span> $165.00</p>
+        </div>
+      </div>
+    </div>
+    <!-- Product 7 -->
+    <div class="col-lg-2 col-md-4 col-sm-6">
+      <div class="product-card">
+        <img src="images/FTGT16.webp" alt="Product 2">
+        <div class="card-body">
+          <a href="#" class="card-title">MICRO LITE Starter Kit</a>
+          <p class="price">$120.00</p>
+        </div>
+      </div>
+    </div>
+    <!-- Product 8 -->
+    <div class="col-lg-2 col-md-4 col-sm-6">
+      <div class="product-card">
+        <img src="images/HauteM16.jpg" alt="Product 3">
+        <div class="card-body">
+          <a href="#" class="card-title">MICRO LITE (PC / Switch)</a>
+          <p class="price">$99.00</p>
+        </div>
+      </div>
+    </div>
+    <!-- Product 9 -->
+    <div class="col-lg-2 col-md-4 col-sm-6">
+      <div class="product-card">
+        <img src="images/MicroLite.jpeg" alt="Product 4">
+        <div class="card-body">
+          <a href="#" class="card-title">MICRO with One-piece Case</a>
+          <p class="price"><span class="original-price">$255.00</span> $155.00</p>
+        </div>
+      </div>
+    </div>
+    <!-- Product 10 -->
+    <div class="col-lg-2 col-md-4 col-sm-6">
+      <div class="product-card">
+        <img src="images/Cosmox.jpg" alt="Product 5">
+        <div class="card-body">
+          <a href="#" class="card-title">NEW! PS5 and Xbox Series version of the M2 PCB</a>
+          <p class="price">$99.99</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
   <!-- Footer -->
 <footer class="footer bg-black text-white">
   <div class="container py-4">
