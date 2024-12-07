@@ -36,7 +36,7 @@
           <a class="nav-link text-white" href="Shop.php">Shop</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white active" href="Contact.php">Contact</a>
+          <a class="nav-link text-white " href="Contact.php">Contact</a>
         </li>
       </ul>
       <!-- Right-aligned Icons -->
@@ -163,107 +163,73 @@
     </div>
   </div>
   
-  <!--Main Body-->
+<!-- Main Body -->
+<section class="cart-container my-5">
+  <!-- Cart Header -->
+  <h1 class="cart-header text-center">My Cart</h1>
+
   <div class="container">
-  <div class="row g-4">
-    <!-- Cart Section -->
-    <div class="col-lg-8">
-      <div class="card p-4">
-        <div class="d-flex justify-content-between align-items-center mb-3">
-          <h5 class="cart-header">Cart</h5>
-        </div>
-
-        <!-- Product 1 -->
-        <div class="product-item" id="product-1">
-          <div class="form-check">
-            <input class="form-check-input product-checkbox" type="checkbox" data-product-id="1">
-          </div>
-          <div class="product-image">
-            <img src="images/Razer_Kitsunenb.png" alt="Product 1">
-          </div>
-          <div class="product-details">
-            <p class="mb-1"><strong>Razer Kitsune (PS5)</strong></p>
-            <p class="Edition text-muted mb-1">Black</p>
-          </div>
-          <div class="quantity-control">
-            <button class="decrease-btn">-</button>
-            <span class="quantity">1</span>
-            <button class="increase-btn">+</button>
-          </div>
-          <div class="product-price" data-price="2500.00">$2,500.00</div>
-          <button class="remove-btn">Remove</button>
-        </div>
-
-        <!-- Product 2 -->
-        <div class="product-item" id="product-2">
-          <div class="form-check">
-            <input class="form-check-input product-checkbox" type="checkbox" data-product-id="2">
-          </div>
-          <div class="product-image">
-            <img src="https://via.placeholder.com/60" alt="Product 2">
-          </div>
-          <div class="product-details">
-            <p class="mb-1"><strong>Cahier Leather Shoulder Bag</strong></p>
-            <p class="text-muted mb-1">Grey | x1</p>
-          </div>
-          <div class="quantity-control">
-            <button class="decrease-btn">-</button>
-            <span class="quantity">1</span>
-            <button class="increase-btn">+</button>
-          </div>
-          <div class="product-price" data-price="2500.00">$2,500.00</div>
-          <button class="remove-btn">Remove</button>
-        </div>
-
-        <!-- Product 3 -->
-        <div class="product-item" id="product-3">
-          <div class="form-check">
-            <input class="form-check-input product-checkbox" type="checkbox" data-product-id="3">
-          </div>
-          <div class="product-image">
-            <img src="https://via.placeholder.com/60" alt="Product 3">
-          </div>
-          <div class="product-details">
-            <p class="mb-1"><strong>Nordgreen Watches</strong></p>
-            <p class="text-muted mb-1">Brown | M</p>
-          </div>
-          <div class="quantity-control">
-            <button class="decrease-btn">-</button>
-            <span class="quantity">1</span>
-            <button class="increase-btn">+</button>
-          </div>
-          <div class="product-price" data-price="2500.00">$2,500.00</div>
-          <button class="remove-btn">Remove</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Order Summary Section -->
-    <div class="col-lg-4">
-      <div class="order-summary">
-        <h5>Your Order</h5>
-        <div id="order-details"></div>
-        <hr>
-        <div class="d-flex justify-content-between">
-          <p>Subtotal</p>
-          <p id="subtotal-price">$0.00</p>
-        </div>
-        <div class="d-flex justify-content-between">
-          <p>Shipment cost</p>
-          <p>$22.50</p>
-        </div>
-        <hr>
-        <div class="d-flex justify-content-between">
-          <p class="total-price">Grand total</p>
-          <p id="grand-total-price">$22.50</p>
-        </div>
-        <button class="btn btn-primary w-100 mt-3">Continue to payment</button>
-      </div>
-    </div>
+    <div class="row g-4">
+     <!-- Product Table -->
+<div class="col-lg-9">
+  <div class="product-table">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Product</th>
+          <th class="text-center">Quantity</th> <!-- Centered Quantity Column -->
+          <th class="text-center">Total</th>    <!-- Centered Total Column -->
+          <th class="text-center">Action</th>   <!-- Centered Action Column -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <input type="checkbox" class="form-check-input">
+          </td>
+          <td class="d-flex align-items-center">
+            <div class="product-image me-3">
+              <img src="https://via.placeholder.com/80" alt="Product Image">
+            </div>
+            <div>
+              <p class="product-name mb-1">PS5 God Of War Ragnarok (Asian)</p>
+              <p class="product-price mb-1">₱1,490.00</p>
+            </div>
+          </td>
+          <td class="text-center">
+            <div class="quantity-control d-flex justify-content-center align-items-center">
+              <button class="btn btn-outline-secondary">−</button>
+              <span class="mx-2">1</span>
+              <button class="btn btn-outline-secondary">+</button>
+            </div>
+          </td>
+          <td class="text-center">₱1,490.00</td> <!-- Centered Total Price -->
+          <td class="text-center">
+            <button class="btn btn-danger btn-sm">Remove</button> <!-- Centered Remove Button -->
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
 
-
+      <!-- Summary Section -->
+      <div class="col-lg-3">
+        <div class="summary-section p-3 border rounded">
+          <div class="d-flex justify-content-between mb-3">
+            <p class="summary-total fw-bold">Total</p>
+            <p class="summary-total fw-bold">₱1,490.00</p>
+          </div>
+          <p class="summary-savings text-success">You saved ₱2,000.00!</p>
+          <hr>
+          <p class="text-muted">Taxes and shipping calculated at checkout</p>
+          <button class="btn btn-primary btn-checkout w-100 mt-3">Checkout</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
   <!-- Footer -->
 <footer class="footer bg-black text-white">
   <div class="container py-4">
