@@ -1,4 +1,3 @@
-
 /* Modal Content */
 .modal-content {
   background-color: #1E3E62; 
@@ -29,14 +28,14 @@
   font-size: 16px;
   border-radius: 10px;
   border: none;
-  background-color: #ffffff; 
-  color: #FFFFFF; 
-  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5); 
+  background-color: #ffffff; /* Ensure background is white */
+  color: #333333; /* Standard dark text color */
+  box-shadow: none; /* Remove shadow to test */
 }
 
 .form-control:focus {
   border: 1px solid #FF6500; 
-  box-shadow: 0 0 5px rgba(255, 101, 0, 0.5); 
+  box-shadow: 0 0 5px rgba(255, 101, 0, 0.5); /* Add shadow when focused */
 }
 
 .form-group i {
