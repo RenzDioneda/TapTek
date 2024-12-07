@@ -113,28 +113,29 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form>
+          <form id="signupForm">
             <!-- Username -->
             <div class="form-group">
               <i class="fas fa-user"></i>
-              <input type="text" class="form-control" placeholder="Username" required>
+              <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
             </div>
 
             <!-- Email -->
             <div class="form-group">
               <i class="fas fa-envelope"></i>
-              <input type="email" class="form-control" placeholder="Email" required>
+              <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
             </div>
 
             <!-- Password -->
             <div class="form-group">
               <i class="fas fa-lock"></i>
-              <input type="password" class="form-control" placeholder="Password" required>
+              <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
             </div>
 
             <button type="submit" class="btn btn-primary w-100">Sign Up</button>
             <button type="button" class="btn btn-secondary w-100 mt-2" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-dismiss="modal">Back</button>
           </form>
+          <div id="signupFeedback" class="mt-2 text-center"></div>
         </div>
       </div>
     </div>
@@ -352,5 +353,6 @@
   <!-- Bootstrap JS -->
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="signup.js"></script>
 </body>
 </html>
