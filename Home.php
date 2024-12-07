@@ -41,20 +41,57 @@
       </ul>
       <!-- Right-aligned Icons -->
       <div class="d-flex align-items-center">
-          <a href="#" class="text-white me-3">
-            <i class="fas fa-search fa-lg"></i>
+        <a href="#" class="text-white me-3" data-bs-toggle="modal" data-bs-target="#searchModal">
+          <i class="fas fa-search fa-lg"></i>
+        </a>
+        <div class="d-flex align-items-center">
+          <a href="#" class="text-white me-3" data-bs-toggle="modal" data-bs-target="#loginModal">
+            <i class="fas fa-user fa-lg"></i>
           </a>
-      <div class="d-flex align-items-center">
-        <a href="#" class="text-white me-3" data-bs-toggle="modal" data-bs-target="#loginModal">
-          <i class="fas fa-user fa-lg"></i>
-        </a>
-        <a href="Cart.php" class="text-white">
-          <i class="fas fa-shopping-bag fa-lg"></i>
-        </a>
+          <a href="Cart.php" class="text-white">
+            <i class="fas fa-shopping-bag fa-lg"></i>
+          </a>
+        </div>
       </div>
     </div>
   </div>
 </nav>
+
+<!-- Search Modal -->
+<div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="searchModalLabel">Search Products</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Search Field -->
+        <div class="mb-3">
+          <label for="searchInput" class="form-label">Search</label>
+          <input type="text" class="form-control" id="searchInput" placeholder="Search for products...">
+        </div>
+        
+        <!-- Filter By Section -->
+        <div class="mb-3">
+          <label for="filterSelect" class="form-label">Filter By:</label>
+          <select class="form-select" id="filterSelect">
+            <option selected>Choose filter</option>
+            <option value="1">Price: Low to High</option>
+            <option value="2">Price: High to Low</option>
+            <option value="3">Compatibility</option>
+            <option value="4">Rating: High to Low</option>
+            <option value="5">Rating: Low to High</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Search</button>
+      </div>
+    </div>
+  </div>
+</div>
 
   <!-- Login Modal -->
   <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
@@ -256,46 +293,55 @@
   <div class="row mt-4">
     <!-- Product Card 1 -->
     <div class="col-md-3">
-      <div class="card product-card">
-        <img src="images/MicroLite.jpeg" class="card-img-top product-img" alt="Product 1">
-        <div class="card-body">
-          <h5 class="card-title">Micro Lite</h5>
-          <p class="text-muted"><del>₱3,000.00</del> <span class="fw-bold">₱2,000.00</span></p>
+      <a href="Microlite.php" class="text-decoration-none">
+        <div class="card product-card">
+          <img src="images/MicroLite.jpeg" class="card-img-top product-img" alt="Product 1">
+          <div class="card-body">
+            <h5 class="card-title">Micro Lite</h5>
+            <p class="text-muted"><del>₱3,000.00</del> <span class="fw-bold">₱2,000.00</span></p>
+          </div>
         </div>
-      </div>
+      </a>
     </div>
     <!-- Product Card 2 -->
     <div class="col-md-3">
-      <div class="card product-card">
-        <img src="images/Cosmox.jpg" class="card-img-top product-img" alt="Product 2">
-        <div class="card-body">
-          <h5 class="card-title">Cosmox</h5>
-          <p class="fw-bold">₱3,000.00</p>
+      <a href="Cosmox.php" class="text-decoration-none">
+        <div class="card product-card">
+          <img src="images/Cosmox.jpg" class="card-img-top product-img" alt="Product 2">
+          <div class="card-body">
+            <h5 class="card-title">Cosmox</h5>
+            <p class="fw-bold">₱3,000.00</p>
+          </div>
         </div>
-      </div>
+      </a>
     </div>
     <!-- Product Card 3 -->
     <div class="col-md-3">
-      <div class="card product-card">
-        <img src="images/Skullbox.jpeg" class="card-img-top product-img" alt="Product 3">
-        <div class="card-body">
-          <h5 class="card-title">Skullbox</h5>
-          <p class="fw-bold">₱3,000.00</p>
+      <a href="Skullbox.php" class="text-decoration-none">
+        <div class="card product-card">
+          <img src="images/Skullbox.jpeg" class="card-img-top product-img" alt="Product 3">
+          <div class="card-body">
+            <h5 class="card-title">Skullbox</h5>
+            <p class="fw-bold">₱3,000.00</p>
+          </div>
         </div>
-      </div>
+      </a>
     </div>
     <!-- Product Card 4 -->
     <div class="col-md-3">
-      <div class="card product-card">
-        <img src="images/Razer Kitsune.JPG" class="card-img-top product-img" alt="Product 4">
-        <div class="card-body">
-          <h5 class="card-title">Razer Kitsune</h5>
-          <p class="text-muted"><del>₱25,000.00</del> <span class="fw-bold">₱18,999.00</span></p>
+      <a href="RazerKitsune.php" class="text-decoration-none">
+        <div class="card product-card">
+          <img src="images/Razer Kitsune.JPG" class="card-img-top product-img" alt="Product 4">
+          <div class="card-body">
+            <h5 class="card-title">Razer Kitsune</h5>
+            <p class="text-muted"><del>₱25,000.00</del> <span class="fw-bold">₱18,999.00</span></p>
+          </div>
         </div>
-      </div>
+      </a>
     </div>
   </div>
 </div>
+
 
 <!-- Why Choose TapTek Section -->
 <div class="why-taptek container my-5">

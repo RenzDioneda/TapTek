@@ -30,79 +30,68 @@
       <!-- Centered Links -->
       <ul class="navbar-nav mx-auto">
         <li class="nav-item">
-          <a class="nav-link text-white " href="Home.php">Home</a>
+          <a class="nav-link text-white active" href="Home.php">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-white" href="Shop.php">Shop</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="Contact.php">Contact</a>
+          <a class="nav-link text-white" href="Contact.php">Contact</a>
         </li>
       </ul>
       <!-- Right-aligned Icons -->
       <div class="d-flex align-items-center">
-          <a href="#" class="text-white me-3">
-            <i class="fas fa-search fa-lg"></i>
+        <a href="#" class="text-white me-3" data-bs-toggle="modal" data-bs-target="#searchModal">
+          <i class="fas fa-search fa-lg"></i>
+        </a>
+        <div class="d-flex align-items-center">
+          <a href="#" class="text-white me-3" data-bs-toggle="modal" data-bs-target="#loginModal">
+            <i class="fas fa-user fa-lg"></i>
           </a>
-      <div class="d-flex align-items-center">
-        <a href="#" class="text-white me-3" data-bs-toggle="modal" data-bs-target="#loginModal">
-          <i class="fas fa-user fa-lg"></i>
-        </a>
-        <a href="Cart.php" class="text-white">
-          <i class="fas fa-shopping-bag fa-lg"></i>
-        </a>
+          <a href="Cart.php" class="text-white">
+            <i class="fas fa-shopping-bag fa-lg"></i>
+          </a>
+        </div>
       </div>
     </div>
   </div>
 </nav>
 
-  <!-- Login Modal -->
-  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="loginModalLabel">Login</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<!-- Search Modal -->
+<div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="searchModalLabel">Search Products</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Search Field -->
+        <div class="mb-3">
+          <label for="searchInput" class="form-label">Search</label>
+          <input type="text" class="form-control" id="searchInput" placeholder="Search for products...">
         </div>
-        <div class="modal-body">
-          <form>
-            <!-- Username Input -->
-            <div class="form-group">
-              <i class="fas fa-user"></i>
-              <input 
-                type="text" 
-                class="form-control" 
-                id="username" 
-                placeholder="Username" 
-                required 
-              >
-            </div>
-            <!-- Password Input -->
-            <div class="form-group">
-              <i class="fas fa-lock"></i>
-              <input 
-                type="password" 
-                class="form-control" 
-                id="password" 
-                placeholder="Password" 
-                required 
-              >
-            </div>
-            <!-- Buttons -->
-            <div class="d-flex justify-content-between">
-              <button type="submit" class="btn btn-primary">Login</button>
-              <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#signupModal" data-bs-dismiss="modal">Sign Up</button>
-            </div>
-          </form>
+        
+        <!-- Filter By Section -->
+        <div class="mb-3">
+          <label for="filterSelect" class="form-label">Filter By:</label>
+          <select class="form-select" id="filterSelect">
+            <option selected>Choose filter</option>
+            <option value="1">Price: Low to High</option>
+            <option value="2">Price: High to Low</option>
+            <option value="3">Compatibility</option>
+            <option value="4">Rating: High to Low</option>
+            <option value="5">Rating: Low to High</option>
+          </select>
         </div>
-        <div class="modal-footer">
-          <div class="forgot-password w-100">
-            <a href="#" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal" data-bs-dismiss="modal">Forgot Password?</a>
-          </div>
-        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Search</button>
       </div>
     </div>
   </div>
+</div>
 
   <!-- Sign-Up Modal -->
   <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">

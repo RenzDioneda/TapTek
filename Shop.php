@@ -30,10 +30,10 @@
       <!-- Centered Links -->
       <ul class="navbar-nav mx-auto">
         <li class="nav-item">
-          <a class="nav-link text-white" href="Home.php">Home</a>
+          <a class="nav-link text-white active" href="Home.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white active" href="Shop.php">Shop</a>
+          <a class="nav-link text-white" href="Shop.php">Shop</a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-white" href="Contact.php">Contact</a>
@@ -41,20 +41,57 @@
       </ul>
       <!-- Right-aligned Icons -->
       <div class="d-flex align-items-center">
-          <a href="#" class="text-white me-3">
-            <i class="fas fa-search fa-lg"></i>
+        <a href="#" class="text-white me-3" data-bs-toggle="modal" data-bs-target="#searchModal">
+          <i class="fas fa-search fa-lg"></i>
+        </a>
+        <div class="d-flex align-items-center">
+          <a href="#" class="text-white me-3" data-bs-toggle="modal" data-bs-target="#loginModal">
+            <i class="fas fa-user fa-lg"></i>
           </a>
-      <div class="d-flex align-items-center">
-        <a href="#" class="text-white me-3" data-bs-toggle="modal" data-bs-target="#loginModal">
-          <i class="fas fa-user fa-lg"></i>
-        </a>
-        <a href="Cart.php" class="text-white">
-          <i class="fas fa-shopping-bag fa-lg"></i>
-        </a>
+          <a href="Cart.php" class="text-white">
+            <i class="fas fa-shopping-bag fa-lg"></i>
+          </a>
+        </div>
       </div>
     </div>
   </div>
 </nav>
+
+<!-- Search Modal -->
+<div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="searchModalLabel">Search Products</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Search Field -->
+        <div class="mb-3">
+          <label for="searchInput" class="form-label">Search</label>
+          <input type="text" class="form-control" id="searchInput" placeholder="Search for products...">
+        </div>
+        
+        <!-- Filter By Section -->
+        <div class="mb-3">
+          <label for="filterSelect" class="form-label">Filter By:</label>
+          <select class="form-select" id="filterSelect">
+            <option selected>Choose filter</option>
+            <option value="1">Price: Low to High</option>
+            <option value="2">Price: High to Low</option>
+            <option value="3">Compatibility</option>
+            <option value="4">Rating: High to Low</option>
+            <option value="5">Rating: Low to High</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Search</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- Login Modal -->
 <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
@@ -175,53 +212,63 @@
   <div class="row g-4 justify-content-center"> <!-- Center the products -->
     <!-- Product 1 -->
     <div class="col-lg-2 col-md-4 col-sm-6">
-      <div class="product-card">
-        <img src="images/Hitboxnb.png" alt="Product 1">
-        <div class="card-body">
-          <a href="Hitbox.php" class="card-title">Hitbox (PC)</a>
-          <p class="price">₱8,000.00</p>
+      <a href="Hitbox.php" class="text-decoration-none">
+        <div class="product-card">
+          <img src="images/Hitboxnb.png" alt="Product 1">
+          <div class="card-body">
+            <h5 class="card-title">Hitbox (PC)</h5>
+            <p class="price">₱8,000.00</p>
+          </div>
         </div>
-      </div>
+      </a>
     </div>
     <!-- Product 2 -->
     <div class="col-lg-2 col-md-4 col-sm-6">
-      <div class="product-card">
-        <img src="images/Skullboxnb.png" alt="Product 2">
-        <div class="card-body">
-          <a href="Skullbox.php" class="card-title">Skullbox (Switch)</a>
-          <p class="price">₱2,500.00</p>
+      <a href="Skullbox.php" class="text-decoration-none">
+        <div class="product-card">
+          <img src="images/Skullboxnb.png" alt="Product 2">
+          <div class="card-body">
+            <h5 class="card-title">Skullbox (Switch)</h5>
+            <p class="price">₱2,500.00</p>
+          </div>
         </div>
-      </div>
+      </a>
     </div>
     <!-- Product 3 -->
     <div class="col-lg-2 col-md-4 col-sm-6">
-      <div class="product-card">
-        <img src="images/Razer_Kitsunenb.png" alt="Product 3">
-        <div class="card-body">
-          <a href="RazerKitsune.php" class="card-title">Razer Kitsune (PS5)</a>
-          <p class="price">₱17,000.00</p>
+      <a href="RazerKitsune.php" class="text-decoration-none">
+        <div class="product-card">
+          <img src="images/Razer_Kitsunenb.png" alt="Product 3">
+          <div class="card-body">
+            <h5 class="card-title">Razer Kitsune (PS5)</h5>
+            <p class="price">₱17,000.00</p>
+          </div>
         </div>
-      </div>
+      </a>
     </div>
     <!-- Product 4 -->
     <div class="col-lg-2 col-md-4 col-sm-6">
-      <div class="product-card">
-        <img src="images/VictrixKO.webp" alt="Product 4">
-        <div class="card-body">
-          <a href="VictrixKO.php" class="card-title">Victrix KO (PS5)</a>
-          <p class="price">₱12,000.00</p>
+      <a href="VictrixKO.php" class="text-decoration-none">
+        <div class="product-card">
+          <img src="images/VictrixKO.webp" alt="Product 4">
+          <div class="card-body">
+            <h5 class="card-title">Victrix KO (PS5)</h5>
+            <p class="price">₱12,000.00</p>
+          </div>
         </div>
-      </div>
+      </a>
     </div>
     <!-- Product 5 -->
     <div class="col-lg-2 col-md-4 col-sm-6">
-      <div class="product-card">
-        <img src="images/Overdrivenb.png" alt="Product 5">
-        <div class="card-body">
-          <a href="Overdrive.php" class="card-title">Overdrive (PC)</a>
-          <p class="price">₱10,000.00</p>
+      <a href="Overdrive.php" class="text-decoration-none">
+        <div class="product-card">
+          <img src="images/Overdrivenb.png" alt="Product 5">
+          <div class="card-body">
+            <h5 class="card-title">Overdrive (PC)</h5>
+            <p class="price">₱10,000.00</p>
+          </div>
         </div>
-      </div>
+      </a>
     </div>
   </div>
 </div>
@@ -230,56 +277,67 @@
   <div class="row g-4 justify-content-center">
     <!-- Product 6 -->
     <div class="col-lg-2 col-md-4 col-sm-6">
-      <div class="product-card">
-        <img src="images/VictrixLL.webp" alt="Product 1">
-        <div class="card-body">
-          <a href="VictrixLL.php" class="card-title">Victrix LL (PS5)</a>
-          <p class="price">₱12,000.00</p>
+      <a href="VictrixLL.php" class="text-decoration-none">
+        <div class="product-card">
+          <img src="images/VictrixLL.webp" alt="Product 6">
+          <div class="card-body">
+            <h5 class="card-title">Victrix LL (PS5)</h5>
+            <p class="price">₱12,000.00</p>
+          </div>
         </div>
-      </div>
+      </a>
     </div>
     <!-- Product 7 -->
     <div class="col-lg-2 col-md-4 col-sm-6">
-      <div class="product-card">
-        <img src="images/FTGT16nb.png" alt="Product 2">
-        <div class="card-body">
-          <a href="FTGT16.php" class="card-title">FTG16 (PC)</a>
-          <p class="price">₱5,000.00</p>
+      <a href="FTGT16.php" class="text-decoration-none">
+        <div class="product-card">
+          <img src="images/FTGT16nb.png" alt="Product 7">
+          <div class="card-body">
+            <h5 class="card-title">FTG16 (PC)</h5>
+            <p class="price">₱5,000.00</p>
+          </div>
         </div>
-      </div>
+      </a>
     </div>
     <!-- Product 8 -->
     <div class="col-lg-2 col-md-4 col-sm-6">
-      <div class="product-card">
-        <img src="images/HauteM16nb.png" alt="Product 3">
-        <div class="card-body">
-          <a href="HauteM16.php" class="card-title">Haute M16 (Switch)</a>
-          <p class="price">₱2,500.00</p>
+      <a href="HauteM16.php" class="text-decoration-none">
+        <div class="product-card">
+          <img src="images/HauteM16nb.png" alt="Product 8">
+          <div class="card-body">
+            <h5 class="card-title">Haute M16 (Switch)</h5>
+            <p class="price">₱2,500.00</p>
+          </div>
         </div>
-      </div>
+      </a>
     </div>
     <!-- Product 9 -->
     <div class="col-lg-2 col-md-4 col-sm-6">
-      <div class="product-card">
-        <img src="images/MicroLitenb.png" alt="Product 4">
-        <div class="card-body">
-          <a href="Microlite.php" class="card-title">Micro Lite (Switch)</a>
-          <p class="price">₱2,500.00</p>
+      <a href="Microlite.php" class="text-decoration-none">
+        <div class="product-card">
+          <img src="images/MicroLitenb.png" alt="Product 9">
+          <div class="card-body">
+            <h5 class="card-title">Micro Lite (Switch)</h5>
+            <p class="price">₱2,500.00</p>
+          </div>
         </div>
-      </div>
+      </a>
     </div>
     <!-- Product 10 -->
     <div class="col-lg-2 col-md-4 col-sm-6">
-      <div class="product-card">
-        <img src="images/Cosmoxnb.png" alt="Product 5">
-        <div class="card-body">
-          <a href="Cosmox.php" class="card-title">Cosmox (PC)</a>
-          <p class="price">₱5,000.00</p>
+      <a href="Cosmox.php" class="text-decoration-none">
+        <div class="product-card">
+          <img src="images/Cosmoxnb.png" alt="Product 10">
+          <div class="card-body">
+            <h5 class="card-title">Cosmox (PC)</h5>
+            <p class="price">₱5,000.00</p>
+          </div>
         </div>
-      </div>
+      </a>
     </div>
   </div>
 </div>
+
 
 
   <!-- Footer -->
