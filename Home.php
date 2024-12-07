@@ -7,6 +7,9 @@
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="mainlayout.css">
   <link rel="stylesheet" href="Login.css">
   <link rel="stylesheet" href="Home.css">
@@ -111,41 +114,24 @@
         </div>
         <div class="modal-body">
           <form>
-            <!-- First Name -->
+            <!-- Username -->
             <div class="form-group">
               <i class="fas fa-user"></i>
-              <input type="text" class="form-control" placeholder="First Name" required>
+              <input type="text" class="form-control" placeholder="Username" required>
             </div>
-            <!-- Last Name -->
-            <div class="form-group">
-              <i class="fas fa-user"></i>
-              <input type="text" class="form-control" placeholder="Last Name" required>
-            </div>
-            <!-- Birthday -->
-            <div class="form-group">
-              <i class="fas fa-calendar"></i>
-                <input type="text" class="form-control"placeholder="Birthday" onfocus="(this.type='date')" onblur="(this.type='text'); this.value ? '' : this.placeholder='Birthday'" required>
-             </div>
-            <!-- Age -->
-            <div class="form-group">
-              <i class="fas fa-sort-numeric-up"></i>
-              <input type="number" class="form-control" placeholder="Age" required>
-            </div>
+
             <!-- Email -->
             <div class="form-group">
               <i class="fas fa-envelope"></i>
               <input type="email" class="form-control" placeholder="Email" required>
             </div>
+
             <!-- Password -->
             <div class="form-group">
               <i class="fas fa-lock"></i>
               <input type="password" class="form-control" placeholder="Password" required>
             </div>
-            <!-- Confirm Password -->
-            <div class="form-group">
-              <i class="fas fa-lock"></i>
-              <input type="password" class="form-control" placeholder="Confirm Password" required>
-            </div>
+
             <button type="submit" class="btn btn-primary w-100">Sign Up</button>
             <button type="button" class="btn btn-secondary w-100 mt-2" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-dismiss="modal">Back</button>
           </form>
@@ -244,7 +230,7 @@
                 TapTek controllers are trusted by top players worldwide. Join the champions and elevate your
                 gaming experience with our cutting-edge technology.
               </p>
-              <a href="Shop.php" class="btn btn-light btn-lg">Get yours</a>
+              <a href="#loginModal" class="btn btn-light btn-lg" data-bs-toggle="modal" data-bs-tartget="#loginModal" data-bs-dismiss="modal">Login</a>
             </div>
           </div>
         </div>
@@ -345,14 +331,13 @@
     <div class="text-center mb-3">
       <a href="Home.php" class="footer-link">Home</a>
       <a href="Shop.php" class="footer-link">Shop</a>
-      <a href="Forms.phpz" class="footer-link">Forms</a>
       <a href="Policy.php" class="footer-link">Purchasing Policy</a>
     </div>
 
     <!-- Section 3: Social Media Icons -->
     <div class="text-center mb-3">
-      <a href="#" class="footer-icon"><i class="fab fa-facebook"></i></a>
-      <a href="#" class="footer-icon"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.facebook.com/renz.dioneda.967806" class="footer-icon"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.facebook.com/lewytaro/" class="footer-icon"><i class="fab fa-facebook"></i></a>
     </div>
 
     <!-- Section 5: Copyright -->

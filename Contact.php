@@ -8,11 +8,11 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="mainlayout.css">
   <link rel="stylesheet" href="Login.css">
-  <link rel="stylesheet" href="Cart.css">
+  <link rel="stylesheet" href="Contact.css">
 </head>
 <body>
 
@@ -162,109 +162,73 @@
       </div>
     </div>
   </div>
-  
+
   <!--Main Body-->
+  <!-- Contact Us Section -->
+<section id="contact-us" class="py-5 bg-light">
   <div class="container">
-  <div class="row g-4">
-    <!-- Cart Section -->
-    <div class="col-lg-8">
-      <div class="card p-4">
-        <div class="d-flex justify-content-between align-items-center mb-3">
-          <h5 class="cart-header">Cart</h5>
-        </div>
+    <h2 class="text-center mb-4">Contact Us</h2>
+    <div class="row">
+      <!-- Contact Form -->
+      <div class="col-md-6 mx-auto">
+        <h4 class="text-center">Send Us a Message</h4>
+        <form>
+          <!-- Name Input -->
+          <div class="mb-3">
+            <label for="name" class="form-label">Your Name</label>
+            <input type="text" id="name" class="form-control" placeholder="Enter your name" required>
+          </div>
 
-        <!-- Product 1 -->
-        <div class="product-item" id="product-1">
-          <div class="form-check">
-            <input class="form-check-input product-checkbox" type="checkbox" data-product-id="1">
+          <!-- Email Input -->
+          <div class="mb-3">
+            <label for="email" class="form-label">Your Email</label>
+            <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
           </div>
-          <div class="product-image">
-            <img src="images/Razer_Kitsunenb.png" alt="Product 1">
-          </div>
-          <div class="product-details">
-            <p class="mb-1"><strong>Razer Kitsune (PS5)</strong></p>
-            <p class="Edition text-muted mb-1">Black</p>
-          </div>
-          <div class="quantity-control">
-            <button class="decrease-btn">-</button>
-            <span class="quantity">1</span>
-            <button class="increase-btn">+</button>
-          </div>
-          <div class="product-price" data-price="2500.00">$2,500.00</div>
-          <button class="remove-btn">Remove</button>
-        </div>
 
-        <!-- Product 2 -->
-        <div class="product-item" id="product-2">
-          <div class="form-check">
-            <input class="form-check-input product-checkbox" type="checkbox" data-product-id="2">
+          <!-- Subject Input -->
+          <div class="mb-3">
+            <label for="subject" class="form-label">Subject</label>
+            <input type="text" id="subject" class="form-control" placeholder="Enter the subject" required>
           </div>
-          <div class="product-image">
-            <img src="https://via.placeholder.com/60" alt="Product 2">
-          </div>
-          <div class="product-details">
-            <p class="mb-1"><strong>Cahier Leather Shoulder Bag</strong></p>
-            <p class="text-muted mb-1">Grey | x1</p>
-          </div>
-          <div class="quantity-control">
-            <button class="decrease-btn">-</button>
-            <span class="quantity">1</span>
-            <button class="increase-btn">+</button>
-          </div>
-          <div class="product-price" data-price="2500.00">$2,500.00</div>
-          <button class="remove-btn">Remove</button>
-        </div>
 
-        <!-- Product 3 -->
-        <div class="product-item" id="product-3">
-          <div class="form-check">
-            <input class="form-check-input product-checkbox" type="checkbox" data-product-id="3">
+          <!-- Message Input -->
+          <div class="mb-3">
+            <label for="message" class="form-label">Your Message</label>
+            <textarea id="message" rows="5" class="form-control" placeholder="Type your message here..." required></textarea>
           </div>
-          <div class="product-image">
-            <img src="https://via.placeholder.com/60" alt="Product 3">
-          </div>
-          <div class="product-details">
-            <p class="mb-1"><strong>Nordgreen Watches</strong></p>
-            <p class="text-muted mb-1">Brown | M</p>
-          </div>
-          <div class="quantity-control">
-            <button class="decrease-btn">-</button>
-            <span class="quantity">1</span>
-            <button class="increase-btn">+</button>
-          </div>
-          <div class="product-price" data-price="2500.00">$2,500.00</div>
-          <button class="remove-btn">Remove</button>
-        </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="btn btn-primary w-100">Submit</button>
+        </form>
       </div>
     </div>
 
-    <!-- Order Summary Section -->
-    <div class="col-lg-4">
-      <div class="order-summary">
-        <h5>Your Order</h5>
-        <div id="order-details"></div>
-        <hr>
-        <div class="d-flex justify-content-between">
-          <p>Subtotal</p>
-          <p id="subtotal-price">$0.00</p>
-        </div>
-        <div class="d-flex justify-content-between">
-          <p>Shipment cost</p>
-          <p>$22.50</p>
-        </div>
-        <hr>
-        <div class="d-flex justify-content-between">
-          <p class="total-price">Grand total</p>
-          <p id="grand-total-price">$22.50</p>
-        </div>
-        <button class="btn btn-primary w-100 mt-3">Continue to payment</button>
+    <!-- Get in Touch Section -->
+    <div class="row mt-5">
+      <div class="col-md-8 mx-auto">
+        <h4 class="fw-bold text-center">Get in Touch</h4>
+        <p class="text-center fs-5">If you have any questions, feedback, or concerns, feel free to reach out to us!</p>
+        <ul class="list-unstyled fs-5 text-center">
+          <li class="mb-2">
+            <i class="fas fa-envelope me-2"></i>
+            <strong>Email:</strong> <a href="mailto:tapteks@gmail.com" class="text-decoration-none">tapteks0@gmail.com</a>
+          </li>
+          <li class="mb-2">
+            <i class="fas fa-phone me-2"></i>
+            <strong>Phone:</strong> +63 961 727 3714
+          </li>
+          <li>
+            <i class="fas fa-map-marker-alt me-2"></i>
+            <strong>Address:</strong> Camarines Norte, State College
+          </li>
+        </ul>
       </div>
     </div>
   </div>
-</div>
+</section>
 
 
-  <!-- Footer -->
+<!-- Footer -->
 <footer class="footer bg-black text-white">
   <div class="container py-4">
     <!-- Section 1: Title -->
@@ -288,14 +252,7 @@
     <!-- Section 5: Copyright -->
     <div class="text-center">
       <p class="mb-0">
-        &copy; 2024, TapTek Arcade Shop
-      </p>
-    </div>
-
-    <!-- Disclaimer -->
-    <div class="text-center mt-3">
-      <p class="text-light">
-        Disclaimer: This website and all its contents are part of a school project and are for educational purposes only. The products and images used on this site are not for commercial use, and the site does not promote any business activities.
+        &copy; 2024, TapTek is a School Project made by Mark Luis A. Bertillo and Renz Dioneda. This website does not promote buying any of these items and is only for school purposes. The images and products used are not for business purposes. If you have any complaints about the product or images, you can email us at <a href="mailto:tapteks@gmail.com" class="footer-link">tapteks@gmail.com</a>.
       </p>
     </div>
   </div>
@@ -304,7 +261,5 @@
   <!-- Bootstrap JS -->
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://localhost/webSys/Cart.js"></script>
-
 </body>
 </html>

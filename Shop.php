@@ -7,6 +7,9 @@
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="mainlayout.css">
   <link rel="stylesheet" href="Login.css">
   <link rel="stylesheet" href="Shop.css">
@@ -27,10 +30,10 @@
       <!-- Centered Links -->
       <ul class="navbar-nav mx-auto">
         <li class="nav-item">
-          <a class="nav-link text-white active" href="Home.php">Home</a>
+          <a class="nav-link text-white" href="Home.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" href="Shop.php">Shop</a>
+          <a class="nav-link text-white active" href="Shop.php">Shop</a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-white" href="Contact.php">Contact</a>
@@ -189,7 +192,7 @@
     <!-- Product 1 -->
     <div class="col-lg-2 col-md-4 col-sm-6">
       <div class="product-card">
-        <img src="images/Hitbox.webp" alt="Product 1">
+        <img src="images/Hitboxnb.png" alt="Product 1">
         <div class="card-body">
           <a href="#" class="card-title">MICRO with Artwork Case (Clear or Smoke)</a>
           <p class="price"><span class="original-price">$220.00</span> $165.00</p>
@@ -199,7 +202,7 @@
     <!-- Product 2 -->
     <div class="col-lg-2 col-md-4 col-sm-6">
       <div class="product-card">
-        <img src="images/Skullbox.jpeg" alt="Product 2">
+        <img src="images/Skullboxnb.png" alt="Product 2">
         <div class="card-body">
           <a href="#" class="card-title">MICRO LITE Starter Kit</a>
           <p class="price">$120.00</p>
@@ -209,7 +212,7 @@
     <!-- Product 3 -->
     <div class="col-lg-2 col-md-4 col-sm-6">
       <div class="product-card">
-        <img src="images/Razer Kitsune.jpg" alt="Product 3">
+        <img src="images/Razer_Kitsunenb.png" alt="Product 3">
         <div class="card-body">
           <a href="#" class="card-title">MICRO LITE (PC / Switch)</a>
           <p class="price">$99.00</p>
@@ -229,7 +232,7 @@
     <!-- Product 5 -->
     <div class="col-lg-2 col-md-4 col-sm-6">
       <div class="product-card">
-        <img src="images/Overdrive.webp" alt="Product 5">
+        <img src="images/Overdrivenb.png" alt="Product 5">
         <div class="card-body">
           <a href="#" class="card-title">NEW! PS5 and Xbox Series version of the M2 PCB</a>
           <p class="price">$99.99</p>
@@ -254,7 +257,7 @@
     <!-- Product 7 -->
     <div class="col-lg-2 col-md-4 col-sm-6">
       <div class="product-card">
-        <img src="images/FTGT16.webp" alt="Product 2">
+        <img src="images/FTGT16nb.png" alt="Product 2">
         <div class="card-body">
           <a href="#" class="card-title">MICRO LITE Starter Kit</a>
           <p class="price">$120.00</p>
@@ -264,7 +267,7 @@
     <!-- Product 8 -->
     <div class="col-lg-2 col-md-4 col-sm-6">
       <div class="product-card">
-        <img src="images/HauteM16.jpg" alt="Product 3">
+        <img src="images/HauteM16nb.png" alt="Product 3">
         <div class="card-body">
           <a href="#" class="card-title">MICRO LITE (PC / Switch)</a>
           <p class="price">$99.00</p>
@@ -274,7 +277,7 @@
     <!-- Product 9 -->
     <div class="col-lg-2 col-md-4 col-sm-6">
       <div class="product-card">
-        <img src="images/MicroLite.jpeg" alt="Product 4">
+        <img src="images/MicroLitenb.png" alt="Product 4">
         <div class="card-body">
           <a href="#" class="card-title">MICRO with One-piece Case</a>
           <p class="price"><span class="original-price">$255.00</span> $155.00</p>
@@ -284,7 +287,7 @@
     <!-- Product 10 -->
     <div class="col-lg-2 col-md-4 col-sm-6">
       <div class="product-card">
-        <img src="images/Cosmox.jpg" alt="Product 5">
+        <img src="images/Cosmoxnb.png" alt="Product 5">
         <div class="card-body">
           <a href="#" class="card-title">NEW! PS5 and Xbox Series version of the M2 PCB</a>
           <p class="price">$99.99</p>
@@ -307,7 +310,6 @@
     <div class="text-center mb-3">
       <a href="Home.php" class="footer-link">Home</a>
       <a href="Shop.php" class="footer-link">Shop</a>
-      <a href="Forms.phpz" class="footer-link">Forms</a>
       <a href="Policy.php" class="footer-link">Purchasing Policy</a>
     </div>
 

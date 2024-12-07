@@ -85,16 +85,6 @@
   color: orange;
 }
 
-.payment-icon {
-  height: 30px;
-  margin: 0 5px;
-  vertical-align: middle;
-}
-
-.payment-icon:hover {
-  opacity: 0.8;
-}
-
 /* Utility Classes */
 .text-center {
   text-align: center;
