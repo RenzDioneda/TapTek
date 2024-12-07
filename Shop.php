@@ -56,129 +56,113 @@
   </div>
 </nav>
 
-  <!-- Login Modal -->
-  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="loginModalLabel">Login</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form>
-            <!-- Username Input -->
-            <div class="form-group">
-              <i class="fas fa-user"></i>
-              <input 
-                type="text" 
-                class="form-control" 
-                id="username" 
-                placeholder="Username" 
-                required 
-              >
-            </div>
-            <!-- Password Input -->
-            <div class="form-group">
-              <i class="fas fa-lock"></i>
-              <input 
-                type="password" 
-                class="form-control" 
-                id="password" 
-                placeholder="Password" 
-                required 
-              >
-            </div>
-            <!-- Buttons -->
-            <div class="d-flex justify-content-between">
-              <button type="submit" class="btn btn-primary">Login</button>
-              <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#signupModal" data-bs-dismiss="modal">Sign Up</button>
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <div class="forgot-password w-100">
-            <a href="#" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal" data-bs-dismiss="modal">Forgot Password?</a>
+<!-- Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginModalLabel">Login</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <!-- Username Input -->
+          <div class="form-group">
+            <i class="fas fa-user"></i>
+            <input 
+              type="text" 
+              class="form-control" 
+              id="username" 
+              placeholder="Username" 
+              required 
+            >
           </div>
+          <!-- Password Input -->
+          <div class="form-group">
+            <i class="fas fa-lock"></i>
+            <input 
+              type="password" 
+              class="form-control" 
+              id="password" 
+              placeholder="Password" 
+              required 
+            >
+          </div>
+          <!-- Buttons -->
+          <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-primary">Login</button>
+            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#signupModal" data-bs-dismiss="modal">Sign Up</button>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <div class="forgot-password w-100">
+          <a href="#" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal" data-bs-dismiss="modal">Forgot Password?</a>
         </div>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- Sign-Up Modal -->
-  <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="signupModalLabel">Sign Up</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form>
-            <!-- First Name -->
-            <div class="form-group">
-              <i class="fas fa-user"></i>
-              <input type="text" class="form-control" placeholder="First Name" required>
-            </div>
-            <!-- Last Name -->
-            <div class="form-group">
-              <i class="fas fa-user"></i>
-              <input type="text" class="form-control" placeholder="Last Name" required>
-            </div>
-            <!-- Birthday -->
-            <div class="form-group">
-              <i class="fas fa-calendar"></i>
-                <input type="text" class="form-control"placeholder="Birthday" onfocus="(this.type='date')" onblur="(this.type='text'); this.value ? '' : this.placeholder='Birthday'" required>
-             </div>
-            <!-- Age -->
-            <div class="form-group">
-              <i class="fas fa-sort-numeric-up"></i>
-              <input type="number" class="form-control" placeholder="Age" required>
-            </div>
-            <!-- Email -->
-            <div class="form-group">
-              <i class="fas fa-envelope"></i>
-              <input type="email" class="form-control" placeholder="Email" required>
-            </div>
-            <!-- Password -->
-            <div class="form-group">
-              <i class="fas fa-lock"></i>
-              <input type="password" class="form-control" placeholder="Password" required>
-            </div>
-            <!-- Confirm Password -->
-            <div class="form-group">
-              <i class="fas fa-lock"></i>
-              <input type="password" class="form-control" placeholder="Confirm Password" required>
-            </div>
-            <button type="submit" class="btn btn-primary w-100">Sign Up</button>
-            <button type="button" class="btn btn-secondary w-100 mt-2" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-dismiss="modal">Back</button>
-          </form>
-        </div>
+<!-- Sign-Up Modal -->
+<div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="signupModalLabel">Sign Up</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-    </div>
-  </div>
+      <div class="modal-body">
+        <form>
+          <!-- Username -->
+          <div class="form-group">
+            <i class="fas fa-user"></i>
+            <input type="text" class="form-control" placeholder="Username" required>
+          </div>
 
-  <!-- Forgot Password Modal -->
-  <div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="forgotPasswordModalLabel">Forgot Password</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form>
-            <!-- Email Input -->
-            <div class="form-group">
-              <i class="fas fa-envelope"></i>
-              <input type="email" class="form-control" placeholder="Enter Email Address" required>
-            </div>
-            <button type="submit" class="btn btn-primary w-100">Submit</button>
-            <button type="button" class="btn btn-secondary w-100 mt-2" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-dismiss="modal">Back</button>
-          </form>
-        </div>
+          <!-- Email -->
+          <div class="form-group">
+            <i class="fas fa-envelope"></i>
+            <input type="email" class="form-control" placeholder="Email" required>
+          </div>
+
+          <!-- Password -->
+          <div class="form-group">
+            <i class="fas fa-lock"></i>
+            <input type="password" class="form-control" placeholder="Password" required>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+          <button type="button" class="btn btn-secondary w-100 mt-2" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-dismiss="modal">Back</button>
+        </form>
       </div>
     </div>
   </div>
+</div>
+
+<!-- Forgot Password Modal -->
+<div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="forgotPasswordModalLabel">Forgot Password</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <!-- Email Input -->
+          <div class="form-group">
+            <i class="fas fa-envelope"></i>
+            <input type="email" class="form-control" placeholder="Enter Email Address" required>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Submit</button>
+          <button type="button" class="btn btn-secondary w-100 mt-2" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-dismiss="modal">Back</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
 
  <!--Main Body-->
    <!-- Independent Title -->
@@ -194,7 +178,7 @@
       <div class="product-card">
         <img src="images/Hitboxnb.png" alt="Product 1">
         <div class="card-body">
-          <a href="#" class="card-title">Hitbox (PC)</a>
+          <a href="Hitbox.php" class="card-title">Hitbox (PC)</a>
           <p class="price">₱8,000.00</p>
         </div>
       </div>
@@ -204,7 +188,7 @@
       <div class="product-card">
         <img src="images/Skullboxnb.png" alt="Product 2">
         <div class="card-body">
-          <a href="#" class="card-title">Skullbox (Switch)</a>
+          <a href="Skullbox.php" class="card-title">Skullbox (Switch)</a>
           <p class="price">₱2,500.00</p>
         </div>
       </div>
@@ -224,7 +208,7 @@
       <div class="product-card">
         <img src="images/VictrixKO.webp" alt="Product 4">
         <div class="card-body">
-          <a href="#" class="card-title">Victrix KO</a>
+          <a href="VictrixKO.php" class="card-title">Victrix KO (PS5)</a>
           <p class="price">₱12,000.00</p>
         </div>
       </div>
@@ -234,7 +218,7 @@
       <div class="product-card">
         <img src="images/Overdrivenb.png" alt="Product 5">
         <div class="card-body">
-          <a href="#" class="card-title">Overdrive (PC)</a>
+          <a href="Overdrive.php" class="card-title">Overdrive (PC)</a>
           <p class="price">₱10,000.00</p>
         </div>
       </div>
@@ -249,7 +233,7 @@
       <div class="product-card">
         <img src="images/VictrixLL.webp" alt="Product 1">
         <div class="card-body">
-          <a href="#" class="card-title">Victrix LL (PS5)</a>
+          <a href="VictrixLL.php" class="card-title">Victrix LL (PS5)</a>
           <p class="price">₱12,000.00</p>
         </div>
       </div>
@@ -259,7 +243,7 @@
       <div class="product-card">
         <img src="images/FTGT16nb.png" alt="Product 2">
         <div class="card-body">
-          <a href="#" class="card-title">FTG16 (PC)</a>
+          <a href="FTGT16.php" class="card-title">FTG16 (PC)</a>
           <p class="price">₱5,000.00</p>
         </div>
       </div>
@@ -269,7 +253,7 @@
       <div class="product-card">
         <img src="images/HauteM16nb.png" alt="Product 3">
         <div class="card-body">
-          <a href="#" class="card-title">Haute M16 (Switch)</a>
+          <a href="HauteM16.php" class="card-title">Haute M16 (Switch)</a>
           <p class="price">₱2,500.00</p>
         </div>
       </div>
@@ -279,7 +263,7 @@
       <div class="product-card">
         <img src="images/MicroLitenb.png" alt="Product 4">
         <div class="card-body">
-          <a href="#" class="card-title">Micro Lite (Switch)</a>
+          <a href="Microlite.php" class="card-title">Micro Lite (Switch)</a>
           <p class="price">₱2,500.00</p>
         </div>
       </div>
@@ -289,7 +273,7 @@
       <div class="product-card">
         <img src="images/Cosmoxnb.png" alt="Product 5">
         <div class="card-body">
-          <a href="#" class="card-title">Cosmox (PC)</a>
+          <a href="Cosmox.php" class="card-title">Cosmox (PC)</a>
           <p class="price">₱5,000.00</p>
         </div>
       </div>

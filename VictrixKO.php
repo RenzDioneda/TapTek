@@ -173,15 +173,15 @@
         <div class="product-images">
           <!-- Main Image -->
           <div class="main-image mb-3">
-            <img id="mainImage" src="images/Razer Kitsune.jpg" alt="Main Product Image" class="img-fluid rounded">
+            <img id="mainImage" src="images/VictrixKO.webp" alt="Main Product Image" class="img-fluid rounded">
           </div>
 
           <!-- Thumbnail Images -->
           <div class="thumbnail-images">
-            <img src="images/Razer Kitsune.jpg" alt="Thumbnail 1" onclick="changeMainImage(this)">
-            <img src="images/Kitsune2.webp" alt="Thumbnail 2" onclick="changeMainImage(this)">
-            <img src="images/Kitsune4.webp" alt="Thumbnail 3" onclick="changeMainImage(this)">
-            <img src="images/Kitsune5.webp" alt="Thumbnail 4" onclick="changeMainImage(this)">
+            <img src="images/VictrixKO.webp" alt="Thumbnail 1" onclick="changeMainImage(this)">
+            <img src="images/ko1.webp" alt="Thumbnail 2" onclick="changeMainImage(this)">
+            <img src="images/ko2.webp" alt="Thumbnail 3" onclick="changeMainImage(this)">
+            <img src="images/ko3.webp" alt="Thumbnail 4" onclick="changeMainImage(this)">
           </div>
         </div>
       </div>
@@ -189,9 +189,9 @@
       <!-- Right Section: Product Details -->
       <div class="col-lg-6">
         <div class="product-details">
-          <h1 class="product-title">Razer Kitsune (PS5)</h1>
+          <h1 class="product-title">Victrix KO (PS5)</h1>
           <div class="product-price">
-            <span class="sale-price text-danger ms-2">₱17,000.00</span>
+            <span class="sale-price text-danger ms-2">₱12,000.00</span>
           </div>
 
           <!-- Rating Section -->
@@ -207,7 +207,7 @@
           </div>
 
           <p class="product-description">
-          SPECIFICATION CONNECTIVITY USB Type C to USB Type A cable Cable lock and lock switch SYSTEM REQUIREMENT PS5™  RAZER CHROMA LIGHTING Yes MECHANICAL ACTION BUTTONS Precise Quad Movement Button Layout Razer™
+          Knock out the competition with the fully customizable PlayStation officially licensed Victrix™ Pro KO™ Leverless Fight Stick. Ensure precise hits with reliable and hot swappable Cherry MX Speed Silver RGB switches, ideal for clutch moments
           </p>
 
           <!-- Product Options -->
@@ -240,7 +240,7 @@
         <div class="product-full-description">
           <h2 class="fw-bold">Product Description</h2>
           <p>
-          Embrace a new fighting game meta with the Razer Kitsune—an all-button optical arcade controller that surpasses traditional fight sticks. With a precise quad movement button layout and lightning-fast optical switches, eliminate input errors from your game with the perfect competitive fighting companion for PS5™.
+          Designed to fit your play style, the Pro KO™ includes customizable lighting, 16 moveable and mappable buttons, cable and button organizers for easy transportation, plus a control bar for swift adjustments. For those who love to mod, you’ll appreciate the removable aluminum top plate allowing you to adjust button positions or change to your preferred switches. Elevate your gaming and compete at a professional level today. 
           </p>
         </div>
       </div>
@@ -256,8 +256,8 @@
           <ul>
             <li><strong>Connectivity:</strong> USB Type C to USB Type A cable, Cable lock and lock switch</li>
             <li><strong>System Requirement:</strong> PS5™ console</li>
-            <li><strong>Razer Chroma Lighting:</strong> Yes</li>
-            <li><strong>Mechanical Action Buttons:</strong> Precise Quad Movement Button Layout, Razer™ Low-Profile Linear Optical Switches</li>
+            <li><strong>Chroma Lighting:</strong> Yes</li>
+            <li><strong>Mechanical Action Buttons:</strong> Hot swappable Cherry MX Speed Silver RGB switches</li>
             <li><strong>Multi-Function Buttons:</strong> None</li>
             <li><strong>Quick Control Panel:</strong> None</li>
             <li><strong>Interchangeable D-Pad:</strong> None</li>
@@ -267,11 +267,11 @@
             <li><strong>Audio Output:</strong> None</li>
             <li><strong>Battery Life:</strong> None</li>
             <li><strong>Configuration App:</strong> None</li>
-            <li><strong>Artwork Customization:</strong> Removable aluminum top plate</li>
+            <li><strong>Customization:</strong> Removable aluminum top plate</li>
             <li><strong>Carry Case:</strong> None</li>
-            <li><strong>Dimensions (Approximate):</strong> Length: 296 mm / 11.66” | Width: 210 mm / 8.27” | Height: 19.2 mm / 0.75”</li>
-            <li><strong>Approximate Weight:</strong> 800 g</li>
-            <li><strong>Box Contents:</strong> Razer Kitsune, 3.1 m / 10.1 ft wired USB Type C to USB Type A cable, Important Product Information Guide</li>
+            <li><strong>Dimensions (Approximate):</strong>  339mm x 235mm x 20mm</li>
+            <li><strong>Approximate Weight:</strong>1,225 g</li>
+            <li><strong>Box Contents:</strong> Victrix KO / 10.1 ft wired USB Type C to USB Type A cable, Important Product Information Guide</li>
           </ul>
         </div>
       </div>

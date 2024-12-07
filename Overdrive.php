@@ -164,6 +164,7 @@
 </div>
 
   
+  <!--Main Body-->
 <!-- Main Body -->
 <section class="product-page">
   <div class="container">
@@ -173,25 +174,18 @@
         <div class="product-images">
           <!-- Main Image -->
           <div class="main-image mb-3">
-            <img id="mainImage" src="images/Razer Kitsune.jpg" alt="Main Product Image" class="img-fluid rounded">
+            <img id="mainImage" src="images/Overdrive.jpg" alt="Main Product Image" class="img-fluid rounded">
           </div>
 
-          <!-- Thumbnail Images -->
-          <div class="thumbnail-images">
-            <img src="images/Razer Kitsune.jpg" alt="Thumbnail 1" onclick="changeMainImage(this)">
-            <img src="images/Kitsune2.webp" alt="Thumbnail 2" onclick="changeMainImage(this)">
-            <img src="images/Kitsune4.webp" alt="Thumbnail 3" onclick="changeMainImage(this)">
-            <img src="images/Kitsune5.webp" alt="Thumbnail 4" onclick="changeMainImage(this)">
-          </div>
         </div>
       </div>
 
       <!-- Right Section: Product Details -->
       <div class="col-lg-6">
         <div class="product-details">
-          <h1 class="product-title">Razer Kitsune (PS5)</h1>
+          <h1 class="product-title">Overdrive (PC)</h1>
           <div class="product-price">
-            <span class="sale-price text-danger ms-2">₱17,000.00</span>
+            <span class="sale-price text-danger ms-2">₱10,000.00</span>
           </div>
 
           <!-- Rating Section -->
@@ -207,7 +201,7 @@
           </div>
 
           <p class="product-description">
-          SPECIFICATION CONNECTIVITY USB Type C to USB Type A cable Cable lock and lock switch SYSTEM REQUIREMENT PS5™  RAZER CHROMA LIGHTING Yes MECHANICAL ACTION BUTTONS Precise Quad Movement Button Layout Razer™
+            Our controllers are designed to deliver precision, comfort, and responsiveness, giving you the competitive edge you need. With our commitment to excellence, we are here to empower you and elevate your gaming journey to new heights.
           </p>
 
           <!-- Product Options -->
@@ -240,7 +234,9 @@
         <div class="product-full-description">
           <h2 class="fw-bold">Product Description</h2>
           <p>
-          Embrace a new fighting game meta with the Razer Kitsune—an all-button optical arcade controller that surpasses traditional fight sticks. With a precise quad movement button layout and lightning-fast optical switches, eliminate input errors from your game with the perfect competitive fighting companion for PS5™.
+          Gaming Refined to Perfection
+Designed and refined by an Architect and Artist in the heart of London, our controllers excel in performance and impress with their sleek aesthetics. With a small compact enclosure and an aluminum chassis, our controllers offer a perfect blend of durability and style.\
+The inclusion of diffused LED lighting and an artwork panel, adds a touch of customization to match your gaming setup. Furthermore, we prioritize player comfort by providing ample space for hands and wrists, ensuring that every gaming session is both enjoyable and ergonomic.
           </p>
         </div>
       </div>
@@ -255,9 +251,9 @@
           <h2 class="fw-bold">Product Specifications</h2>
           <ul>
             <li><strong>Connectivity:</strong> USB Type C to USB Type A cable, Cable lock and lock switch</li>
-            <li><strong>System Requirement:</strong> PS5™ console</li>
-            <li><strong>Razer Chroma Lighting:</strong> Yes</li>
-            <li><strong>Mechanical Action Buttons:</strong> Precise Quad Movement Button Layout, Razer™ Low-Profile Linear Optical Switches</li>
+            <li><strong>System Requirement:</strong>PC (Windows)</li>
+            <li><strong>Chroma Lighting:</strong> Yes</li>
+            <li><strong>Mechanical Action Buttons:</strong> Sanwa/Qanba Gravity Buttons</li>
             <li><strong>Multi-Function Buttons:</strong> None</li>
             <li><strong>Quick Control Panel:</strong> None</li>
             <li><strong>Interchangeable D-Pad:</strong> None</li>
@@ -267,11 +263,11 @@
             <li><strong>Audio Output:</strong> None</li>
             <li><strong>Battery Life:</strong> None</li>
             <li><strong>Configuration App:</strong> None</li>
-            <li><strong>Artwork Customization:</strong> Removable aluminum top plate</li>
+            <li><strong>Customization:</strong> Yes</li>
             <li><strong>Carry Case:</strong> None</li>
-            <li><strong>Dimensions (Approximate):</strong> Length: 296 mm / 11.66” | Width: 210 mm / 8.27” | Height: 19.2 mm / 0.75”</li>
+            <li><strong>Dimensions (Approximate):</strong> 30 x 20 x 5 cm</li>
             <li><strong>Approximate Weight:</strong> 800 g</li>
-            <li><strong>Box Contents:</strong> Razer Kitsune, 3.1 m / 10.1 ft wired USB Type C to USB Type A cable, Important Product Information Guide</li>
+            <li><strong>Box Contents:</strong> Overdrive / 10.1 ft wired USB Type C to USB Type A cable, Important Product Information Guide</li>
           </ul>
         </div>
       </div>
@@ -323,9 +319,8 @@
     </div>
   </div>
 </div>
-  </div>
-  <!-- Comment Section -->
-<div class="container mt-5">
+ <!-- Comment Section -->
+ <div class="container mt-5">
   <h2 class="fw-bold">Customer Reviews</h2>
 
   <!-- Rating and Comment Form -->
@@ -411,5 +406,6 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://localhost/webSys/RZ.js"></script>
   <script src="https://localhost/webSys/Rating.js"></script>
+
 </body>
 </html>
