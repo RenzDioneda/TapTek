@@ -19,9 +19,9 @@ body {
 .cart-item img {
   width: 80px;
   height: 80px;
-  object-fit: contain; /* Ensures the entire image fits within the bounds */
-  border-radius: 5px; /* Slight rounding for a polished look */
-  background-color: #f8f8f8; /* Optional: Light background for visual consistency */
+  object-fit: contain; 
+  border-radius: 5px; 
+  background-color: #f8f8f8; 
 }
 
 .product-name {
@@ -67,7 +67,7 @@ body {
   border-radius: 8px;
 }
 
-/* Card Styling */
+
 .card {
   border: none;
   border-radius: 10px;
@@ -75,27 +75,26 @@ body {
 }
 
 .card:hover {
-  transform: scale(1.05); /* Slight enlargement on hover */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+  transform: scale(1.05); 
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 
 }
 
-/* Image Styling */
+
 .card img {
-  object-fit: contain; /* Ensures the full image fits within the bounds */
+  object-fit: contain; 
   width: 100px;
   height: 100px;
   margin: 0 auto;
-  display: block; /* Centers the image in its container */
-  background-color: #f9f9f9; /* Optional: Adds a background for better visibility */
-  border-radius: 8px; /* Matches the card rounding for a cohesive look */
+  display: block; 
+  background-color: #f9f9f9; 
+  border-radius: 8px; 
 }
 
-/* Card Body */
+
 .card-body {
   text-align: center;
 }
 
-/* Card Title and Text */
 .card-title {
   font-size: 1rem;
   font-weight: bold;
@@ -105,7 +104,6 @@ body {
   font-size: 0.9rem;
 }
 
-/* Button Styling */
 .btn-primary {
   font-size: 0.85rem;
 }

@@ -1,0 +1,128 @@
+body {
+    font-family: 'Space Grotesk', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+.product-page {
+    padding: 2rem 0; /* Adds padding on top and bottom */
+    padding-top: 4rem;  /* Adjust top padding */
+    padding-bottom: 4rem; /* Adjust bottom padding */
+  }
+  
+
+.product-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.product-price {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.original-price {
+    font-size: 1rem;
+}
+
+.sale-price {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.shipping-info,
+.installments-info,
+.product-description,
+.note,
+.shipping-delay {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.product-options .form-label {
+    font-size: 1rem;
+}
+
+.quantity-control button {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+}
+
+.btn-warning {
+    background-color: #ffcc00;
+    border: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.btn-warning:hover {
+    background-color: #e6b800;
+}
+
+.share-section a {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+
+.thumbnail-images {
+    display: flex;
+    justify-content: center; 
+    gap: 10px; 
+    margin-top: 10px;
+  }
+  
+
+  .thumbnail-images img {
+    width: 80px !important; 
+    height: 80px !important; 
+    object-fit: cover;       
+    cursor: pointer;        
+    border: 2px solid transparent; 
+    transition: border 0.3s ease;
+  }
+  
+  /* Hover Effect */
+  .thumbnail-images img:hover {
+    border: 2px solid #ffcc00; /
+  }
+  
+
+
+.main-image {
+    position: relative;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+
+.main-image img {
+    width: 600px; 
+    height: 400px; 
+    object-fit: cover; 
+    cursor: pointer; /
+}
+
+.product-rating {
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  .rating-stars i {
+    font-size: 1.2rem;
+  }
+  
+  .rating-info {
+    font-size: 0.9rem;
+  }
+  
+  .text-warning {
+    color: #ffcc00; /* Yellow color for stars */
+  }
+  
+  .text-muted {
+    color: #666;
+  }

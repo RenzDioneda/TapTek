@@ -214,7 +214,7 @@
       <div class="product-card">
         <img src="images/Razer_Kitsunenb.png" alt="Product 3">
         <div class="card-body">
-          <a href="Razer Kitsune.php" class="card-title">Razer Kitsune (PS5)</a>
+          <a href="RazerKitsune.php" class="card-title">Razer Kitsune (PS5)</a>
           <p class="price">₱17,000.00</p>
         </div>
       </div>
