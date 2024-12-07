@@ -1,31 +1,113 @@
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+}
+
 .cart-container {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
+  padding: 2rem 0;
+}
 
-  .product-table img {
-    width: 80px;
-    height: auto;
-  }
+.cart-header {
+  font-size: 1rem;
+}
 
-  .product-table table {
-    width: 100%;
-  }
+.cart-item {
+  background-color: #fff;
+}
 
-  .summary-section {
-    background-color: #f9f9f9;
-  }
+.cart-item img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain; /* Ensures the entire image fits within the bounds */
+  border-radius: 5px; /* Slight rounding for a polished look */
+  background-color: #f8f8f8; /* Optional: Light background for visual consistency */
+}
 
-  @media (max-width: 768px) {
-    .product-table img {
-      width: 60px;
-    }
+.product-name {
+  font-size: 1rem;
+}
 
-    .quantity-control span {
-      margin: 0 5px;
-    }
+.product-info {
+  font-size: 0.9rem;
+}
 
-    .summary-section {
-      padding: 1rem;
-    }
-  }
+.product-price {
+  font-size: 1rem;
+  color: #333;
+}
+
+.quantity-control button {
+  width: 30px;
+  height: 30px;
+  font-size: 1rem;
+}
+
+.summary-section {
+  background-color: #fff;
+}
+
+.price-details p {
+  font-size: 0.9rem;
+}
+
+.btn-checkout {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+/* You Might Like Section */
+.you-might-like-section {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 2rem 15px;
+  margin: 2rem auto 4rem;
+  width: 80%;
+  max-width: 1000px;
+  border-radius: 8px;
+}
+
+/* Card Styling */
+.card {
+  border: none;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05); /* Slight enlargement on hover */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+}
+
+/* Image Styling */
+.card img {
+  object-fit: contain; /* Ensures the full image fits within the bounds */
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+  display: block; /* Centers the image in its container */
+  background-color: #f9f9f9; /* Optional: Adds a background for better visibility */
+  border-radius: 8px; /* Matches the card rounding for a cohesive look */
+}
+
+/* Card Body */
+.card-body {
+  text-align: center;
+}
+
+/* Card Title and Text */
+.card-title {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.card-text {
+  font-size: 0.9rem;
+}
+
+/* Button Styling */
+.btn-primary {
+  font-size: 0.85rem;
+}
+
+

@@ -163,73 +163,233 @@
     </div>
   </div>
   
-<!-- Main Body -->
-<section class="cart-container my-5">
-  <!-- Cart Header -->
-  <h1 class="cart-header text-center">My Cart</h1>
-
+  <!--Main Body-->
+  <!--Cart-->
+  <section class="cart-container">
   <div class="container">
-    <div class="row g-4">
-     <!-- Product Table -->
-<div class="col-lg-9">
-  <div class="product-table">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th></th>
-          <th>Product</th>
-          <th class="text-center">Quantity</th> <!-- Centered Quantity Column -->
-          <th class="text-center">Total</th>    <!-- Centered Total Column -->
-          <th class="text-center">Action</th>   <!-- Centered Action Column -->
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            <input type="checkbox" class="form-check-input">
-          </td>
-          <td class="d-flex align-items-center">
-            <div class="product-image me-3">
-              <img src="https://via.placeholder.com/80" alt="Product Image">
-            </div>
+    <!-- Title for the body -->
+    <h2 class="text-center mb-4">Your Cart</h2>
+    
+    <div class="row">
+      <!-- Left Section: Cart Items -->
+      <div class="col-lg-8">
+        <!-- Cart Items -->
+        <div class="cart-item d-flex align-items-center justify-content-between mb-3 p-3 border rounded">
+          <div class="d-flex align-items-center">
+            <input type="checkbox" class="form-check-input me-3">
+            <img src="images/Razer_Kitsunenb.png" alt="Product Image" class="rounded me-3">
             <div>
-              <p class="product-name mb-1">PS5 God Of War Ragnarok (Asian)</p>
-              <p class="product-price mb-1">₱1,490.00</p>
+              <p class="product-name fw-bold mb-1">Razer Kitsune</p>
+              <p class="product-info text-muted mb-1">Black</p>
+              <p class="product-price fw-bold">₱17,000.00</p>
             </div>
-          </td>
-          <td class="text-center">
-            <div class="quantity-control d-flex justify-content-center align-items-center">
-              <button class="btn btn-outline-secondary">−</button>
-              <span class="mx-2">1</span>
-              <button class="btn btn-outline-secondary">+</button>
-            </div>
-          </td>
-          <td class="text-center">₱1,490.00</td> <!-- Centered Total Price -->
-          <td class="text-center">
-            <button class="btn btn-danger btn-sm">Remove</button> <!-- Centered Remove Button -->
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-      <!-- Summary Section -->
-      <div class="col-lg-3">
-        <div class="summary-section p-3 border rounded">
-          <div class="d-flex justify-content-between mb-3">
-            <p class="summary-total fw-bold">Total</p>
-            <p class="summary-total fw-bold">₱1,490.00</p>
           </div>
-          <p class="summary-savings text-success">You saved ₱2,000.00!</p>
-          <hr>
-          <p class="text-muted">Taxes and shipping calculated at checkout</p>
-          <button class="btn btn-primary btn-checkout w-100 mt-3">Checkout</button>
+          <div class="quantity-control d-flex align-items-center">
+            <button class="btn btn-outline-secondary btn-sm">−</button>
+            <span class="mx-2">1</span>
+            <button class="btn btn-outline-secondary btn-sm">+</button>
+          </div>
+          <button class="btn btn-link text-danger text-decoration-none">×</button>
+        </div>
+
+        <!-- Repeat for other items -->
+        <div class="cart-item d-flex align-items-center justify-content-between mb-3 p-3 border rounded">
+          <div class="d-flex align-items-center">
+            <input type="checkbox" class="form-check-input me-3">
+            <img src="images/Overdrivenb.png" alt="Product Image" class="rounded me-3">
+            <div>
+              <p class="product-name fw-bold mb-1">Overdrive</p>
+              <p class="product-info text-muted mb-1">Black</p>
+              <p class="product-price fw-bold">₱10,000.00</p>
+            </div>
+          </div>
+          <div class="quantity-control d-flex align-items-center">
+            <button class="btn btn-outline-secondary btn-sm">−</button>
+            <span class="mx-2">1</span>
+            <button class="btn btn-outline-secondary btn-sm">+</button>
+          </div>
+          <button class="btn btn-link text-danger text-decoration-none">×</button>
+        </div>
+      </div>
+
+      <!-- Right Section: Summary Sample -->
+      <div class="col-lg-4">
+        <div class="summary-section p-4 border rounded">
+          <!-- Order Summary Title -->
+          <h4 class="fw-bold mb-3">ORDER SUMMARY</h4>
+
+          <!-- Price Details -->
+          <div class="price-details">
+            <p class="d-flex justify-content-between">
+              <span>1 item</span>
+              <span>$45.20</span>
+            </p>
+            <p class="d-flex justify-content-between">
+              <span>Coupon discount</span>
+              <span>-$2.50</span>
+            </p>
+            <p class="d-flex justify-content-between">
+              <span>Delivery Charges</span>
+              <span>Free Delivery</span>
+            </p>
+            <hr>
+            <p class="d-flex justify-content-between fw-bold">
+              <span>Total Amount</span>
+              <span>$67.09</span>
+            </p>
+          </div>
+
+        <!-- Place Order Button -->
+        <button class="btn btn-primary w-100 mt-3" data-bs-toggle="modal" data-bs-target="#checkoutModal">Checkout</button>
+        </div>  
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!--You Might Like Section Database Based-->
+      <!-- You Might Like Section -->
+      <div class="you-might-like-section mt-5 p-4 border rounded">
+      <h3 class="text-center mb-4">You Might Like</h3>
+      <div class="row">
+        <!-- Item 1 -->
+        <div class="col-md-3 mb-3">
+          <div class="card">
+            <img src="images/Skullboxnb.png" class="card-img-top" alt="Product Image">
+            <div class="card-body">
+              <p class="card-title fw-bold">Skullbox</p>
+              <p class="card-text">₱2,500.00</p>
+              <button class="btn btn-primary btn-sm">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="col-md-3 mb-3">
+          <div class="card">
+            <img src="images/VictrixKO.webp" class="card-img-top" alt="Product Image">
+            <div class="card-body">
+              <p class="card-title fw-bold">Victrix KO</p>
+              <p class="card-text">₱12,000.00</p>
+              <button class="btn btn-primary btn-sm">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="col-md-3 mb-3">
+          <div class="card">
+            <img src="images/VictrixLL.webp" class="card-img-top" alt="Product Image">
+            <div class="card-body">
+              <p class="card-title fw-bold">Victrix LL</p>
+              <p class="card-text">₱12,000.00</p>
+              <button class="btn btn-primary btn-sm">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="col-md-3 mb-3">
+          <div class="card">
+            <img src="images/Hitboxnb.png" class="card-img-top" alt="Product Image">
+            <div class="card-body">
+              <p class="card-title fw-bold">Hitbox</p>
+              <p class="card-text">₱8,000.00</p>
+              <button class="btn btn-primary btn-sm">Add to Cart</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+
+<!-- Checkout Modal -->
+<div class="modal fade" id="checkoutModal" tabindex="-1" aria-labelledby="checkoutModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content" style="background-color: #0B192C;">
+      <div class="modal-header" style="background-color: #0B192C;">
+        <h5 class="modal-title" id="checkoutModalLabel" style="color: #fff;">Checkout</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" style="background-color: #0B192C;">
+        <div class="row">
+          <!-- Left Section: Form -->
+          <div class="col-lg-6 border-end">
+            <form>
+              <div class="mb-3">
+                <label for="fullName" class="form-label" style="color: #fff;">Full Name</label>
+                <input type="text" class="form-control" id="fullName" placeholder="Full Name">
+              </div>
+              <div class="mb-3">
+                <label for="phoneNumber" class="form-label" style="color: #fff;">Phone Number</label>
+                <input type="text" class="form-control" id="phoneNumber" placeholder="Phone Number">
+              </div>
+              <div class="mb-3">
+                <label for="region" class="form-label" style="color: #fff;">Region, Province, City, Barangay</label>
+                <input type="text" class="form-control" id="region" placeholder="Region, Province, City, Barangay">
+              </div>
+              <div class="mb-3">
+                <label for="postalCode" class="form-label" style="color: #fff;">Postal Code</label>
+                <input type="text" class="form-control" id="postalCode" placeholder="Postal code">
+              </div>
+              <div class="mb-3">
+                <label for="street" class="form-label" style="color: #fff;">Street Name, Building No., House No.</label>
+                <input type="text" class="form-control" id="postalCode" placeholder="Street Name, Building No., House No.">
+              </div>
+              <div class="mb-3">
+                <label class="form-label" style="color: #fff;">Mode of Payment</label>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="paymentCOD">
+                  <label class="form-check-label" for="paymentCOD" style="color: #fff;">Cash on Delivery</label>
+                </div>
+              
+              </div>
+            </form>
+          </div>
+
+          <!-- Right Section: Order Summary -->
+          <div class="col-lg-6">
+            <h6 class="fw-bold" style="color: #fff;">Order Summary</h6>
+            <ul class="list-group mb-3" style="background-color: #0B192C;">
+              <li class="list-group-item" style="background-color: #0B192C;">
+                <div class="d-flex align-items-center">
+                  <img src="images/Razer_Kitsunenb.png" alt="Product Image" class="rounded me-3" style="width: 80px; height: 80px; object-fit: cover;">
+                  <div>
+                  <p class="mb-1 fw-bold" style="color: #fff;">Razer Kitsune (PS5)</p>
+                  <p class="mb-1" style="color: #fff;">Color: Black</p>
+                  <p class="mb-1" style="color: #fff;">Quantity: 1</p>
+                  </div>
+                </div>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center" style="background-color: #0B192C; color: #fff;">
+                    Price of Products:
+                  <span>₱17,000.00</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center" style="background-color: #0B192C; color: #fff;">
+                  Shipping Fee:
+                  <span>₱50.00</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center" style="background-color: #0B192C; color: #fff;">
+                  Delivery Days:
+                  <span>3-5 Days</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center fw-bold" style="background-color: #0B192C; color: #fff;">
+                  Total
+                  <span>₱17,050.00</span>
+                </li>
+            </ul>
+            <button class="btn btn-primary w-100">Confirm Checkout</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
   <!-- Footer -->
 <footer class="footer bg-black text-white">
   <div class="container py-4">
