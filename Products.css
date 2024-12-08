@@ -126,3 +126,53 @@ body {
   .text-muted {
     color: #666;
   }
+
+  /* Styling for the product cards */
+.product-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%; /* Ensure that the card stretches to fill the column */
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+.product-card img {
+  width: 100px;    
+  height: 100px;   
+  object-fit: contain;  
+  margin-bottom: 15px;
+}
+
+
+.product-info-1, .product-info-2, .product-info-3, .product-info-4 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  height: 100%;
+}
+
+.product-name-1, .product-name-2, .product-name-3, .product-name-4 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.product-price-1, .product-price-2, .product-price-3, .product-price-4 {
+  font-size: 1rem;
+  color: #333;
+  margin: 5px 0;
+}
+
+.product-btn-1, .product-btn-2, .product-btn-3, .product-btn-4 {
+  margin-top: auto; 
+}
+
+.product-btn-1:hover, .product-btn-2:hover, .product-btn-3:hover, .product-btn-4:hover {
+  background-color: #ffcc00;
+  color: #333;
+}

@@ -210,15 +210,14 @@
         <div class="product-images">
           <!-- Main Image -->
           <div class="main-image mb-3">
-            <img id="mainImage" src="images/Razer Kitsune.jpg" alt="Main Product Image" class="img-fluid rounded">
+            <img id="mainImage" src="images/VictrixLL.webp" alt="Main Product Image" class="img-fluid rounded">
           </div>
 
           <!-- Thumbnail Images -->
           <div class="thumbnail-images">
-            <img src="images/Razer Kitsune.jpg" alt="Thumbnail 1" onclick="changeMainImage(this)">
-            <img src="images/Kitsune2.webp" alt="Thumbnail 2" onclick="changeMainImage(this)">
-            <img src="images/Kitsune4.webp" alt="Thumbnail 3" onclick="changeMainImage(this)">
-            <img src="images/Kitsune5.webp" alt="Thumbnail 4" onclick="changeMainImage(this)">
+            <img src="images/VictrixLL.webp" alt="Thumbnail 1" onclick="changeMainImage(this)">
+            <img src="images/ll1.webp" alt="Thumbnail 2" onclick="changeMainImage(this)">
+            <img src="images/ll2.webp" alt="Thumbnail 3" onclick="changeMainImage(this)">
           </div>
         </div>
       </div>
@@ -226,9 +225,9 @@
       <!-- Right Section: Product Details -->
       <div class="col-lg-6">
         <div class="product-details">
-          <h1 class="product-title">Razer Kitsune (PS5)</h1>
+          <h1 class="product-title">Victrix LL (PS5)</h1>
           <div class="product-price">
-            <span class="sale-price text-danger ms-2">₱17,000.00</span>
+            <span class="sale-price text-danger ms-2">₱12,000.00</span>
           </div>
 
           <!-- Rating Section -->
@@ -244,7 +243,7 @@
           </div>
 
           <p class="product-description">
-          SPECIFICATION CONNECTIVITY USB Type C to USB Type A cable Cable lock and lock switch SYSTEM REQUIREMENT PS5™  RAZER CHROMA LIGHTING Yes MECHANICAL ACTION BUTTONS Precise Quad Movement Button Layout Razer™
+          Focus on fighting your enemy, not fatigue, with the built-in comfort features of the White Victrix Pro FS-12 Arcade Fight Stick. Land every hit, especially when it matters most, with the reliable Sanwa Denshi buttons.
           </p>
 
           <!-- Product Options -->
@@ -277,7 +276,7 @@
         <div class="product-full-description">
           <h2 class="fw-bold">Product Description</h2>
           <p>
-          Embrace a new fighting game meta with the Razer Kitsune—an all-button optical arcade controller that surpasses traditional fight sticks. With a precise quad movement button layout and lightning-fast optical switches, eliminate input errors from your game with the perfect competitive fighting companion for PS5™.
+          Made for tournaments, the Pro FS-12 has integrated carrying handles and cable organizers for easy transportation, and a control bar filled with the buttons you need to make quick adjustments. Simply swap out components and make mods with the quick-access back panel and clean layout. Get ready to play like a pro with the tournament-ready Victrix Pro FS-12 Arcade Fight Stick.
           </p>
         </div>
       </div>
@@ -293,8 +292,8 @@
           <ul>
             <li><strong>Connectivity:</strong> USB Type C to USB Type A cable, Cable lock and lock switch</li>
             <li><strong>System Requirement:</strong> PS5™ console</li>
-            <li><strong>Razer Chroma Lighting:</strong> Yes</li>
-            <li><strong>Mechanical Action Buttons:</strong> Precise Quad Movement Button Layout, Razer™ Low-Profile Linear Optical Switches</li>
+            <li><strong>Chroma Lighting:</strong> No</li>
+            <li><strong>Mechanical Action Buttons:</strong> Sanwa Denshi Buttons</li>
             <li><strong>Multi-Function Buttons:</strong> None</li>
             <li><strong>Quick Control Panel:</strong> None</li>
             <li><strong>Interchangeable D-Pad:</strong> None</li>
@@ -304,11 +303,11 @@
             <li><strong>Audio Output:</strong> None</li>
             <li><strong>Battery Life:</strong> None</li>
             <li><strong>Configuration App:</strong> None</li>
-            <li><strong>Artwork Customization:</strong> Removable aluminum top plate</li>
-            <li><strong>Carry Case:</strong> None</li>
-            <li><strong>Dimensions (Approximate):</strong> Length: 296 mm / 11.66” | Width: 210 mm / 8.27” | Height: 19.2 mm / 0.75”</li>
-            <li><strong>Approximate Weight:</strong> 800 g</li>
-            <li><strong>Box Contents:</strong> Razer Kitsune, 3.1 m / 10.1 ft wired USB Type C to USB Type A cable, Important Product Information Guide</li>
+            <li><strong>Customization:</strong> Removable aluminum top plate</li>
+            <li><strong>Carry Case:</strong>Yes</li>
+            <li><strong>Dimensions (Approximate):</strong> 339mm x 235mm x 20mm</li>
+            <li><strong>Approximate Weight:</strong> 1,225 g</li>
+            <li><strong>Box Contents:</strong> Victrix LL / 10.1 ft wired USB Type C to USB Type A cable, Important Product Information Guide</li>
           </ul>
         </div>
       </div>

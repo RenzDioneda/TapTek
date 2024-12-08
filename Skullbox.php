@@ -210,15 +210,13 @@
         <div class="product-images">
           <!-- Main Image -->
           <div class="main-image mb-3">
-            <img id="mainImage" src="images/Razer Kitsune.jpg" alt="Main Product Image" class="img-fluid rounded">
+            <img id="mainImage" src="images/Skullbox.jpeg" alt="Main Product Image" class="img-fluid rounded">
           </div>
 
           <!-- Thumbnail Images -->
           <div class="thumbnail-images">
-            <img src="images/Razer Kitsune.jpg" alt="Thumbnail 1" onclick="changeMainImage(this)">
-            <img src="images/Kitsune2.webp" alt="Thumbnail 2" onclick="changeMainImage(this)">
-            <img src="images/Kitsune4.webp" alt="Thumbnail 3" onclick="changeMainImage(this)">
-            <img src="images/Kitsune5.webp" alt="Thumbnail 4" onclick="changeMainImage(this)">
+            <img src="images/Skullbox.jpeg" alt="Thumbnail 1" onclick="changeMainImage(this)">
+            <img src="images/sb1.webp" alt="Thumbnail 2" onclick="changeMainImage(this)">
           </div>
         </div>
       </div>
@@ -226,9 +224,9 @@
       <!-- Right Section: Product Details -->
       <div class="col-lg-6">
         <div class="product-details">
-          <h1 class="product-title">Razer Kitsune (PS5)</h1>
+          <h1 class="product-title">Skullbox (Switch)</h1>
           <div class="product-price">
-            <span class="sale-price text-danger ms-2">₱17,000.00</span>
+            <span class="sale-price text-danger ms-2">₱2,500.00</span>
           </div>
 
           <!-- Rating Section -->
@@ -244,7 +242,7 @@
           </div>
 
           <p class="product-description">
-          SPECIFICATION CONNECTIVITY USB Type C to USB Type A cable Cable lock and lock switch SYSTEM REQUIREMENT PS5™  RAZER CHROMA LIGHTING Yes MECHANICAL ACTION BUTTONS Precise Quad Movement Button Layout Razer™
+          Our convex button-caps are designed for performance and comfort. Inspired by the classic Japanese Sanwa pushbuttons, all our button caps are made by injection-moulded ABS. These are not 3D printed parts.
           </p>
 
           <!-- Product Options -->
@@ -277,7 +275,8 @@
         <div class="product-full-description">
           <h2 class="fw-bold">Product Description</h2>
           <p>
-          Embrace a new fighting game meta with the Razer Kitsune—an all-button optical arcade controller that surpasses traditional fight sticks. With a precise quad movement button layout and lightning-fast optical switches, eliminate input errors from your game with the perfect competitive fighting companion for PS5™.
+          Our case is machined from a solid piece of ABS for maximum heft and durability. We do not 3D print our cases.
+Features a super low profile dimension: 24cm x 15.5cm x 1.2cm
           </p>
         </div>
       </div>
@@ -292,9 +291,9 @@
           <h2 class="fw-bold">Product Specifications</h2>
           <ul>
             <li><strong>Connectivity:</strong> USB Type C to USB Type A cable, Cable lock and lock switch</li>
-            <li><strong>System Requirement:</strong> PS5™ console</li>
-            <li><strong>Razer Chroma Lighting:</strong> Yes</li>
-            <li><strong>Mechanical Action Buttons:</strong> Precise Quad Movement Button Layout, Razer™ Low-Profile Linear Optical Switches</li>
+            <li><strong>System Requirement:</strong> Switch Console</li>
+            <li><strong>Chroma Lighting:</strong> No</li>
+            <li><strong>Mechanical Action Buttons:</strong> Low-Profile Linear Optical Switches</li>
             <li><strong>Multi-Function Buttons:</strong> None</li>
             <li><strong>Quick Control Panel:</strong> None</li>
             <li><strong>Interchangeable D-Pad:</strong> None</li>
@@ -304,11 +303,11 @@
             <li><strong>Audio Output:</strong> None</li>
             <li><strong>Battery Life:</strong> None</li>
             <li><strong>Configuration App:</strong> None</li>
-            <li><strong>Artwork Customization:</strong> Removable aluminum top plate</li>
+            <li><strong>Artwork Customization:</strong> Hotswappable</li>
             <li><strong>Carry Case:</strong> None</li>
-            <li><strong>Dimensions (Approximate):</strong> Length: 296 mm / 11.66” | Width: 210 mm / 8.27” | Height: 19.2 mm / 0.75”</li>
-            <li><strong>Approximate Weight:</strong> 800 g</li>
-            <li><strong>Box Contents:</strong> Razer Kitsune, 3.1 m / 10.1 ft wired USB Type C to USB Type A cable, Important Product Information Guide</li>
+            <li><strong>Dimensions (Approximate):</strong> 24cm x 15.5cm x 1.2cm</li>
+            <li><strong>Approximate Weight:</strong> 300 g</li>
+            <li><strong>Box Contents:</strong> Skullbox / 10.1 ft wired USB Type C to USB Type A cable, Important Product Information Guide</li>
           </ul>
         </div>
       </div>
