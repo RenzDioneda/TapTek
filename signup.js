@@ -6,6 +6,17 @@ document.getElementById('signupForm').addEventListener('submit', function (e) {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
+    // Log data to check if it's correct
+    console.log('Username:', username); // Check the username in console
+    console.log('Email:', email);       // Check the email in console
+    console.log('Password:', password); // Check the password in console
+
+    // Check if all fields are filled
+    if (!username || !email || !password) {
+        document.getElementById('signupFeedback').innerHTML = '<span class="text-danger">All fields are required.</span>';
+        return; // Prevent submission if fields are empty
+    }
+
     // Create a FormData object
     const formData = new FormData();
     formData.append('username', username);
