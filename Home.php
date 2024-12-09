@@ -58,51 +58,78 @@
       </div>
   </nav>
 
-  <!-- Login Modal -->
-  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="loginModalLabel">Login</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form>
-            <!-- Username Input -->
-            <div class="form-group">
-              <i class="fas fa-user"></i>
-              <input
-                type="text"
-                class="form-control"
-                id="username"
-                placeholder="Username"
-                required>
-            </div>
-            <!-- Password Input -->
-            <div class="form-group">
-              <i class="fas fa-lock"></i>
-              <input
-                type="password"
-                class="form-control"
-                id="password"
-                placeholder="Password"
-                required>
-            </div>
-            <!-- Buttons -->
-            <div class="d-flex justify-content-between">
-              <button type="submit" class="btn btn-primary">Login</button>
-              <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#signupModal" data-bs-dismiss="modal">Sign Up</button>
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <div class="forgot-password w-100">
-            <a href="#" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal" data-bs-dismiss="modal">Forgot Password?</a>
+<!-- Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginModalLabel">Login</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="loginForm" method="POST" action="login.php">
+          <!-- Username Input -->
+          <div class="form-group">
+            <i class="fas fa-user"></i>
+            <input type="text" class="form-control" id="username" placeholder="Username" required>
           </div>
+          <!-- Password Input -->
+          <div class="form-group">
+            <i class="fas fa-lock"></i>
+            <input type="password" class="form-control" id="password" placeholder="Password" required>
+          </div>
+          <!-- Buttons -->
+          <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-primary">Login</button>
+            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#signupModal" data-bs-dismiss="modal">Sign Up</button>
+          </div>
+        </form>
+      </div>
+      
+      <div class="modal-footer">
+        <div class="forgot-password w-100">
+          <a href="#" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal" data-bs-dismiss="modal">Forgot Password?</a>
         </div>
       </div>
     </div>
   </div>
+</div>
+
+<!-- JavaScript for login handling -->
+<script>
+  document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    // Get user inputs
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    // Create an object for sending to the backend
+    const loginData = new FormData();
+    loginData.append('username', username);
+    loginData.append('password', password);
+
+    // Make an AJAX request to verify login credentials
+    fetch('login.php', {
+      method: 'POST',
+      body: loginData
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        // Login successful, redirect or perform necessary actions
+        window.location.href = 'home.php'; // Example of redirect after successful login
+      } else {
+        // Show error message (optional)
+        alert('Invalid credentials');
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      alert('An error occurred. Please try again later.');
+    });
+  });
+</script>
 
   <!-- Sign-Up Modal -->
   <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
