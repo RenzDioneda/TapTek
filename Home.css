@@ -157,3 +157,23 @@ h2 {
     margin-top: 20px; 
   }
 }
+
+/* Offcanvas Styling */
+.offcanvas-header .navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.offcanvas-header .navbar-logo {
+  height: 50px;
+  width: auto;
+}
+
+.navbar-toggler {
+  order: -1; /* Move burger icon to the left */
+}
+
+.navbar-logo {
+  height: 80px;
+  width: auto;
+}
