@@ -33,13 +33,13 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav mx-auto">
         <li class="nav-item">
-          <a class="nav-link text-white active" href="Home.php">Home</a>
+          <a class="nav-link text-white" href="Home.php">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-white" href="Shop.php">Shop</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" href="Contact.php">Contact</a>
+          <a class="nav-link text-white active" href="Contact.php">Contact</a>
         </li>
       </ul>
       <div class="d-flex align-items-center">
