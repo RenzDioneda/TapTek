@@ -1,0 +1,86 @@
+body {
+    font-family: 'Space Grotesk', sans-serif;
+    background-color: #0B192C;
+    color: #000000;
+  }
+
+  .sidebar {
+    background-color: #1E3E62;
+    color: white;
+    height: 100vh;
+  }
+
+  .sidebar .logo {
+    width: 180px;        
+    height: 70px;        
+    background-color: #FF6500;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 20px auto;
+    border-radius: 5px;
+  }
+  
+  .sidebar .logo .navbar-logo {
+    width: auto;         
+    height: 50px;       
+    max-height: 100%;  
+  }
+  
+  .sidebar .nav-link {
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .sidebar .nav-link:hover {
+    color: #FF6500;
+  }
+
+  .btn-primary-custom {
+    background-color: #FF6500;
+    border-color: #FF6500;
+  }
+
+  .btn-primary-custom:hover {
+    background-color: #E55A00;
+    border-color: #E55A00;
+  }
+
+  .table-header {
+    background-color: #1E3E62;
+    color: white;
+  }
+
+  .pagination-btn {
+    background-color: #1E3E62;
+    color: white;
+  }
+
+  .pagination-btn:hover {
+    background-color: #FF6500;
+    color: white;
+  }
+
+  .toggle-icon {
+    transition: transform 0.3s ease;
+  }
+  
+  .toggle-icon.rotate {
+    transform: rotate(180deg);
+  }
+
+  .nav-link.active-link {
+    color: #fff;
+    background-color: #1e3e62;
+    border-radius: 4px;
+  }
+  
+  .nav-link.active {
+    font-weight: bold;
+  }
+  
