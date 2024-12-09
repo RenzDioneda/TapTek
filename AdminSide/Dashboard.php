@@ -65,9 +65,6 @@
         <li class="nav-item mb-2">
           <a href="#" class="nav-link">Notifications</a>
         </li>
-        <li class="nav-item mb-2">
-          <a href="#" class="nav-link">Website Settings</a>
-        </li>
       </ul>
     </aside>    
 
