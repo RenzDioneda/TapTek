@@ -13,15 +13,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="mainlayout.css">
-  <link rel="stylesheet" href="Login.css">
-  <link rel="stylesheet" href="dboard.css">
+  <link rel="stylesheet" href="products.css">
 </head>
 </body>
 <div class="d-flex">
     <!-- Sidebar -->
     <aside class="sidebar p-3">
   <div class="logo">
-    <a class="navbar-brand" href="Home.php">
+    <a class="navbar-brand" href="../Home.php">
       <img src="../images/Logo.png" alt="Junk Food Logo" class="navbar-logo">
     </a>
   </div>
@@ -30,7 +29,7 @@
       </div>
       <ul class="nav flex-column">
         <li class="nav-item mb-2">
-          <a href="#" class="nav-link">Dashboard</a>
+          <a href="Dashboard.php" class="nav-link">Dashboard</a>
         </li>
         <li class="nav-item mb-2">
           <a 
@@ -46,10 +45,10 @@
           <div class="collapse" id="productMenu">
             <ul class="nav flex-column ms-3">
               <li class="nav-item">
-                <a href="#" class="nav-link">Product List</a>
+                <a href="Products.php" class="nav-link active">Product List</a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">Add Product</a>
+                <a href="AddProduct.php" class="nav-link">Add Product</a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">Categories</a>
@@ -58,16 +57,16 @@
           </div>
         </li>
         <li class="nav-item mb-2">
-          <a href="#" class="nav-link">Sales</a>
+          <a href="#" class="nav-link">Orders</a>
         </li>
         <li class="nav-item mb-2">
           <a href="#" class="nav-link">Users</a>
         </li>
         <li class="nav-item mb-2">
-          <a href="#" class="nav-link">TBA</a>
+          <a href="#" class="nav-link">Notifications</a>
         </li>
         <li class="nav-item mb-2">
-          <a href="#" class="nav-link">Notifications</a>
+          <a href="#" class="nav-link">Web Settings</a>
         </li>
       </ul>
     </aside>
