@@ -1,49 +1,45 @@
 <?php
-// Include your database connection
-include('config.php');
+// Include the database connection file
+include 'database.php'; // Make sure this file contains your database connection setup
 
-if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
-    // Handle OPTIONS request for CORS preflight
-    header("Access-Control-Allow-Origin: *");
-    header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
-    header("Access-Control-Allow-Headers: Content-Type");
-    exit(0); // No further processing needed for OPTIONS request
-}
+$conn = Database::getInstance();
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Log form data to check if it's being received correctly
-    error_log('Username: ' . $_POST['username']);
-    error_log('Email: ' . $_POST['email']);
-    error_log('Password: ' . $_POST['password']);
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Retrieve and sanitize input values
+    $username = mysqli_real_escape_string($conn, trim($_POST['username']));
+    $email = mysqli_real_escape_string($conn, trim($_POST['email']));
+    $password = mysqli_real_escape_string($conn, trim($_POST['password']));
 
-    // Get the form data
-    $username = trim($_POST['username']);
-    $email = trim($_POST['email']);
-    $password = trim($_POST['password']);
+    // Hash the password for security
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-    // Validate inputs
-    if (empty($username) || empty($email) || empty($password)) {
-        echo "All fields are required.";
-        exit;
-    }
+    // Check if the username or email already exists in the database
+    $check_query = "SELECT * FROM users WHERE username = '$username' OR email = '$email' LIMIT 1";
+    $result = mysqli_query($conn, $check_query);
 
-    // Check if username or email already exists
-    $check_query = $conn->prepare("SELECT * FROM users WHERE username = ? OR email = ?");
-    $check_query->execute([$username, $email]);
-    if ($check_query->rowCount() > 0) {
-        echo "Username or email already exists.";
-        exit;
-    }
-
-    // Hash the password
-    $hashed_password = password_hash($password, PASSWORD_BCRYPT);
-
-    // Insert user into the database
-    $insert_query = $conn->prepare("INSERT INTO users (username, password, email, role) VALUES (?, ?, ?, 'Customer')");
-    if ($insert_query->execute([$username, $hashed_password, $email])) {
-        echo "success"; // Send success message
+    if (mysqli_num_rows($result) > 0) {
+        // Username or email already exists
+        echo "<script>
+                window.location.href = 'home.php';
+                alert('Username or email already exists. Please try again.');
+              </script>";
     } else {
-        echo "An error occurred while processing your registration.";
+        // Insert new user into the database
+        $insert_query = "INSERT INTO users (username, email, password, role) VALUES ('$username', '$email', '$hashed_password', 'Customer')";
+
+        if (mysqli_query($conn, $insert_query)) {
+            // Redirect to the login modal or success page
+            echo "<script>
+                    window.location.href = 'home.php';
+                    alert('Sign-up successful! You can now log in.');
+                  </script>";
+        } else {
+            // Handle database insertion error
+            echo "<script>
+                    window.location.href = 'home.php';
+                    alert('Error: Could not complete the sign-up process. Please try again.');
+                  </script>";
+        }
     }
 }
 ?>

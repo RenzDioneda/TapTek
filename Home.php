@@ -18,7 +18,7 @@
 
 <body>
 
- <!-- Navbar -->
+  <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-black">
   <div class="container">
     <!-- Burger Menu (Left-Aligned) -->
@@ -45,26 +45,12 @@
         </li>
       </ul>
       <div class="d-flex align-items-center">
-      <a href="#searchModal" class="text-white me-3" data-bs-toggle="modal">
-        <i class="fas fa-search fa-lg"></i>
-      </a>
-        <!-- User Icon -->
-        <div id="userSection">
-          <!-- This part toggles dynamically -->
-          <a href="#" id="loginTrigger" class="text-white me-3" data-bs-toggle="modal" data-bs-target="#loginModal">
-            <i class="fas fa-user fa-lg"></i>
-          </a>
-          <div class="dropdown d-none" id="userDropdown">
-            <button class="btn btn-transparent text-white dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="fas fa-user fa-lg"></i>
-            </button>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
-              <li><a class="dropdown-item" href="AccountSettings.php">Account Settings</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item text-danger" href="Logout.php">Logout</a></li>
-            </ul>
-          </div>
-        </div>
+        <a href="#" class="text-white me-3">
+          <i class="fas fa-search fa-lg"></i>
+        </a>
+        <a href="#" class="text-white me-3" data-bs-toggle="modal" data-bs-target="#loginModal">
+          <i class="fas fa-user fa-lg"></i>
+        </a>
         <a href="Cart.php" class="text-white">
           <i class="fas fa-shopping-bag fa-lg"></i>
         </a>
@@ -103,86 +89,52 @@
   </div>
 </div>
 
-<!-- Search Modal -->
-<div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="searchModalLabel">Search Products</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <!-- Search Field -->
-        <div class="mb-3">
-          <label for="searchInput" class="form-label">Search</label>
-          <input type="text" class="form-control" id="searchInput" placeholder="Search for products...">
-        </div>
-        
-        <!-- Filter By Section -->
-        <div class="mb-3">
-          <label for="filterSelect" class="form-label">Filter By:</label>
-          <select class="form-select" id="filterSelect">
-            <option selected>Choose filter</option>
-            <option value="price-low-high">Price: Low to High</option>
-            <option value="price-high-low">Price: High to Low</option>
-            <option value="compatibility">Compatibility</option>
-            <option value="rating-high-low">Rating: High to Low</option>
-            <option value="rating-low-high">Rating: Low to High</option>
-          </select>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" id="searchButton">Search</button>
-      </div>
-    </div>
-  </div>
-</div>
 
-
-<!-- Login Modal -->
-<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="loginModalLabel">Login</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="form-group">
-            <i class="fas fa-user"></i>
-            <input
-              type="text"
-              class="form-control"
-              id="username"
-              placeholder="Username"
-              required>
+  <!-- Login Modal -->
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="loginModalLabel">Login</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <!-- Username Input -->
+            <div class="form-group">
+              <i class="fas fa-user"></i>
+              <input
+                type="text"
+                class="form-control"
+                id="username"
+                placeholder="Username"
+                required>
+            </div>
+            <!-- Password Input -->
+            <div class="form-group">
+              <i class="fas fa-lock"></i>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                placeholder="Password"
+                required>
+            </div>
+            <!-- Buttons -->
+            <div class="d-flex justify-content-between">
+              <button type="submit" class="btn btn-primary">Login</button>
+              <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#signupModal" data-bs-dismiss="modal">Sign Up</button>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <div class="forgot-password w-100">
+            <a href="#" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal" data-bs-dismiss="modal">Forgot Password?</a>
           </div>
-          <div class="form-group">
-            <i class="fas fa-lock"></i>
-            <input
-              type="password"
-              class="form-control"
-              id="password"
-              placeholder="Password"
-              required>
-          </div>
-          <div class="d-flex justify-content-between">
-            <button type="submit" class="btn btn-primary">Login</button>
-            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#signupModal" data-bs-dismiss="modal">Sign Up</button>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <div class="forgot-password w-100">
-          <a href="#" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal" data-bs-dismiss="modal">Forgot Password?</a>
         </div>
       </div>
     </div>
   </div>
-</div>
-
 
   <!-- Sign-Up Modal -->
   <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
@@ -193,7 +145,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form id="signupForm" action="register.php" method="POST">
+          <form action="register.php" method="POST">
             <!-- Username -->
             <div class="form-group">
               <i class="fas fa-user"></i>
