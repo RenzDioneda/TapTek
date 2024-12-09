@@ -1,0 +1,185 @@
+body {
+    background-color: #F9F9F9; 
+    color: #000000; 
+    font-family: 'Space Grotesk', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+ 
+  .container {
+    max-width: 1200px;
+    background-color: #FFFFFF; 
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  }
+  
+  /* Header */
+  h2 {
+    color: #1E3E62;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  
+  /* Table Styling */
+  .table {
+    background-color: #FFFFFF; 
+    border-radius: 5px; 
+    overflow: hidden; 
+    width: 100%;
+    margin-bottom: 20px; 
+  }
+  
+  .table th, .table td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 12px;
+  }
+  
+  .table th {
+    background-color: #1E3E62; 
+    color: #FFFFFF; 
+    font-weight: bold;
+  }
+  
+  .table td {
+    border: 1px solid #E5E5E5; 
+  }
+  
+  .table-striped tbody tr:nth-of-type(odd) {
+    background-color: #F9F9F9; 
+  }
+  
+  .table-hover tbody tr:hover {
+    background-color: #FFEBE1; 
+  }
+  
+  /* Button styling inside tables */
+  .btn {
+    border-radius: 4px;
+    padding: 5px 10px;
+  }
+  
+  .btn-warning {
+    background-color: #1E3E62;
+    color: #FFFFFF;
+  }
+  
+  .btn-danger {
+    background-color: #FF6500;
+    color: #FFFFFF;
+  }
+  
+  .btn:hover {
+    opacity: 0.9;
+  }
+  
+
+  /* Modal Styling */
+.modal-content {
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  }
+  
+  .modal-header {
+    background-color: #1E3E62; 
+    color: #FFFFFF; 
+    border-top-left-radius: 8px; 
+    border-top-right-radius: 8px; 
+  }
+  
+  .modal-title {
+    font-weight: bold;
+    font-size: 18px;
+  }
+  
+  .modal-body {
+    padding: 20px;
+    font-size: 16px;
+    color: #0B192C; 
+  }
+  
+  .modal-footer {
+    background-color: #F9F9F9; 
+    border-bottom-left-radius: 8px; 
+    border-bottom-right-radius: 8px; 
+  }
+  
+  .modal-footer button {
+    padding: 10px 15px;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+
+  .btn-close {
+    background-color: transparent;
+    border: none;
+    color: #FFFFFF;
+    font-size: 1.5rem;
+  }
+  
+  /* Button styling for the Modal */
+  .modal-footer .btn-secondary {
+    background-color: #E5E5E5; 
+    color: #0B192C; 
+    border: none;
+  }
+  
+  .modal-footer .btn-secondary:hover {
+    background-color: #D3D3D3;
+  }
+  
+  .modal-footer .btn-primary {
+    background-color: #FF6500; 
+    color: #FFFFFF; 
+    border: none;
+  }
+  
+  .modal-footer .btn-primary:hover {
+    background-color: #E55A00; 
+  }
+  
+  .modal-footer .btn-danger {
+    background-color: #FF6500; 
+    color: #FFFFFF; 
+    border: none;
+  }
+  
+  .modal-footer .btn-danger:hover {
+    background-color: #E55A00; 
+  }
+  
+  /* Input Fields in Modal */
+  .modal-body input {
+    width: 100%; 
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #E5E5E5; 
+    margin-bottom: 10px;
+    background-color: #F9F9F9; 
+  }
+  
+  .modal-body input:focus {
+    border: 1px solid #FF6500; 
+    box-shadow: 0 0 5px rgba(255, 101, 0, 0.5); 
+  }
+  
+  .modal-body label {
+    font-weight: bold;
+    color: #0B192C;
+  }
+  
+ 
+  .modal.fade {
+    opacity: 0; 
+    transition: opacity 0.3s ease;
+  }
+  
+  .modal.fade.show {
+    opacity: 1; 
+  }

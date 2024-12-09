@@ -1,0 +1,86 @@
+body {
+    background-color: #FFFFFF; 
+    color: #000000; 
+    font-family: 'Space Grotesk', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Main content area */
+  .container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff; 
+    border: 1px solid #1E3E62; 
+
+  }
+  
+  /* Form Labels and Input Fields */
+  .form-label {
+    color: #FF6500; 
+    font-weight: bold;
+  }
+  
+  .form-control, .form-select, textarea {
+    background-color: #F9F9F9; 
+    color: #000000;
+    border: 1px solid #1E3E62;
+    border-radius: 4px; 
+  }
+  
+  .form-control:focus, .form-select:focus, textarea:focus {
+    border-color: #FF6500; 
+    box-shadow: 0 0 5px rgba(255, 101, 0, 0.5);
+  }
+  
+  /* Buttons */
+  .btn-primary {
+    background-color: #FF6500;
+    border: none;
+    color: #FFFFFF;
+  }
+  
+  .btn-primary:hover {
+    background-color: #E55A00;
+  }
+  
+  .btn-warning {
+    background-color: #1E3E62;
+    border: none;
+    color: #FFFFFF;
+  }
+  
+  .btn-danger {
+    background-color: #FF6500;
+    border: none;
+    color: #FFFFFF;
+  }
+  
+  .btn-warning:hover, .btn-danger:hover {
+    opacity: 0.9;
+  }
+  
+  /* Table Styling */
+  .table {
+    background-color: #FFFFFF; 
+    color: #000000; 
+    border-radius: 8px;
+  }
+  
+  .table th, .table td {
+    border: 1px solid #1E3E62; 
+  }
+  
+  .table th {
+    background-color: #FF6500; 
+    color: #FFFFFF; 
+  }
+  
+  /* Section Titles */
+  .section-title {
+    color: #FF6500; 
+    margin-bottom: 15px;
+    font-weight: bold;
+  }
+  
