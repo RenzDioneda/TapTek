@@ -47,4 +47,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // Return the response as JSON
 header('Content-Type: application/json');
 echo json_encode($response);
-?>  
+?>
