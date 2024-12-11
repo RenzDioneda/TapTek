@@ -1,3 +1,59 @@
+<?php
+// Initialize variables for error handling and form values
+$error = null;
+$success = null;
+$productName = $description = $price = $color = $stock = "";
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    require_once '../database.php';
+    $conn = Database::getInstance();
+
+    // Retrieve and sanitize form inputs
+    $productName = trim($_POST['productName'] ?? "");
+    $description = trim($_POST['productDescription'] ?? "");
+    $price = trim($_POST['price'] ?? "");
+    $color = trim($_POST['color'] ?? "");
+    $stock = trim($_POST['stock'] ?? "");
+    $imageUrl = null;
+
+    // Validate required fields
+    if (empty($productName) || empty($description) || empty($price) || empty($color) || empty($stock)) {
+        $error = "All fields are required!";
+    }
+
+    // Handle file upload if no other errors
+    if (!$error && isset($_FILES['productImage']) && $_FILES['productImage']['error'] === UPLOAD_ERR_OK) {
+        $uploadDir = "uploads/";
+        $imageName = basename($_FILES['productImage']['name']);
+        $uploadFile = $uploadDir . $imageName;
+
+        if (move_uploaded_file($_FILES['productImage']['tmp_name'], $uploadFile)) {
+            $imageUrl = $uploadFile; // Set $imageUrl for database
+        } else {
+            $error = "Failed to upload the file.";
+        }
+    } elseif (!$error) {
+        $error = "No file uploaded or an error occurred.";
+    }
+
+    // Proceed if no errors
+    if (!$error) {
+        $stmt = $conn->prepare("INSERT INTO products (product_name, description, price, color, stock, image_url) VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssdiss", $productName, $description, $price, $color, $stock, $imageUrl);
+
+        if ($stmt->execute()) {
+            $success = "Product added successfully!";
+        } else {
+            $error = "Error: " . $stmt->error;
+        }
+
+        $stmt->close();
+    }
+
+    $conn->close();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -80,7 +136,7 @@
   <!--Main Content-->
   <div class="container">
     <h2 class="mb-4">Add New Product</h2>
-    <form id="addProductForm" method="POST" enctype="multipart/form-data">
+    <form method="POST" action="AddProduct.php" enctype="multipart/form-data">
     <div class="row mb-4">
         <!-- General Information -->
         <div class="col-md-6">
@@ -95,14 +151,14 @@
             </div>
             <div class="mb-3">
                 <label class="form-label">Color</label>
-                <div class="button-group">
-                    <button type="button" class="btn btn-outline-secondary btn-sm" name="productColor" value="Black">Black</button>
-                    <button type="button" class="btn btn-outline-secondary btn-sm" name="productColor" value="White">White</button>
-                    <button type="button" class="btn btn-outline-secondary btn-sm" name="productColor" value="Violet">Violet</button>
-                    <button type="button" class="btn btn-outline-secondary btn-sm" name="productColor" value="Blue">Blue</button>
-                    <button type="button" class="btn btn-outline-secondary btn-sm" name="productColor" value="Pink">Pink</button>
-                    <button type="button" class="btn btn-outline-secondary btn-sm" name="productColor" value="Red">Red</button>
-                </div>
+                <select class="form-select" name="color" required>
+                    <option value="Black">Black</option>
+                    <option value="White">White</option>
+                    <option value="Violet">Violet</option>
+                    <option value="Blue">Blue</option>
+                    <option value="Pink">Pink</option>
+                    <option value="Red">Red</option>
+                </select>
             </div>
         </div>
 
@@ -147,7 +203,7 @@
 
     <!-- Action Buttons -->
     <div class="d-flex justify-content-between">
-        <button type="button" class="btn btn-secondary">Save Draft</button>
+        <button type="submit" class="btn btn-secondary">Save Draft</button>
         <button type="submit" class="btn btn-primary">Add Product</button>
     </div>
 </form>
@@ -157,40 +213,15 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
-    $(document).ready(function() {
-      $('form').on('submit', function(e) {
-        e.preventDefault();
-
-        const productData = {
-          productName: $('#productName').val(),
-          description: $('#productDescription').val(),
-          price: $('#basePrice').val(),
-          color: $('.btn-outline-secondary.active').text(),
-          stock: $('#stock').val(),
-          imageUrl: $('input[type="file"]').val() // Simplified, adjust for file uploads
+        // Display success or error message as a JavaScript alert
+        window.onload = function() {
+            <?php if ($success): ?>
+                alert("<?php echo $success; ?>");
+            <?php elseif ($error): ?>
+                alert("<?php echo $error; ?>");
+            <?php endif; ?>
         };
-
-        $.ajax({
-          url: 'add_product.php', // PHP script that handles form submission
-          type: 'POST',
-          data: productData,
-          success: function(response) {
-            alert(response);
-            $('form')[0].reset(); // Reset form after success
-          },
-          error: function() {
-            alert('Error adding product.');
-          }
-        });
-      });
-
-      // Add active class to color buttons
-      $('.btn-outline-secondary').on('click', function() {
-        $('.btn-outline-secondary').removeClass('active');
-        $(this).addClass('active');
-      });
-    });
-  </script>
+    </script>
   </body>
 
 </html>
