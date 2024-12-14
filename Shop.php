@@ -253,135 +253,56 @@
   </div>
 
   <!-- Product Grid -->
+  <?php
+  // Include database connection
+  require_once 'database.php'; // Adjust path to your database connection file
+
+  // Connect to the database
+  $conn = Database::getInstance();
+
+  // Fetch products from the database
+  $query = "SELECT product_id, product_name, description, price, color, stock, image_url FROM products";
+  $result = $conn->query($query);
+  ?>
+
+  <!-- Product Grid -->
   <div class="container">
-    <div class="row g-4 justify-content-center"> <!-- Center the products -->
-      <!-- Product 1 -->
-      <div class="col-lg-2 col-md-4 col-sm-6">
-        <a href="Hitbox.php" class="text-decoration-none">
-          <div class="product-card">
-            <img src="images/Hitboxnb.png" alt="Product 1">
-            <div class="card-body">
-              <h5 class="card-title">Hitbox (PC)</h5>
-              <p class="price">₱8,000.00</p>
+    <div class="row g-4 justify-content-center">
+      <?php
+      if ($result->num_rows > 0) {
+        // Loop through each product and generate the HTML
+        while ($row = $result->fetch_assoc()) {
+      ?>
+          <div class="col-lg-2 col-md-4 col-sm-6">
+            <div class="product-card">
+              <!-- Product Image -->
+              <img src="itemImages/<?php echo htmlspecialchars($row['image_url']); ?>"
+                alt="<?php echo htmlspecialchars($row['product_name']); ?>"
+                class="img-fluid"
+                style="max-height: 150px; object-fit: cover;">
+
+              <!-- Product Details -->
+              <div class="card-body text-center">
+                <h5 class="card-title"><?php echo htmlspecialchars($row['product_name']); ?></h5>
+                <p class="text-muted"><?php echo htmlspecialchars($row['color']); ?></p>
+                <p class="price fw-bold">₱<?php echo number_format($row['price'], 2); ?></p>
+                <p class="text-muted">Stock: <?php echo (int)$row['stock']; ?></p>
+              </div>
             </div>
           </div>
-        </a>
-      </div>
-      <!-- Product 2 -->
-      <div class="col-lg-2 col-md-4 col-sm-6">
-        <a href="Skullbox.php" class="text-decoration-none">
-          <div class="product-card">
-            <img src="images/Skullboxnb.png" alt="Product 2">
-            <div class="card-body">
-              <h5 class="card-title">Skullbox (Switch)</h5>
-              <p class="price">₱2,500.00</p>
-            </div>
-          </div>
-        </a>
-      </div>
-      <!-- Product 3 -->
-      <div class="col-lg-2 col-md-4 col-sm-6">
-        <a href="RazerKitsune.php" class="text-decoration-none">
-          <div class="product-card">
-            <img src="images/Razer_Kitsunenb.png" alt="Product 3">
-            <div class="card-body">
-              <h5 class="card-title">Razer Kitsune (PS5)</h5>
-              <p class="price">₱17,000.00</p>
-            </div>
-          </div>
-        </a>
-      </div>
-      <!-- Product 4 -->
-      <div class="col-lg-2 col-md-4 col-sm-6">
-        <a href="VictrixKO.php" class="text-decoration-none">
-          <div class="product-card">
-            <img src="images/VictrixKO.webp" alt="Product 4">
-            <div class="card-body">
-              <h5 class="card-title">Victrix KO (PS5)</h5>
-              <p class="price">₱12,000.00</p>
-            </div>
-          </div>
-        </a>
-      </div>
-      <!-- Product 5 -->
-      <div class="col-lg-2 col-md-4 col-sm-6">
-        <a href="Overdrive.php" class="text-decoration-none">
-          <div class="product-card">
-            <img src="images/Overdrivenb.png" alt="Product 5">
-            <div class="card-body">
-              <h5 class="card-title">Overdrive (PC)</h5>
-              <p class="price">₱10,000.00</p>
-            </div>
-          </div>
-        </a>
-      </div>
+      <?php
+        }
+      } else {
+        echo "<p class='text-center'>No products available.</p>";
+      }
+      ?>
     </div>
   </div>
 
-  <div class="container">
-    <div class="row g-4 justify-content-center">
-      <!-- Product 6 -->
-      <div class="col-lg-2 col-md-4 col-sm-6">
-        <a href="VictrixLL.php" class="text-decoration-none">
-          <div class="product-card">
-            <img src="images/VictrixLL.webp" alt="Product 6">
-            <div class="card-body">
-              <h5 class="card-title">Victrix LL (PS5)</h5>
-              <p class="price">₱12,000.00</p>
-            </div>
-          </div>
-        </a>
-      </div>
-      <!-- Product 7 -->
-      <div class="col-lg-2 col-md-4 col-sm-6">
-        <a href="FTGT16.php" class="text-decoration-none">
-          <div class="product-card">
-            <img src="images/FTGT16nb.png" alt="Product 7">
-            <div class="card-body">
-              <h5 class="card-title">FTG16 (PC)</h5>
-              <p class="price">₱5,000.00</p>
-            </div>
-          </div>
-        </a>
-      </div>
-      <!-- Product 8 -->
-      <div class="col-lg-2 col-md-4 col-sm-6">
-        <a href="HauteM16.php" class="text-decoration-none">
-          <div class="product-card">
-            <img src="images/HauteM16nb.png" alt="Product 8">
-            <div class="card-body">
-              <h5 class="card-title">Haute M16 (Switch)</h5>
-              <p class="price">₱2,500.00</p>
-            </div>
-          </div>
-        </a>
-      </div>
-      <!-- Product 9 -->
-      <div class="col-lg-2 col-md-4 col-sm-6">
-        <a href="Microlite.php" class="text-decoration-none">
-          <div class="product-card">
-            <img src="images/MicroLitenb.png" alt="Product 9">
-            <div class="card-body">
-              <h5 class="card-title">Micro Lite (Switch)</h5>
-              <p class="price">₱2,500.00</p>
-            </div>
-          </div>
-        </a>
-      </div>
-      <!-- Product 10 -->
-      <div class="col-lg-2 col-md-4 col-sm-6">
-        <a href="Cosmox.php" class="text-decoration-none">
-          <div class="product-card">
-            <img src="images/Cosmoxnb.png" alt="Product 10">
-            <div class="card-body">
-              <h5 class="card-title">Cosmox (PC)</h5>
-              <p class="price">₱5,000.00</p>
-            </div>
-          </div>
-        </a>
-      </div>
-    </div>
-  </div>
+  <?php
+  // Close the database connection
+  $conn->close();
+  ?>
 
   <!-- Footer -->
   <footer class="footer bg-black text-white">

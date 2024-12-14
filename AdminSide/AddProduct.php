@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Handle file upload if no other errors
     if (!$error && isset($_FILES['productImage']) && $_FILES['productImage']['error'] === UPLOAD_ERR_OK) {
-        $uploadDir = "uploads/";
+        $uploadDir = "../itemImages/";
         $imageName = basename($_FILES['productImage']['name']);
         $uploadFile = $uploadDir . $imageName;
 
@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Proceed if no errors
     if (!$error) {
         $stmt = $conn->prepare("INSERT INTO products (product_name, description, price, color, stock, image_url) VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("ssdiss", $productName, $description, $price, $color, $stock, $imageUrl);
+        $stmt->bind_param("ssdsss", $productName, $description, $price, $color, $stock, $imageUrl);
 
         if ($stmt->execute()) {
             $success = "Product added successfully!";
