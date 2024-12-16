@@ -1,3 +1,6 @@
+<?php
+include 'session_handler.php'; // Adjust the path if necessary
+?>s
 <!DOCTYPE html>
 <html lang="en">
 
@@ -201,6 +204,7 @@
       if (data.success) {
         // Login successful, redirect or perform necessary actions
         window.location.href = 'home.php'; // Example of redirect after successful login
+        
       } else {
         // Show error message (optional)
         alert('Invalid credentials');

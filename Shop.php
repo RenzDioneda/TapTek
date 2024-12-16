@@ -1,3 +1,6 @@
+<?php
+include 'session_handler.php'; // Adjust the path if necessary
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -252,7 +255,6 @@
     <h1>Controllers</h1>
   </div>
 
-  <!-- Product Grid -->
   <?php
   // Include database connection
   require_once 'database.php'; // Adjust path to your database connection file
@@ -274,21 +276,24 @@
         while ($row = $result->fetch_assoc()) {
       ?>
           <div class="col-lg-2 col-md-4 col-sm-6">
-            <div class="product-card">
-              <!-- Product Image -->
-              <img src="itemImages/<?php echo htmlspecialchars($row['image_url']); ?>"
-                alt="<?php echo htmlspecialchars($row['product_name']); ?>"
-                class="img-fluid"
-                style="max-height: 150px; object-fit: cover;">
+            <!-- Make the product card clickable -->
+            <a href="product_details.php?product_id=<?php echo $row['product_id']; ?>" class="text-decoration-none text-dark">
+              <div class="product-card">
+                <!-- Product Image -->
+                <img src="itemImages/<?php echo htmlspecialchars($row['image_url']); ?>"
+                  alt="<?php echo htmlspecialchars($row['product_name']); ?>"
+                  class="img-fluid"
+                  style="max-height: 150px; object-fit: cover;">
 
-              <!-- Product Details -->
-              <div class="card-body text-center">
-                <h5 class="card-title"><?php echo htmlspecialchars($row['product_name']); ?></h5>
-                <p class="text-muted"><?php echo htmlspecialchars($row['color']); ?></p>
-                <p class="price fw-bold">₱<?php echo number_format($row['price'], 2); ?></p>
-                <p class="text-muted">Stock: <?php echo (int)$row['stock']; ?></p>
+                <!-- Product Details -->
+                <div class="card-body text-center">
+                  <h5 class="card-title"><?php echo htmlspecialchars($row['product_name']); ?></h5>
+                  <p class="text-muted"><?php echo htmlspecialchars($row['color']); ?></p>
+                  <p class="price fw-bold">₱<?php echo number_format($row['price'], 2); ?></p>
+                  <p class="text-muted">Stock: <?php echo (int)$row['stock']; ?></p>
+                </div>
               </div>
-            </div>
+            </a>
           </div>
       <?php
         }
@@ -303,7 +308,7 @@
   // Close the database connection
   $conn->close();
   ?>
-
+  
   <!-- Footer -->
   <footer class="footer bg-black text-white">
     <div class="container py-4">

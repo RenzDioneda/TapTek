@@ -1,3 +1,6 @@
+<?php
+include 'session_handler.php'; 
+?>
 <!DOCTYPE html>
 <html lang="en">
 
