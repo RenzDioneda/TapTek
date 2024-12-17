@@ -82,7 +82,9 @@
       <div class="d-flex justify-content-between align-items-center mb-4">
         <h1 class="h3 text-primary">Products</h1>
         <div class="d-flex align-items-center">
-          <button class="btn btn-primary-custom me-2">+ Add Product</button>
+        <a href="AddProduct.php">
+  <button class="btn btn-primary-custom me-2">+ Add Product</button>
+</a>
           <button class="btn btn-outline-secondary me-2">
             <i class="bi bi-filter"></i> Filter
           </button>

@@ -23,10 +23,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Handle file upload if no other errors
     if (!$error && isset($_FILES['productImage']) && $_FILES['productImage']['error'] === UPLOAD_ERR_OK) {
-        $uploadDir = "../productImages/";
+        // Absolute path for upload directory
+        $uploadDir = $_SERVER['DOCUMENT_ROOT'] . "/TapTek/productImages/"; 
+
+        // Sanitize the image name to avoid issues with special characters
         $imageName = basename($_FILES['productImage']['name']);
         $uploadFile = $uploadDir . $imageName;
 
+        // Ensure the upload directory exists and has proper permissions
+        if (!file_exists($uploadDir)) {
+            mkdir($uploadDir, 0777, true); // Create directory if it doesn't exist
+        }
+
+        // Attempt to move the uploaded file
         if (move_uploaded_file($_FILES['productImage']['tmp_name'], $uploadFile)) {
             $imageUrl = $uploadFile; // Set $imageUrl for database
         } else {
@@ -53,6 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $conn->close();
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
