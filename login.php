@@ -32,10 +32,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($user) {
         // Check if password matches (assuming passwords are hashed in the database)
         if (password_verify($password, $user['password'])) {
-            $response['success'] = true;
-            $response['message'] = 'Login successful';
             $_SESSION['user_id'] = $user['user_id'];
             $_SESSION['username'] = $user['username'];
+
+            $response['success'] = true;
+            $response['message'] = 'Login successful';
+            $response['username'] = $user['username'];  // Include the username in the response
         } else {
             $response['message'] = 'Incorrect password';
         }

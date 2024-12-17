@@ -1,5 +1,9 @@
 <?php
-include 'session_manager.php'; // Adjust the path if necessary
+// Include session handler to start the session and manage session variables
+include 'session_handler.php';
+
+// Check if user is logged in
+$isLoggedIn = isset($_SESSION['user_id']); // Check if user is logged in
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +21,6 @@ include 'session_manager.php'; // Adjust the path if necessary
     <link rel="stylesheet" href="mainlayout.css">
     <link rel="stylesheet" href="Login.css">
     <link rel="stylesheet" href="Products.css">
-
 </head>
 
 <body>
@@ -34,6 +37,15 @@ include 'session_manager.php'; // Adjust the path if necessary
             <a class="navbar-brand" href="index.php">
                 <img src="images/Logo.png" alt="Junk Food Logo" class="navbar-logo">
             </a>
+
+            <!-- Simple Login Indicator -->
+            <div class="login-status">
+                <?php if ($isLoggedIn): ?>
+                    <span>Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?>! You are logged in.</span>
+                <?php else: ?>
+                    <span>You are not logged in.</span>
+                <?php endif; ?>
+            </div>
 
             <!-- Main Menu (Desktop View) -->
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -52,25 +64,29 @@ include 'session_manager.php'; // Adjust the path if necessary
                     <a href="#searchModal" class="text-white me-3" data-bs-toggle="modal">
                         <i class="fas fa-search fa-lg"></i>
                     </a>
-                    <!-- User Icon -->
+                    <!-- User Icon or Login Button -->
                     <div id="userSection">
-                        <!-- This part toggles dynamically -->
-                        <a href="#" id="loginTrigger" class="text-white me-3" data-bs-toggle="modal" data-bs-target="#loginModal">
-                            <i class="fas fa-user fa-lg"></i>
-                        </a>
-                        <div class="dropdown d-none" id="userDropdown">
-                            <button class="btn btn-transparent text-white dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                        <?php if ($isLoggedIn): ?>
+                            <!-- Display User Icon and Dropdown -->
+                            <div class="dropdown">
+                                <button class="btn btn-transparent text-white dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-user fa-lg"></i>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item text-danger" href="Logout.php">Logout</a></li>
+                                </ul>
+                            </div>
+                        <?php else: ?>
+                            <!-- Show Login Button when not logged in -->
+                            <a href="#" id="loginTrigger" class="text-white me-3" data-bs-toggle="modal" data-bs-target="#loginModal">
                                 <i class="fas fa-user fa-lg"></i>
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
-                                <li><a class="dropdown-item" href="AccountSettings.php">Account Settings</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item text-danger" href="Logout.php">Logout</a></li>
-                            </ul>
-                        </div>
+                            </a>
+                        <?php endif; ?>
                     </div>
+
                     <a href="Cart.php" class="text-white">
                         <i class="fas fa-shopping-bag fa-lg"></i>
                     </a>
@@ -155,31 +171,25 @@ include 'session_manager.php'; // Adjust the path if necessary
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form id="loginForm" method="POST" action="login.php">
+                        <!-- Username Input -->
                         <div class="form-group">
                             <i class="fas fa-user"></i>
-                            <input
-                                type="text"
-                                class="form-control"
-                                id="username"
-                                placeholder="Username"
-                                required>
+                            <input type="text" class="form-control" id="username" placeholder="Username" required>
                         </div>
+                        <!-- Password Input -->
                         <div class="form-group">
                             <i class="fas fa-lock"></i>
-                            <input
-                                type="password"
-                                class="form-control"
-                                id="password"
-                                placeholder="Password"
-                                required>
+                            <input type="password" class="form-control" id="password" placeholder="Password" required>
                         </div>
+                        <!-- Buttons -->
                         <div class="d-flex justify-content-between">
                             <button type="submit" class="btn btn-primary">Login</button>
                             <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#signupModal" data-bs-dismiss="modal">Sign Up</button>
                         </div>
                     </form>
                 </div>
+
                 <div class="modal-footer">
                     <div class="forgot-password w-100">
                         <a href="#" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal" data-bs-dismiss="modal">Forgot Password?</a>
@@ -341,7 +351,13 @@ include 'session_manager.php'; // Adjust the path if necessary
                         </div>
 
                         <!-- Add to Cart Button -->
-                        <button class="btn btn-warning btn-lg w-100" id="addToCartBtn" data-product-id="1" onclick="addToCart()">Add to cart</button>
+                        <button class="btn btn-warning btn-lg w-100"
+                            id="addToCartBtn"
+                            data-product-id="<?php echo (int)$product['product_id']; ?>"
+                            onclick="addToCart()">
+                            Add to cart
+                        </button>
+
                     </div>
                 </div>
             </div>
@@ -425,46 +441,86 @@ include 'session_manager.php'; // Adjust the path if necessary
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="http://localhost/TapTek/RZ.js"></script>
     <script src="http://localhost/TapTek/Rating.js"></script>
+    <!-- JavaScript for login handling -->
     <script>
-        function addToCart() {
-            const productId = document.getElementById('addToCartBtn').getAttribute('data-product-id');
-            const quantity = document.getElementById('quantityValue').textContent;
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
 
-            fetch('add_to_cart.php', {
+            // Get user inputs
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Create an object for sending to the backend
+            const loginData = new FormData();
+            loginData.append('username', username);
+            loginData.append('password', password);
+
+            // Make an AJAX request to verify login credentials
+            fetch('login.php', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        productId,
-                        quantity
-                    }),
+                    body: loginData
                 })
-                .then((response) => response.json())
-                .then((data) => {
+                .then(response => response.json())
+                .then(data => {
                     if (data.success) {
-                        alert('Product added to cart successfully!');
+                        // Login successful, redirect or perform necessary actions
+                        window.location.href = 'index.php'; // Example of redirect after successful login
+
                     } else {
-                        alert('Failed to add product to cart.');
+                        // Show error message (optional)
+                        alert('Invalid credentials');
                     }
                 })
-                .catch((error) => {
+                .catch(error => {
                     console.error('Error:', error);
+                    alert('An error occurred. Please try again later.');
                 });
-        }
+        });
     </script>
     <script>
+        // Function to add the product to the cart
+        function addToCart() {
+            // Get product ID and quantity
+            var productId = document.getElementById('addToCartBtn').getAttribute('data-product-id');
+            var quantity = document.getElementById('quantityValue').innerText;
+
+            // Prepare data for the AJAX request
+            var data = {
+                product_id: productId,
+                quantity: quantity
+            };
+
+            // Perform AJAX request to send data to the server
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'add_to_cart.php', true); // Assuming the server-side script is named add_to_cart.php
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    if (response.success) {
+                        alert('Product added to cart successfully!');
+                    } else {
+                        alert('Failed to add product to cart: ' + response.message);
+                    }
+                }
+            };
+
+            // Encode data as URL-encoded string
+            var urlEncodedData = 'product_id=' + encodeURIComponent(data.product_id) +
+                '&quantity=' + encodeURIComponent(data.quantity);
+
+            xhr.send(urlEncodedData);
+        }
+        // Function to update quantity
         function updateQuantity(action) {
-            const quantityValue = document.getElementById('quantityValue');
-            let quantity = parseInt(quantityValue.textContent);
+            var quantityValue = document.getElementById('quantityValue');
+            var currentQuantity = parseInt(quantityValue.innerText);
 
             if (action === 'increase') {
-                quantity += 1;
-            } else if (action === 'decrease' && quantity > 1) {
-                quantity -= 1;
+                quantityValue.innerText = currentQuantity + 1;
+            } else if (action === 'decrease' && currentQuantity > 1) {
+                quantityValue.innerText = currentQuantity - 1;
             }
-
-            quantityValue.textContent = quantity;
         }
     </script>
 </body>

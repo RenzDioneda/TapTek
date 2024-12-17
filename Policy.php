@@ -1,5 +1,9 @@
 <?php
-include 'session_handler.php'; // Adjust the path if necessary
+// Include session handler to start the session and manage session variables
+include 'session_handler.php';
+
+// Check if user is logged in
+$isLoggedIn = isset($_SESSION['user_id']); // Check if user is logged in
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,24 +25,89 @@ include 'session_handler.php'; // Adjust the path if necessary
 
 <body>
 
- <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-black">
-  <div class="container">
-    <!-- Burger Menu (Left-Aligned) -->
-    <button class="navbar-toggler me-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+    <div class="container">
+      <!-- Burger Menu (Left-Aligned) -->
+      <button class="navbar-toggler me-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-    <!-- Logo -->
-    <a class="navbar-brand" href="index.php">
-      <img src="images/Logo.png" alt="Junk Food Logo" class="navbar-logo">
-    </a>
+      <!-- Logo -->
+      <a class="navbar-brand" href="index.php">
+        <img src="images/Logo.png" alt="Junk Food Logo" class="navbar-logo">
+      </a>
 
-    <!-- Main Menu (Desktop View) -->
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav mx-auto">
+      <!-- Simple Login Indicator -->
+      <div class="login-status">
+        <?php if ($isLoggedIn): ?>
+          <span>Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?>! You are logged in.</span>
+        <?php else: ?>
+          <span>You are not logged in.</span>
+        <?php endif; ?>
+      </div>
+
+      <!-- Main Menu (Desktop View) -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+            <a class="nav-link text-white " href="index.php">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="Shop.php">Shop</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="Contact.php">Contact</a>
+          </li>
+        </ul>
+        <div class="d-flex align-items-center">
+          <a href="#searchModal" class="text-white me-3" data-bs-toggle="modal">
+            <i class="fas fa-search fa-lg"></i>
+          </a>
+          <!-- User Icon or Login Button -->
+          <div id="userSection">
+            <?php if ($isLoggedIn): ?>
+              <!-- Display User Icon and Dropdown -->
+              <div class="dropdown">
+                <button class="btn btn-transparent text-white dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="fas fa-user fa-lg"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item text-danger" href="Logout.php">Logout</a></li>
+                </ul>
+              </div>
+            <?php else: ?>
+              <!-- Show Login Button when not logged in -->
+              <a href="#" id="loginTrigger" class="text-white me-3" data-bs-toggle="modal" data-bs-target="#loginModal">
+                <i class="fas fa-user fa-lg"></i>
+              </a>
+            <?php endif; ?>
+          </div>
+
+          <a href="Cart.php" class="text-white">
+            <i class="fas fa-shopping-bag fa-lg"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Offcanvas Menu (Mobile View) -->
+  <div class="offcanvas offcanvas-start bg-black" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
+    <div class="offcanvas-header">
+      <!-- Logo in Offcanvas -->
+      <a class="navbar-brand" href="index.php">
+        <img src="images/Logo.png" alt="Junk Food Logo" class="navbar-logo">
+      </a>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link text-white " href="index.php">Home</a>
+          <a class="nav-link text-white active" href="index.php">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-white" href="Shop.php">Shop</a>
@@ -46,146 +115,88 @@ include 'session_handler.php'; // Adjust the path if necessary
         <li class="nav-item">
           <a class="nav-link text-white" href="Contact.php">Contact</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="Cart.php">Cart</a>
+        </li>
       </ul>
-      <div class="d-flex align-items-center">
-      <a href="#searchModal" class="text-white me-3" data-bs-toggle="modal">
-        <i class="fas fa-search fa-lg"></i>
-      </a>
-        <!-- User Icon -->
-        <div id="userSection">
-          <!-- This part toggles dynamically -->
-          <a href="#" id="loginTrigger" class="text-white me-3" data-bs-toggle="modal" data-bs-target="#loginModal">
-            <i class="fas fa-user fa-lg"></i>
-          </a>
-          <div class="dropdown d-none" id="userDropdown">
-            <button class="btn btn-transparent text-white dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="fas fa-user fa-lg"></i>
-            </button>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
-              <li><a class="dropdown-item" href="AccountSettings.php">Account Settings</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item text-danger" href="Logout.php">Logout</a></li>
-            </ul>
-          </div>
-        </div>
-        <a href="Cart.php" class="text-white">
-          <i class="fas fa-shopping-bag fa-lg"></i>
-        </a>
-      </div>
     </div>
   </div>
-</nav>
 
-<!-- Offcanvas Menu (Mobile View) -->
-<div class="offcanvas offcanvas-start bg-black" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
-  <div class="offcanvas-header">
-    <!-- Logo in Offcanvas -->
-    <a class="navbar-brand" href="index.php">
-      <img src="images/Logo.png" alt="Junk Food Logo" class="navbar-logo">
-    </a>
-    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link text-white active" href="index.php">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link text-white" href="Shop.php">Shop</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link text-white" href="Contact.php">Contact</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link text-white" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link text-white" href="Cart.php">Cart</a>
-      </li>
-    </ul>
-  </div>
-</div>
-
-<!-- Search Modal -->
-<div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="searchModalLabel">Search Products</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <!-- Search Field -->
-        <div class="mb-3">
-          <label for="searchInput" class="form-label">Search</label>
-          <input type="text" class="form-control" id="searchInput" placeholder="Search for products...">
+  <!-- Search Modal -->
+  <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="searchModalLabel">Search Products</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        
-        <!-- Filter By Section -->
-        <div class="mb-3">
-          <label for="filterSelect" class="form-label">Filter By:</label>
-          <select class="form-select" id="filterSelect">
-            <option selected>Choose filter</option>
-            <option value="price-low-high">Price: Low to High</option>
-            <option value="price-high-low">Price: High to Low</option>
-            <option value="compatibility">Compatibility</option>
-            <option value="rating-high-low">Rating: High to Low</option>
-            <option value="rating-low-high">Rating: Low to High</option>
-          </select>
+        <div class="modal-body">
+          <!-- Search Field -->
+          <div class="mb-3">
+            <label for="searchInput" class="form-label">Search</label>
+            <input type="text" class="form-control" id="searchInput" placeholder="Search for products...">
+          </div>
+
+          <!-- Filter By Section -->
+          <div class="mb-3">
+            <label for="filterSelect" class="form-label">Filter By:</label>
+            <select class="form-select" id="filterSelect">
+              <option selected>Choose filter</option>
+              <option value="price-low-high">Price: Low to High</option>
+              <option value="price-high-low">Price: High to Low</option>
+              <option value="compatibility">Compatibility</option>
+              <option value="rating-high-low">Rating: High to Low</option>
+              <option value="rating-low-high">Rating: Low to High</option>
+            </select>
+          </div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" id="searchButton">Search</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<!-- Login Modal -->
-<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="loginModalLabel">Login</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="form-group">
-            <i class="fas fa-user"></i>
-            <input
-              type="text"
-              class="form-control"
-              id="username"
-              placeholder="Username"
-              required>
-          </div>
-          <div class="form-group">
-            <i class="fas fa-lock"></i>
-            <input
-              type="password"
-              class="form-control"
-              id="password"
-              placeholder="Password"
-              required>
-          </div>
-          <div class="d-flex justify-content-between">
-            <button type="submit" class="btn btn-primary">Login</button>
-            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#signupModal" data-bs-dismiss="modal">Sign Up</button>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <div class="forgot-password w-100">
-          <a href="#" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal" data-bs-dismiss="modal">Forgot Password?</a>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="searchButton">Search</button>
         </div>
       </div>
     </div>
   </div>
-</div>
 
+  <!-- Login Modal -->
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="loginModalLabel">Login</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="loginForm" method="POST" action="login.php">
+            <!-- Username Input -->
+            <div class="form-group">
+              <i class="fas fa-user"></i>
+              <input type="text" class="form-control" id="username" placeholder="Username" required>
+            </div>
+            <!-- Password Input -->
+            <div class="form-group">
+              <i class="fas fa-lock"></i>
+              <input type="password" class="form-control" id="password" placeholder="Password" required>
+            </div>
+            <!-- Buttons -->
+            <div class="d-flex justify-content-between">
+              <button type="submit" class="btn btn-primary">Login</button>
+              <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#signupModal" data-bs-dismiss="modal">Sign Up</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="modal-footer">
+          <div class="forgot-password w-100">
+            <a href="#" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal" data-bs-dismiss="modal">Forgot Password?</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Sign-Up Modal -->
   <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
@@ -297,45 +308,82 @@ include 'session_handler.php'; // Adjust the path if necessary
     </div>
   </section>
 
-<!-- Footer -->
-<footer class="footer bg-black text-white">
-  <div class="container py-4">
-    <!-- Section 1: Title -->
-    <div class="text-center mb-3">
-      <h5 class="fw-bold">Shop</h5>
-    </div>
+  <!-- Footer -->
+  <footer class="footer bg-black text-white">
+    <div class="container py-4">
+      <!-- Section 1: Title -->
+      <div class="text-center mb-3">
+        <h5 class="fw-bold">Shop</h5>
+      </div>
 
-    <!-- Section 2: Navigation Links -->
-    <div class="text-center mb-3">
-      <a href="index.php" class="footer-link">Home</a>
-      <a href="Shop.php" class="footer-link">Shop</a>
-      <a href="Policy.php" class="footer-link active">Purchasing Policy</a>
-    </div>
+      <!-- Section 2: Navigation Links -->
+      <div class="text-center mb-3">
+        <a href="index.php" class="footer-link">Home</a>
+        <a href="Shop.php" class="footer-link">Shop</a>
+        <a href="Policy.php" class="footer-link active">Purchasing Policy</a>
+      </div>
 
-    <!-- Section 3: Social Media Icons -->
-    <div class="text-center mb-3">
-      <a href="https://www.facebook.com/renz.dioneda.967806" class="footer-icon"><i class="fab fa-facebook"></i></a>
-      <a href="https://www.facebook.com/lewytaro/" class="footer-icon"><i class="fab fa-facebook"></i></a>
-    </div>
+      <!-- Section 3: Social Media Icons -->
+      <div class="text-center mb-3">
+        <a href="https://www.facebook.com/renz.dioneda.967806" class="footer-icon"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.facebook.com/lewytaro/" class="footer-icon"><i class="fab fa-facebook"></i></a>
+      </div>
 
-    <!-- Section 5: Copyright -->
-    <div class="text-center">
-      <p class="mb-0">
-        &copy; 2024, TapTek Arcade Shop
-      </p>
-    </div>
+      <!-- Section 5: Copyright -->
+      <div class="text-center">
+        <p class="mb-0">
+          &copy; 2024, TapTek Arcade Shop
+        </p>
+      </div>
 
-    <!-- Disclaimer -->
-    <div class="text-center mt-3">
-      <p class="text-light">
-        Disclaimer: This website and all its contents are part of a school project and are for educational purposes only. The products and images used on this site are not for commercial use, and the site does not promote any business activities.
-      </p>
+      <!-- Disclaimer -->
+      <div class="text-center mt-3">
+        <p class="text-light">
+          Disclaimer: This website and all its contents are part of a school project and are for educational purposes only. The products and images used on this site are not for commercial use, and the site does not promote any business activities.
+        </p>
+      </div>
     </div>
-  </div>
-</footer>
+  </footer>
 
   <!-- Bootstrap JS -->
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- JavaScript for login handling -->
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      // Get user inputs
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      // Create an object for sending to the backend
+      const loginData = new FormData();
+      loginData.append('username', username);
+      loginData.append('password', password);
+
+      // Make an AJAX request to verify login credentials
+      fetch('login.php', {
+          method: 'POST',
+          body: loginData
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            // Login successful, redirect or perform necessary actions
+            window.location.href = 'index.php'; // Example of redirect after successful login
+
+          } else {
+            // Show error message (optional)
+            alert('Invalid credentials');
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          alert('An error occurred. Please try again later.');
+        });
+    });
+  </script>
 </body>
+
 </html>

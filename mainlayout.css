@@ -117,3 +117,22 @@ body {
 main {
   flex: 1; 
 }
+
+.login-status {
+  padding: 10px;
+  font-size: 16px;
+  background-color: #f4f4f4;
+  border-radius: 5px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-status span {
+  font-weight: bold;
+}
+
+.login-status span {
+  color: #555;
+}

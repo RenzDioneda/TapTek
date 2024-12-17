@@ -1,5 +1,9 @@
 <?php
-include 'session_handler.php'; // Adjust the path if necessary
+// Include session handler to start the session and manage session variables
+include 'session_handler.php';
+
+// Check if user is logged in
+$isLoggedIn = isset($_SESSION['user_id']); // Check if user is logged in
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,6 +38,15 @@ include 'session_handler.php'; // Adjust the path if necessary
         <img src="images/Logo.png" alt="Junk Food Logo" class="navbar-logo">
       </a>
 
+      <!-- Simple Login Indicator -->
+      <div class="login-status">
+        <?php if ($isLoggedIn): ?>
+          <span>Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?>! You are logged in.</span>
+        <?php else: ?>
+          <span>You are not logged in.</span>
+        <?php endif; ?>
+      </div>
+
       <!-- Main Menu (Desktop View) -->
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mx-auto">
@@ -51,25 +64,29 @@ include 'session_handler.php'; // Adjust the path if necessary
           <a href="#searchModal" class="text-white me-3" data-bs-toggle="modal">
             <i class="fas fa-search fa-lg"></i>
           </a>
-          <!-- User Icon -->
+          <!-- User Icon or Login Button -->
           <div id="userSection">
-            <!-- This part toggles dynamically -->
-            <a href="#" id="loginTrigger" class="text-white me-3" data-bs-toggle="modal" data-bs-target="#loginModal">
-              <i class="fas fa-user fa-lg"></i>
-            </a>
-            <div class="dropdown d-none" id="userDropdown">
-              <button class="btn btn-transparent text-white dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+            <?php if ($isLoggedIn): ?>
+              <!-- Display User Icon and Dropdown -->
+              <div class="dropdown">
+                <button class="btn btn-transparent text-white dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="fas fa-user fa-lg"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item text-danger" href="Logout.php">Logout</a></li>
+                </ul>
+              </div>
+            <?php else: ?>
+              <!-- Show Login Button when not logged in -->
+              <a href="#" id="loginTrigger" class="text-white me-3" data-bs-toggle="modal" data-bs-target="#loginModal">
                 <i class="fas fa-user fa-lg"></i>
-              </button>
-              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
-                <li><a class="dropdown-item" href="AccountSettings.php">Account Settings</a></li>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-                <li><a class="dropdown-item text-danger" href="Logout.php">Logout</a></li>
-              </ul>
-            </div>
+              </a>
+            <?php endif; ?>
           </div>
+
           <a href="Cart.php" class="text-white">
             <i class="fas fa-shopping-bag fa-lg"></i>
           </a>
@@ -154,31 +171,25 @@ include 'session_handler.php'; // Adjust the path if necessary
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form>
+          <form id="loginForm" method="POST" action="login.php">
+            <!-- Username Input -->
             <div class="form-group">
               <i class="fas fa-user"></i>
-              <input
-                type="text"
-                class="form-control"
-                id="username"
-                placeholder="Username"
-                required>
+              <input type="text" class="form-control" id="username" placeholder="Username" required>
             </div>
+            <!-- Password Input -->
             <div class="form-group">
               <i class="fas fa-lock"></i>
-              <input
-                type="password"
-                class="form-control"
-                id="password"
-                placeholder="Password"
-                required>
+              <input type="password" class="form-control" id="password" placeholder="Password" required>
             </div>
+            <!-- Buttons -->
             <div class="d-flex justify-content-between">
               <button type="submit" class="btn btn-primary">Login</button>
               <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#signupModal" data-bs-dismiss="modal">Sign Up</button>
             </div>
           </form>
         </div>
+
         <div class="modal-footer">
           <div class="forgot-password w-100">
             <a href="#" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal" data-bs-dismiss="modal">Forgot Password?</a>
@@ -187,7 +198,6 @@ include 'session_handler.php'; // Adjust the path if necessary
       </div>
     </div>
   </div>
-
 
   <!-- Sign-Up Modal -->
   <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
@@ -308,7 +318,7 @@ include 'session_handler.php'; // Adjust the path if necessary
   // Close the database connection
   $conn->close();
   ?>
-  
+
   <!-- Footer -->
   <footer class="footer bg-black text-white">
     <div class="container py-4">
@@ -341,6 +351,42 @@ include 'session_handler.php'; // Adjust the path if necessary
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- JavaScript for login handling -->
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      // Get user inputs
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      // Create an object for sending to the backend
+      const loginData = new FormData();
+      loginData.append('username', username);
+      loginData.append('password', password);
+
+      // Make an AJAX request to verify login credentials
+      fetch('login.php', {
+          method: 'POST',
+          body: loginData
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            // Login successful, redirect or perform necessary actions
+            window.location.href = 'index.php'; // Example of redirect after successful login
+
+          } else {
+            // Show error message (optional)
+            alert('Invalid credentials');
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          alert('An error occurred. Please try again later.');
+        });
+    });
+  </script>
 </body>
 
 </html>

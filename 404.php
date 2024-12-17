@@ -1,3 +1,15 @@
+<?php
+include 'session_handler.php';
+
+// Ensure user is logged in
+if (isset($_SESSION['user_id'])) {
+    $user_id = (int)$_SESSION['user_id'];
+} else {
+    // Redirect to login or show an error
+    header("Location: login.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
