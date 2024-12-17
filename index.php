@@ -372,7 +372,7 @@ $isLoggedIn = isset($_SESSION['user_id']); // Check if user is logged in
           <img src="images/MicroLite.jpeg" class="card-img-top product-img" alt="Product 1">
           <div class="card-body">
             <h5 class="card-title">Micro Lite</h5>
-            <p class="text-muted"><del>₱3,000.00</del> <span class="fw-bold">₱2,000.00</span></p>
+            <p class="text-muted"><span class="fw-bold">₱2,500.00</span></p>
           </div>
         </div>
       </div>
@@ -382,7 +382,7 @@ $isLoggedIn = isset($_SESSION['user_id']); // Check if user is logged in
           <img src="images/Cosmox.jpg" class="card-img-top product-img" alt="Product 2">
           <div class="card-body">
             <h5 class="card-title">Cosmox</h5>
-            <p class="fw-bold">₱3,000.00</p>
+            <p class="fw-bold">₱5,000.00</p>
           </div>
         </div>
       </div>
@@ -392,7 +392,7 @@ $isLoggedIn = isset($_SESSION['user_id']); // Check if user is logged in
           <img src="images/Skullbox.jpeg" class="card-img-top product-img" alt="Product 3">
           <div class="card-body">
             <h5 class="card-title">Skullbox</h5>
-            <p class="fw-bold">₱3,000.00</p>
+            <p class="fw-bold">₱2,500.00</p>
           </div>
         </div>
       </div>
@@ -402,7 +402,7 @@ $isLoggedIn = isset($_SESSION['user_id']); // Check if user is logged in
           <img src="images/Razer_Kitsunenb.png" class="card-img-top product-img" alt="Product 4">
           <div class="card-body">
             <h5 class="card-title">Razer Kitsune</h5>
-            <p class="text-muted"><del>₱25,000.00</del> <span class="fw-bold">₱18,999.00</span></p>
+            <p class="text-muted"><span class="fw-bold">₱17,000.00</span></p>
           </div>
         </div>
       </div>
