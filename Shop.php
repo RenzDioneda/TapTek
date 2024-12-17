@@ -161,7 +161,6 @@ $isLoggedIn = isset($_SESSION['user_id']); // Check if user is logged in
     </div>
   </div>
 
-
   <!-- Login Modal -->
   <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -171,25 +170,31 @@ $isLoggedIn = isset($_SESSION['user_id']); // Check if user is logged in
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form id="loginForm" method="POST" action="login.php">
-            <!-- Username Input -->
+          <form>
             <div class="form-group">
               <i class="fas fa-user"></i>
-              <input type="text" class="form-control" id="username" placeholder="Username" required>
+              <input
+                type="text"
+                class="form-control"
+                id="username"
+                placeholder="Username"
+                required>
             </div>
-            <!-- Password Input -->
             <div class="form-group">
               <i class="fas fa-lock"></i>
-              <input type="password" class="form-control" id="password" placeholder="Password" required>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                placeholder="Password"
+                required>
             </div>
-            <!-- Buttons -->
             <div class="d-flex justify-content-between">
               <button type="submit" class="btn btn-primary">Login</button>
               <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#signupModal" data-bs-dismiss="modal">Sign Up</button>
             </div>
           </form>
         </div>
-
         <div class="modal-footer">
           <div class="forgot-password w-100">
             <a href="#" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal" data-bs-dismiss="modal">Forgot Password?</a>
@@ -351,7 +356,7 @@ $isLoggedIn = isset($_SESSION['user_id']); // Check if user is logged in
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- JavaScript for login handling -->
+    <!-- JavaScript for login handling -->
   <script>
     document.getElementById('loginForm').addEventListener('submit', function(event) {
       event.preventDefault();
