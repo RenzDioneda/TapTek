@@ -1,3 +1,30 @@
+<?php
+// deleteProduct.php
+if (isset($_GET['id'])) {
+    $productId = $_GET['id'];
+
+    // Database connection
+    require_once '../database.php';
+    $conn = Database::getInstance();
+
+    // Delete query
+    $sql = "DELETE FROM products WHERE product_id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $productId);
+
+    if ($stmt->execute()) {
+        // Redirect to product list page after successful deletion
+        header("Location: Products.php");
+        exit();
+    } else {
+        echo "Error deleting product: " . $conn->error;
+    }
+
+    $stmt->close();
+    $conn->close();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +42,8 @@
   <link rel="stylesheet" href="mainlayout.css">
   <link rel="stylesheet" href="products.css">
 </head>
-</body>
+
+<body>
 <div class="d-flex">
   <!-- Sidebar -->
   <aside class="sidebar p-3 d-flex flex-column" style="height: 100vh;">
@@ -75,92 +103,115 @@
     </div>
   </aside>   
 
-
-
-    <!-- Main Content -->
-    <main class="flex-grow-1 p-4 bg-light">
-      <div class="d-flex justify-content-between align-items-center mb-4">
-        <h1 class="h3 text-primary">Products</h1>
-        <div class="d-flex align-items-center">
+  <!-- Main Content -->
+  <main class="flex-grow-1 p-4 bg-light">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h1 class="h3 text-primary">Products</h1>
+      <div class="d-flex align-items-center">
         <a href="AddProduct.php">
-  <button class="btn btn-primary-custom me-2">+ Add Product</button>
-</a>
-          <button class="btn btn-outline-secondary me-2">
-            <i class="bi bi-filter"></i> Filter
-          </button>
-          <button class="btn btn-outline-secondary">
-            <i class="bi bi-eye"></i> See All
-          </button>
-        </div>
+          <button class="btn btn-primary-custom me-2">+ Add Product</button>
+        </a>
+        <button class="btn btn-outline-secondary me-2">
+          <i class="bi bi-filter"></i> Filter
+        </button>
+        <button class="btn btn-outline-secondary">
+          <i class="bi bi-eye"></i> See All
+        </button>
       </div>
+    </div>
 
-      <!-- Search Bar -->
-            <div class="mb-4 d-flex justify-content-end"> <!-- Added flex and justify-content-end -->
-        <div class="input-group w-25"> 
-          <input type="text" class="form-control" placeholder="Search products...">
-          <button class="btn btn-outline-secondary" type="button">Search</button>
-        </div>
+    <!-- Search Bar -->
+    <div class="mb-4 d-flex justify-content-end">
+      <div class="input-group w-25">
+        <input type="text" class="form-control" placeholder="Search products...">
+        <button class="btn btn-outline-secondary" type="button">Search</button>
       </div>
-      <!-- Table -->
-      <div class="table-responsive">
-        <table class="table">
-          <thead class="table-header">
-            <tr>
-              <th>Product Name</th>
-              <th>Category</th>
-              <th>Price</th>
-              <th>Stock</th>
-              <th>Status</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <div class="d-flex align-items-center">
-                  <img src="../images/Hitboxnb.png" alt="Hitbox" class="rounded me-2" style="width: 40px; height: 40px;">
-                  Hitbox
-                </div>
-              </td>
-              <td>PC (Windows)</td>
-              <td>₱10,000.00</td>
-              <td>79</td>
-              <td><span class="text-primary">Scheduled</span></td>
-              <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editProductModal">Edit Product</button>
-            </tr>
-            <tr>
-              <td>
-                <div class="d-flex align-items-center">
-                  <img src="../images/FTGT16nb.png" alt="FTG16" class="rounded me-2" style="width: 40px; height: 40px;">
-                  FTG16
-                </div>
-              </td>
-              <td>FTG16</td>
-              <td>₱5,000.00</td>
-              <td>86</td>
-              <td><span class="text-success">Active</span></td>
-              <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editProductModal">Edit Product</button>
-            </tr>
-            <!-- Repeat rows as needed -->
-          </tbody>
-        </table>
-      </div>
+    </div>
 
-      <!-- Pagination -->
-      <nav>
-        <ul class="pagination justify-content-between">
-          <li class="page-item">
-            <button class="btn pagination-btn">Previous</button>
-          </li>
-          <li class="page-item">
-            <button class="btn pagination-btn">Next</button>
-          </li>
-        </ul>
-      </nav>
-    </main>
+<!-- Table -->
+<div class="table-responsive">
+  <table class="table">
+    <thead class="table-header">
+      <tr>
+        <th>Product Image</th>
+        <th>Product Name</th>
+        <th>Price</th>
+        <th>Stock</th>
+        <th>Color</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php
+      // Include database connection
+      require_once '../database.php';
+      $conn = Database::getInstance();
+
+      // Fetch all products from the database
+      $result = $conn->query("SELECT * FROM products");
+
+      // Check if there are any products
+      if ($result->num_rows > 0) {
+          while ($product = $result->fetch_assoc()) {
+              // Get product data
+              $productId = $product['product_id'];
+              $productName = $product['product_name'];
+              $price = $product['price'];
+              $stock = $product['stock'];
+              $color = $product['color'];
+              $imageUrl = $product['image_url'];
+
+              // Display product row
+              echo "
+              <tr>
+                <td>
+                  <div class='d-flex align-items-center'>
+<img src='https://raw.githubusercontent.com/RenzDioneda/TapTek/main/productImages/$imageUrl' alt='$productName' class='rounded me-2' style='width: 50px; height: 50px; object-fit: contain;'>
+                  </div>
+                </td>
+                <td>$productName</td>
+                <td>₱$price</td>
+                <td>$stock</td>
+                <td>$color</td>
+                <td>
+                  <button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#editProductModal' 
+                  data-id='$productId' 
+                  data-name='$productName' 
+                  data-price='$price' 
+                  data-stock='$stock' 
+                  data-color='$color' 
+                  data-image='$imageUrl'>
+                    Edit Product
+                  </button>
+                </td>
+              </tr>";
+          }
+      } else {
+          echo "<tr><td colspan='6'>No products found</td></tr>";
+      }
+
+      // Close database connection
+      $conn->close();
+      ?>
+    </tbody>
+  </table>
 </div>
 
-    <!-- Edit Product Modal -->
+    <!-- Pagination -->
+    <nav>
+      <ul class="pagination justify-content-between">
+        <li class="page-item">
+          <button class="btn pagination-btn">Previous</button>
+        </li>
+        <li class="page-item">
+          <button class="btn pagination-btn">Next</button>
+        </li>
+      </ul>
+    </nav>
+  </main>
+</div>
+
+<!-- Edit Product Modal -->
 <div class="modal fade" id="editProductModal" tabindex="-1" aria-labelledby="editProductModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
@@ -170,28 +221,30 @@
       </div>
       <div class="modal-body">
         <div class="container">
-          <form>
+          <form method="POST" action="updateProduct.php">
+            <input type="hidden" id="productId" name="productId">
+
             <!-- General Information -->
             <div class="row mb-4">
               <div class="col-md-6">
                 <h5 class="section-title">General Information</h5>
                 <div class="mb-3">
                   <label for="productName" class="form-label">Name Product</label>
-                  <input type="text" class="form-control" id="productName" placeholder="Enter product name">
+                  <input type="text" class="form-control" id="productName" name="productName" placeholder="Enter product name">
                 </div>
                 <div class="mb-3">
                   <label for="productDescription" class="form-label">Description Product</label>
-                  <textarea class="form-control" id="productDescription" rows="4" placeholder="Enter product description"></textarea>
+                  <textarea class="form-control" id="productDescription" name="productDescription" rows="4" placeholder="Enter product description"></textarea>
                 </div>
                 <div class="mb-3">
                   <label class="form-label">Color</label>
                   <div class="button-group">
-                    <button type="button" class="btn btn-outline-secondary btn-sm">Black</button>
-                    <button type="button" class="btn btn-outline-secondary btn-sm">White</button>
-                    <button type="button" class="btn btn-outline-secondary btn-sm">Violet</button>
-                    <button type="button" class="btn btn-outline-secondary btn-sm">Blue</button>
-                    <button type="button" class="btn btn-outline-secondary btn-sm">Pink</button>
-                    <button type="button" class="btn btn-outline-secondary btn-sm">Red</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm" id="colorBlack">Black</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm" id="colorWhite">White</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm" id="colorViolet">Violet</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm" id="colorBlue">Blue</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm" id="colorPink">Pink</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm" id="colorRed">Red</button>
                   </div>
                 </div>
               </div>
@@ -200,11 +253,9 @@
               <div class="col-md-6">
                 <h5 class="section-title">Upload Image</h5>
                 <div class="image-upload mb-3">
-                  <img src="https://via.placeholder.com/120" alt="Preview">
-                  <img src="https://via.placeholder.com/120" alt="Preview">
-                  <img src="https://via.placeholder.com/120" alt="Preview">
+                  <img id="productImagePreview" src="https://via.placeholder.com/120" alt="Preview">
                   <div class="add-image">+</div>
-                  <input type="file">
+                  <input type="file" id="productImageInput" name="productImage" accept="image/*">
                 </div>
               </div>
             </div>
@@ -215,18 +266,18 @@
                 <h5 class="section-title">Pricing and Stock</h5>
                 <div class="mb-3">
                   <label for="basePrice" class="form-label">Base Pricing</label>
-                  <input type="number" class="form-control" id="basePrice" placeholder="₱">
+                  <input type="number" class="form-control" id="basePrice" name="basePrice" placeholder="₱">
                 </div>
                 <div class="mb-3">
                   <label for="stock" class="form-label">Stock</label>
-                  <input type="number" class="form-control" id="stock" placeholder="Enter stock quantity">
+                  <input type="number" class="form-control" id="stock" name="stock" placeholder="Enter stock quantity">
                 </div>
               </div>
               <div class="col-md-6">
                 <h5 class="section-title">Category</h5>
                 <div class="mb-3">
                   <label for="category" class="form-label">Product Category</label>
-                  <select class="form-select" id="category">
+                  <select class="form-select" id="category" name="category">
                     <option value="1">PC (Windows)</option>
                     <option value="2">PS5</option>
                     <option value="3">Switch</option>
@@ -238,8 +289,8 @@
 
             <!-- Action Buttons -->
             <div class="d-flex justify-content-between">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Save Draft</button>
               <button type="submit" class="btn btn-primary">Save Changes</button>
+              <button type="button" class="btn btn-danger" id="deleteProductButton">Delete Product</button>
             </div>
           </form>
         </div>
@@ -248,10 +299,42 @@
   </div>
 </div>
 
+<!-- Bootstrap JS -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Bootstrap JS -->
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Populate the modal fields with product details when the Edit button is clicked
+  const editProductButtons = document.querySelectorAll('[data-bs-toggle="modal"]');
+  editProductButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const productId = button.getAttribute('data-id');
+      const productName = button.getAttribute('data-name');
+      const productDescription = button.getAttribute('data-description');
+      const productPrice = button.getAttribute('data-price');
+      const productStock = button.getAttribute('data-stock');
+      const productColor = button.getAttribute('data-color');
+      const productImage = button.getAttribute('data-image');
+      
+      document.getElementById('productId').value = productId;
+      document.getElementById('productName').value = productName;
+      document.getElementById('productDescription').value = productDescription;
+      document.getElementById('basePrice').value = productPrice;
+      document.getElementById('stock').value = productStock;
+      document.getElementById('productImagePreview').src = `../productImages/${productImage}`;
+      // Set the color button based on the selected color
+      document.getElementById(`color${productColor}`).classList.add('btn-primary');
+    });
+  });
+
+  // Delete product functionality
+  document.getElementById('deleteProductButton').addEventListener('click', () => {
+    const productId = document.getElementById('productId').value;
+    if (confirm('Are you sure you want to delete this product?')) {
+      window.location.href = `Products.php?id=${productId}`;
+    }
+  });
+</script>
+
 </body>
-
 </html>
