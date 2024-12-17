@@ -299,12 +299,12 @@ $isLoggedIn = isset($_SESSION['user_id']); // Check if user is logged in
                     <div class="product-images">
                         <!-- Main Image -->
                         <div class="main-image mb-3">
-                            <img id="mainImage" src="itemImages/<?php echo htmlspecialchars($product['image_url']); ?>" alt="Main Product Image" class="img-fluid rounded">
+                            <img id="mainImage" src="productImages/<?php echo htmlspecialchars($product['image_url']); ?>" alt="Main Product Image" class="img-fluid rounded">
                         </div>
 
                         <!-- Thumbnail Images -->
                         <div class="thumbnail-images">
-                            <img src="itemImages/<?php echo htmlspecialchars($product['image_url']); ?>" alt="Thumbnail 1" onclick="changeMainImage(this)">
+                            <img src="productImages/<?php echo htmlspecialchars($product['image_url']); ?>" alt="Thumbnail 1" onclick="changeMainImage(this)">
                             <!-- Add more thumbnails if available -->
                         </div>
                     </div>
