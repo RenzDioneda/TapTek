@@ -30,7 +30,7 @@ include 'session_handler.php'; // Adjust the path if necessary
       </button>
 
       <!-- Logo -->
-      <a class="navbar-brand" href="Home.php">
+      <a class="navbar-brand" href="index.php">
         <img src="images/Logo.png" alt="Junk Food Logo" class="navbar-logo">
       </a>
 
@@ -38,7 +38,7 @@ include 'session_handler.php'; // Adjust the path if necessary
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mx-auto">
           <li class="nav-item">
-            <a class="nav-link text-white " href="Home.php">Home</a>
+            <a class="nav-link text-white " href="index.php">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-white active" href="Shop.php">Shop</a>
@@ -82,7 +82,7 @@ include 'session_handler.php'; // Adjust the path if necessary
   <div class="offcanvas offcanvas-start bg-black" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
     <div class="offcanvas-header">
       <!-- Logo in Offcanvas -->
-      <a class="navbar-brand" href="Home.php">
+      <a class="navbar-brand" href="index.php">
         <img src="images/Logo.png" alt="Junk Food Logo" class="navbar-logo">
       </a>
       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -90,7 +90,7 @@ include 'session_handler.php'; // Adjust the path if necessary
     <div class="offcanvas-body">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link text-white active" href="Home.php">Home</a>
+          <a class="nav-link text-white active" href="index.php">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-white" href="Shop.php">Shop</a>
@@ -319,7 +319,7 @@ include 'session_handler.php'; // Adjust the path if necessary
 
       <!-- Section 2: Navigation Links -->
       <div class="text-center mb-3">
-        <a href="Home.php" class="footer-link">Home</a>
+        <a href="index.php" class="footer-link">Home</a>
         <a href="Shop.php" class="footer-link">Shop</a>
         <a href="Policy.php" class="footer-link">Purchasing Policy</a>
       </div>

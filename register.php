@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (mysqli_num_rows($result) > 0) {
         // Username or email already exists
         echo "<script>
-                window.location.href = 'home.php';
+                window.location.href = 'index.php';
                 alert('Username or email already exists. Please try again.');
               </script>";
     } else {
@@ -30,13 +30,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (mysqli_query($conn, $insert_query)) {
             // Redirect to the login modal or success page
             echo "<script>
-                    window.location.href = 'home.php';
+                    window.location.href = 'index.php';
                     alert('Sign-up successful! You can now log in.');
                   </script>";
         } else {
             // Handle database insertion error
             echo "<script>
-                    window.location.href = 'home.php';
+                    window.location.href = 'index.php';
                     alert('Error: Could not complete the sign-up process. Please try again.');
                   </script>";
         }
