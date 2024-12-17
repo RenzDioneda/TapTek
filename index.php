@@ -399,7 +399,7 @@ $isLoggedIn = isset($_SESSION['user_id']); // Check if user is logged in
       <!-- Product Card 4 -->
       <div class="col-md-3">
         <div class="card product-card">
-          <img src="images/Razer Kitsune.JPG" class="card-img-top product-img" alt="Product 4">
+          <img src="images/Razer_Kitsunenb.png" class="card-img-top product-img" alt="Product 4">
           <div class="card-body">
             <h5 class="card-title">Razer Kitsune</h5>
             <p class="text-muted"><del>₱25,000.00</del> <span class="fw-bold">₱18,999.00</span></p>
