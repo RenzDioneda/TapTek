@@ -260,20 +260,29 @@ $isLoggedIn = isset($_SESSION['user_id']); // Check if user is logged in
   </div>
 
   <?php
-  // Include database connection
   require_once 'database.php';
 
-  // Fetch cart items for the user
+  // Connect to the database
   $conn = Database::getInstance();
-  $query = "
-    SELECT c.cart_id, p.product_name, p.price, p.image_url, p.color, c.quantity 
-    FROM cart AS c
-    JOIN products AS p ON c.product_id = p.product_id
-    WHERE c.user_id = ?";
-  $stmt = $conn->prepare($query);
-  $stmt->bind_param('i', $user_id);
-  $stmt->execute();
-  $result = $stmt->get_result();
+
+  // Check if user is logged in
+  if (!isset($_SESSION['user_id'])) {
+    $isLoggedIn = false;
+  } else {
+    $isLoggedIn = true;
+    $user_id = $_SESSION['user_id'];
+
+    // Fetch cart items for the user
+    $query = "
+        SELECT c.cart_id, p.product_name, p.price, p.image_url, p.color, c.quantity 
+        FROM cart AS c
+        JOIN products AS p ON c.product_id = p.product_id
+        WHERE c.user_id = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param('i', $user_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+  }
   ?>
 
   <!-- Cart Section -->
@@ -285,34 +294,46 @@ $isLoggedIn = isset($_SESSION['user_id']); // Check if user is logged in
         <div class="col-lg-8">
           <?php
           $totalAmount = 0;
-          while ($row = $result->fetch_assoc()):
-            $itemTotal = $row['price'] * $row['quantity'];
-            $totalAmount += $itemTotal;
-          ?>
-            <div class="cart-item d-flex align-items-center justify-content-between mb-3 p-3 border rounded">
-              <div class="d-flex align-items-center">
-                <input type="checkbox" class="form-check-input me-3">
-                <img src="itemImages/<?php echo htmlspecialchars($row['image_url']); ?>" alt="Product Image" class="rounded me-3" width="80">
-                <div>
-                  <p class="product-name fw-bold mb-1"><?php echo htmlspecialchars($row['product_name']); ?></p>
-                  <p class="product-info text-muted mb-1"><?php echo htmlspecialchars($row['color']); ?></p>
-                  <p class="product-price fw-bold">₱<?php echo number_format($row['price'], 2); ?></p>
-                </div>
-              </div>
-              <div class="quantity-control d-flex align-items-center">
-                <button class="btn btn-outline-secondary btn-sm" onclick="updateCartQuantity(<?php echo $row['cart_id']; ?>, 'decrease')">−</button>
-                <span class="mx-2"><?php echo (int)$row['quantity']; ?></span>
-                <button class="btn btn-outline-secondary btn-sm" onclick="updateCartQuantity(<?php echo $row['cart_id']; ?>, 'increase')">+</button>
-              </div>
-              <button class="btn btn-link text-danger text-decoration-none" onclick="removeFromCart(<?php echo $row['cart_id']; ?>)">×</button>
+          if (!$isLoggedIn): ?>
+            <div class="text-center text-danger">
+              <p>Please log in to view your cart.</p>
             </div>
-          <?php endwhile; ?>
+            <?php
+          elseif ($result->num_rows > 0):
+            while ($row = $result->fetch_assoc()):
+              $itemTotal = $row['price'] * $row['quantity'];
+              $totalAmount += $itemTotal;
+            ?>
+              <div class="cart-item d-flex align-items-center justify-content-between mb-3 p-3 border rounded">
+                <div class="d-flex align-items-center">
+                  <input type="checkbox" class="form-check-input me-3">
+                  <img src="productImages/<?php echo htmlspecialchars($row['image_url']); ?>" alt="Product Image" class="rounded me-3" width="80">
+                  <div>
+                    <p class="product-name fw-bold mb-1"><?php echo htmlspecialchars($row['product_name']); ?></p>
+                    <p class="product-info text-muted mb-1"><?php echo htmlspecialchars($row['color']); ?></p>
+                    <p class="product-price fw-bold">₱<?php echo number_format($row['price'], 2); ?></p>
+                  </div>
+                </div>
+                <div class="quantity-control d-flex align-items-center">
+                  <button class="btn btn-outline-secondary btn-sm" onclick="updateCartQuantity(<?php echo $row['cart_id']; ?>, 'decrease')">−</button>
+                  <span class="mx-2"><?php echo (int)$row['quantity']; ?></span>
+                  <button class="btn btn-outline-secondary btn-sm" onclick="updateCartQuantity(<?php echo $row['cart_id']; ?>, 'increase')">+</button>
+                </div>
+                <button class="btn btn-link text-danger text-decoration-none" onclick="removeFromCart(<?php echo $row['cart_id']; ?>)">×</button>
+              </div>
+            <?php
+            endwhile;
+          else: ?>
+            <div class="text-center">
+              <p>Your cart is empty.</p>
+            </div>
+          <?php endif; ?>
         </div>
 
         <!-- Right Section: Summary -->
         <div class="col-lg-4">
           <div class="summary-section p-4 border rounded">
-            <h4 class="fw-bold mb-3">ORDER SUMMARY</h4>
+            <h4 class="fw-bold mb-3">CART SUMMARY</h4>
             <p class="d-flex justify-content-between">
               <span>Subtotal</span>
               <span>₱<?php echo number_format($totalAmount, 2); ?></span>
@@ -326,12 +347,23 @@ $isLoggedIn = isset($_SESSION['user_id']); // Check if user is logged in
               <span>Total Amount</span>
               <span>₱<?php echo number_format($totalAmount, 2); ?></span>
             </p>
-            <button class="btn btn-primary w-100 mt-3">Checkout</button>
+            <?php if ($isLoggedIn && $result->num_rows > 0): ?>
+              <form action="checkout.php" method="POST">
+                <button type="submit" class="btn btn-primary w-100 mt-3">Checkout</button>
+              </form>
+            <?php endif; ?>
           </div>
         </div>
       </div>
     </div>
   </section>
+
+  <?php
+  // Close the database connection
+  if ($isLoggedIn) {
+    $conn->close();
+  }
+  ?>
 
   <script>
     function updateCartQuantity(cartId, action) {

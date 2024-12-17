@@ -91,10 +91,25 @@ $isLoggedIn = isset($_SESSION['user_id']); // Check if user is logged in
           <a href="Cart.php" class="text-white">
             <i class="fas fa-shopping-bag fa-lg"></i>
           </a>
+
+          <!-- Hidden Button for Admin -->
+          <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'Admin'): ?>
+            <button id="adminDashboardButton" class="btn btn-danger ms-3" style="display: none;" onclick="window.location.href='AdminSide/Dashboard.php'">
+              Admin Dashboard
+            </button>
+          <?php endif; ?>
         </div>
       </div>
     </div>
   </nav>
+
+  <!-- Script to show the hidden button -->
+  <script>
+    // Make the hidden button visible if the user is an Admin
+    <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'Admin'): ?>
+      document.getElementById('adminDashboardButton').style.display = 'block';
+    <?php endif; ?>
+  </script>
 
   <!-- Offcanvas Menu (Mobile View) -->
   <div class="offcanvas offcanvas-start bg-black" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">

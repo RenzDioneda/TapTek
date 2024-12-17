@@ -1,29 +1,29 @@
-// Handle the login form submission
-document.getElementById('loginForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent default form submission
+// login.js
+document.getElementById('loginForm').addEventListener('submit', function(e) {
+    e.preventDefault(); // Prevent form from submitting the traditional way
 
-    var username = document.getElementById('username').value;
-    var password = document.getElementById('password').value;
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
 
-    var formData = new FormData();
-    formData.append('username', username);
-    formData.append('password', password);
-
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'login.php', true);
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            var response = JSON.parse(xhr.responseText);
-
-            if (response.success) {
-                // Successful login
-                document.getElementById('loginStatus').innerHTML = 'Welcome, ' + response.username + '! You are logged in.';
-                document.getElementById('loginForm').style.display = 'none'; // Optionally hide the login form
-            } else {
-                // Display error message
-                alert(response.message);
-            }
+    fetch('login.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: new URLSearchParams({
+            username: username,
+            password: password
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            window.location.href = data.redirect; // Redirect to the appropriate page
+        } else {
+            alert(data.message); // Show error message
         }
-    };
-    xhr.send(formData);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
 });

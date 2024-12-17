@@ -259,51 +259,51 @@ $isLoggedIn = isset($_SESSION['user_id']); // Check if user is logged in
     </div>
   </div>
 
-<!-- Main Body -->
-<div class="container py-5">
-  <div class="row">
-    <div class="col-lg-8">
-      <h3 class="mb-4 text-primary">Checkout</h3>
+  <!-- Main Body -->
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-lg-8">
+        <h3 class="mb-4 text-primary">Checkout</h3>
 
-      <!-- Checkout Form -->
-      <form action="checkout_process.php" method="POST">
-        <!-- Personal Information -->
-        <div class="mb-4">
-          <h5 class="text-dark">Personal Information</h5>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="firstName" class="text-dark">First Name</label>
-                <input type="text" class="form-control" id="firstName" name="first_name" required>
+        <!-- Checkout Form -->
+        <form action="checkout_process.php" method="POST">
+          <!-- Personal Information -->
+          <div class="mb-4">
+            <h5 class="text-dark">Personal Information</h5>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="firstName" class="text-dark">First Name</label>
+                  <input type="text" class="form-control" id="firstName" name="first_name" required>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="lastName" class="text-dark">Last Name</label>
+                  <input type="text" class="form-control" id="lastName" name="last_name" required>
+                </div>
               </div>
             </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="lastName" class="text-dark">Last Name</label>
-                <input type="text" class="form-control" id="lastName" name="last_name" required>
-              </div>
+          </div>
+
+          <!-- Shipping Address -->
+          <div class="mb-4">
+            <h5 class="text-dark">Shipping Address</h5>
+            <div class="form-group">
+              <label for="address" class="text-dark">Address</label>
+              <input type="text" class="form-control" id="address" name="address" required>
+            </div>
+            <div class="form-group">
+              <label for="city" class="text-dark">City</label>
+              <input type="text" class="form-control" id="city" name="city" required>
+            </div>
+            <div class="form-group">
+              <label for="zipcode" class="text-dark">Zip Code</label>
+              <input type="text" class="form-control" id="zipcode" name="zipcode" required>
             </div>
           </div>
-        </div>
 
-        <!-- Shipping Address -->
-        <div class="mb-4">
-          <h5 class="text-dark">Shipping Address</h5>
-          <div class="form-group">
-            <label for="address" class="text-dark">Address</label>
-            <input type="text" class="form-control" id="address" name="address" required>
-          </div>
-          <div class="form-group">
-            <label for="city" class="text-dark">City</label>
-            <input type="text" class="form-control" id="city" name="city" required>
-          </div>
-          <div class="form-group">
-            <label for="zipcode" class="text-dark">Zip Code</label>
-            <input type="text" class="form-control" id="zipcode" name="zipcode" required>
-          </div>
-        </div>
-
-        <!-- Payment Method 
+        <!-- Payment Method --> 
         <div class="mb-4">
           <h5 class="text-dark">Payment Method</h5>
           <div class="form-group">
@@ -320,92 +320,127 @@ $isLoggedIn = isset($_SESSION['user_id']); // Check if user is logged in
           </div>
         </div>
 
-         Terms and Conditions 
+        <!-- Terms and Conditions -->
         <div class="form-group mb-4">
           <div class="form-check">
             <input type="checkbox" class="form-check-input" id="termsCheck" name="terms" required>
             <label class="form-check-label text-dark" for="termsCheck">I agree to the Terms and Conditions</label>
           </div>
-        </div> -->
+        </div>
 
-        <button type="submit" class="btn btn-primary w-100" style="background-color: #FF6500;">Complete Checkout</button>
-      </form>
-    </div>
+          <button type="submit" class="btn btn-primary w-100" style="background-color: #FF6500;">Complete Checkout</button>
+        </form>
+      </div>
 
-    <div class="col-lg-4">
-      <h3 class="mb-4 text-primary">Order Summary</h3>
+      <?php
+      require_once 'database.php';
 
-      <!-- Order Summary -->
-      <div class="card" style="border: 1px solid #1E3E62;">
-        <div class="card-body">
-          <ul class="list-unstyled">
-            <li class="d-flex justify-content-between">
-              <span>Product 1</span>
-              <span>$25.00</span>
-            </li>
-            <li class="d-flex justify-content-between">
-              <span>Product 2</span>
-              <span>$15.00</span>
-            </li>
-            <li class="d-flex justify-content-between">
-              <span>Product 3</span>
-              <span>$10.00</span>
-            </li>
-          </ul>
-          <hr>
-          <div class="d-flex justify-content-between">
-            <h5 class="text-dark">Total</h5>
-            <h5 class="text-dark">$50.00</h5>
+      // Check if user is logged in
+      if (!isset($_SESSION['user_id'])) {
+        $isLoggedIn = false;
+      } else {
+        $isLoggedIn = true;
+        $user_id = $_SESSION['user_id'];
+
+        $conn = Database::getInstance();
+
+        // Fetch cart items for the user
+        $query = "
+        SELECT c.cart_id, p.product_name, p.price, c.quantity
+        FROM cart AS c
+        JOIN products AS p ON c.product_id = p.product_id
+        WHERE c.user_id = ?";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param('i', $user_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+      }
+      ?>
+
+      <div class="col-lg-4">
+        <h3 class="mb-4 text-primary">Order Summary</h3>
+        <!-- Order Summary -->
+        <div class="card" style="border: 1px solid #1E3E62;">
+          <div class="card-body">
+            <ul class="list-unstyled">
+              <?php
+              $totalAmount = 0;
+              if ($isLoggedIn && $result->num_rows > 0) :
+                while ($row = $result->fetch_assoc()) :
+                  $itemTotal = $row['price'] * $row['quantity'];
+                  $totalAmount += $itemTotal;
+              ?>
+                  <li class="d-flex justify-content-between">
+                    <span><?php echo htmlspecialchars($row['product_name']); ?></span>
+                    <span>$<?php echo number_format($row['price'], 2); ?> x <?php echo (int)$row['quantity']; ?></span>
+                  </li>
+                <?php
+                endwhile;
+              else :
+                ?>
+                <li class="d-flex justify-content-between">
+                  <span>Your cart is empty.</span>
+                  <span>-</span>
+                </li>
+              <?php endif; ?>
+            </ul>
+            <hr>
+            <div class="d-flex justify-content-between">
+              <h5 class="text-dark">Total</h5>
+              <h5 class="text-dark">$<?php echo number_format($totalAmount, 2); ?></h5>
+            </div>
           </div>
         </div>
       </div>
 
-    </div>
-  </div>
-</div>
+      <?php
+      // Close the database connection
+      if ($isLoggedIn) {
+        $conn->close();
+      }
+      ?>
 
+      <!-- Footer -->
+      <footer class="footer bg-black text-white">
+        <div class="container py-4">
+          <!-- Section 1: Title -->
+          <div class="text-center mb-3">
+            <h5 class="fw-bold">Shop</h5>
+          </div>
 
-  <!-- Footer -->
-  <footer class="footer bg-black text-white">
-    <div class="container py-4">
-      <!-- Section 1: Title -->
-      <div class="text-center mb-3">
-        <h5 class="fw-bold">Shop</h5>
-      </div>
+          <!-- Section 2: Navigation Links -->
+          <div class="text-center mb-3">
+            <a href="index.php" class="footer-link">Home</a>
+            <a href="Shop.php" class="footer-link">Shop</a>
+            <a href="Policy.php" class="footer-link">Purchasing Policy</a>
+          </div>
 
-      <!-- Section 2: Navigation Links -->
-      <div class="text-center mb-3">
-        <a href="index.php" class="footer-link">Home</a>
-        <a href="Shop.php" class="footer-link">Shop</a>
-        <a href="Policy.php" class="footer-link">Purchasing Policy</a>
-      </div>
+          <!-- Section 3: Social Media Icons -->
+          <div class="text-center mb-3">
+            <a href="https://www.facebook.com/renz.dioneda.967806" class="footer-icon"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.facebook.com/lewytaro/" class="footer-icon"><i class="fab fa-facebook"></i></a>
+          </div>
 
-      <!-- Section 3: Social Media Icons -->
-      <div class="text-center mb-3">
-        <a href="https://www.facebook.com/renz.dioneda.967806" class="footer-icon"><i class="fab fa-facebook"></i></a>
-        <a href="https://www.facebook.com/lewytaro/" class="footer-icon"><i class="fab fa-facebook"></i></a>
-      </div>
+          <!-- Section 5: Copyright -->
+          <div class="text-center">
+            <p class="mb-0">
+              &copy; 2024, TapTek Arcade Shop
+            </p>
+          </div>
 
-      <!-- Section 5: Copyright -->
-      <div class="text-center">
-        <p class="mb-0">
-          &copy; 2024, TapTek Arcade Shop
-        </p>
-      </div>
+          <!-- Disclaimer -->
+          <div class="text-center mt-3">
+            <p class="text-light">
+              Disclaimer: This website and all its contents are part of a school project and are for educational purposes only. The products and images used on this site are not for commercial use, and the site does not promote any business activities.
+            </p>
+          </div>
+        </div>
+      </footer>
 
-      <!-- Disclaimer -->
-      <div class="text-center mt-3">
-        <p class="text-light">
-          Disclaimer: This website and all its contents are part of a school project and are for educational purposes only. The products and images used on this site are not for commercial use, and the site does not promote any business activities.
-        </p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Bootstrap JS -->
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://localhost/webSys/Cart.js"></script>
+      <!-- Bootstrap JS -->
+      <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+      <script src="https://localhost/webSys/Cart.js"></script>
 </body>
 
 </html>
