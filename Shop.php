@@ -280,7 +280,7 @@ include 'session_handler.php'; // Adjust the path if necessary
             <a href="product_details.php?product_id=<?php echo $row['product_id']; ?>" class="text-decoration-none text-dark">
               <div class="product-card">
                 <!-- Product Image -->
-                <img src="itemImages/<?php echo htmlspecialchars($row['image_url']); ?>"
+                <img src="productImages/<?php echo htmlspecialchars($row['image_url']); ?>"
                   alt="<?php echo htmlspecialchars($row['product_name']); ?>"
                   class="img-fluid"
                   style="max-height: 150px; object-fit: cover;">
