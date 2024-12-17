@@ -1,6 +1,6 @@
 <?php
 include 'session_handler.php'; // Adjust the path if necessary
-?>s
+?>
 <!DOCTYPE html>
 <html lang="en">
 
