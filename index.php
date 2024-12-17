@@ -77,7 +77,7 @@ $isLoggedIn = isset($_SESSION['user_id']); // Check if user is logged in
                   <li>
                     <hr class="dropdown-divider">
                   </li>
-                  <li><a class="dropdown-item text-danger" href="Logout.php">Logout</a></li>
+                  <li><a class="dropdown-item text-danger" href="logout.php">Logout</a></li>
                 </ul>
               </div>
             <?php else: ?>
