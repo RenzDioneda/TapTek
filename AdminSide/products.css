@@ -113,3 +113,9 @@ body {
 .LognMain .btn:active {
   transform: scale(0.98);
 }
+
+#productImagePreview {
+  width: 100px;
+  height: 100px;
+  object-fit: cover; /* Ensures the image fits within the 100x100 box */
+}

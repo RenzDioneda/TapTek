@@ -1,5 +1,5 @@
 <?php
-// deleteProduct.php
+
 if (isset($_GET['id'])) {
     $productId = $_GET['id'];
 
@@ -19,6 +19,8 @@ if (isset($_GET['id'])) {
     } else {
         echo "Error deleting product: " . $conn->error;
     }
+
+    
 
     $stmt->close();
     $conn->close();
@@ -45,63 +47,55 @@ if (isset($_GET['id'])) {
 
 <body>
 <div class="d-flex">
-  <!-- Sidebar -->
-  <aside class="sidebar p-3 d-flex flex-column" style="height: 100vh;">
+ <!-- Sidebar -->
+ <aside class="sidebar p-3 d-flex flex-column" style="position: sticky; top: 0; height: 100vh; z-index: 1000;">
     <div class="logo">
-      <a class="navbar-brand" href="../Home.php">
-        <img src="../images/Logo.png" alt="Junk Food Logo" class="navbar-logo">
-      </a>
-    </div>
-    <div class="admin-logo mb-3">
-      Admin Logo
+        <a class="navbar-brand" href="../Home.php">
+            <img src="../images/Logo.png" alt="Junk Food Logo" class="navbar-logo">
+        </a>
     </div>
     <ul class="nav flex-column">
-      <li class="nav-item mb-2">
-        <a href="Dashboard.php" class="nav-link">Dashboard</a>
-      </li>
-      <li class="nav-item mb-2">
-        <a 
-          href="#productMenu" 
-          class="nav-link d-flex align-items-center justify-content-between active" 
-          data-bs-toggle="collapse" 
-          role="button" 
-          aria-expanded="false" 
-          aria-controls="productMenu">
-          <span>Products</span>
-          <i class="bi bi-chevron-down toggle-icon"></i>
-        </a>
-        <div class="collapse" id="productMenu">
-          <ul class="nav flex-column ms-3">
-            <li class="nav-item">
-              <a href="Products.php" class="nav-link active">Product List</a>
-            </li>
-            <li class="nav-item">
-              <a href="AddProduct.php" class="nav-link">Add Product</a>
-            </li>
-            <li class="nav-item">
-              <a href="Categories.php" class="nav-link">Categories</a>
-            </li>
-          </ul>
-        </div>
-      </li>
-      <li class="nav-item mb-2">
-        <a href="Orders.php" class="nav-link">Orders</a>
-      </li>
-      <li class="nav-item mb-2">
-        <a href="Users.php" class="nav-link">Users</a>
-      </li>
-      <li class="nav-item mb-2">
-        <a href="Sales.php" class="nav-link">Sales</a>
-      </li>
-      <li class="nav-item mb-2">
-        <a href="Notifications.php" class="nav-link">Notifications</a>
-      </li>
+        <li class="nav-item mb-2">
+            <a href="Dashboard.php" class="nav-link">Dashboard</a>
+        </li>
+        <li class="nav-item mb-2">
+            <a href="#productMenu" class="nav-link d-flex align-items-center justify-content-between active" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="productMenu">
+                <span>Products</span>
+                <i class="bi bi-chevron-down toggle-icon"></i>
+            </a>
+            <div class="collapse" id="productMenu">
+                <ul class="nav flex-column ms-3">
+                    <li class="nav-item">
+                        <a href="Products.php" class="nav-link active">Product List</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="AddProduct.php" class="nav-link">Add Product</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="Categories.php" class="nav-link">Categories</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item mb-2">
+            <a href="Orders.php" class="nav-link">Orders</a>
+        </li>
+        <li class="nav-item mb-2">
+            <a href="Users.php" class="nav-link">Users</a>
+        </li>
+        <li class="nav-item mb-2">
+            <a href="Sales.php" class="nav-link">Sales</a>
+        </li>
+        <li class="nav-item mb-2">
+            <a href="Notifications.php" class="nav-link">Notifications</a>
+        </li>
     </ul>
 
     <div class="mt-auto">
-      <a href="../Home.php" class="btn btn-danger w-100 mb-2">Go to Main Store</a>
+        <a href="../index.php" class="btn btn-danger w-100 mb-2">Go to Main Store</a>
     </div>
-  </aside>   
+</aside>
+
 
   <!-- Main Content -->
   <main class="flex-grow-1 p-4 bg-light">
@@ -111,22 +105,16 @@ if (isset($_GET['id'])) {
         <a href="AddProduct.php">
           <button class="btn btn-primary-custom me-2">+ Add Product</button>
         </a>
-        <button class="btn btn-outline-secondary me-2">
-          <i class="bi bi-filter"></i> Filter
-        </button>
-        <button class="btn btn-outline-secondary">
-          <i class="bi bi-eye"></i> See All
-        </button>
       </div>
     </div>
 
-    <!-- Search Bar -->
-    <div class="mb-4 d-flex justify-content-end">
-      <div class="input-group w-25">
-        <input type="text" class="form-control" placeholder="Search products...">
-        <button class="btn btn-outline-secondary" type="button">Search</button>
-      </div>
-    </div>
+<!-- Search Bar -->
+<div class="mb-4 d-flex justify-content-end">
+  <div class="input-group w-25">
+    <input type="text" id="productSearch" class="form-control" placeholder="Search products..." oninput="searchProducts()">
+    <button class="btn btn-outline-secondary" type="button">Search</button>
+  </div>
+</div>
 
 <!-- Table -->
 <div class="table-responsive">
@@ -141,7 +129,7 @@ if (isset($_GET['id'])) {
         <th>Action</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody id="productList">
       <?php
       // Include database connection
       require_once '../database.php';
@@ -161,12 +149,12 @@ if (isset($_GET['id'])) {
               $color = $product['color'];
               $imageUrl = $product['image_url'];
 
-              // Display product row
+              // Display product row with action buttons
               echo "
               <tr>
                 <td>
                   <div class='d-flex align-items-center'>
-<img src='https://raw.githubusercontent.com/RenzDioneda/TapTek/main/productImages/$imageUrl' alt='$productName' class='rounded me-2' style='width: 50px; height: 50px; object-fit: contain;'>
+                    <img src='https://raw.githubusercontent.com/RenzDioneda/TapTek/main/productImages/$imageUrl' alt='$productName' class='rounded me-2' style='width: 50px; height: 50px; object-fit: contain;'>
                   </div>
                 </td>
                 <td>$productName</td>
@@ -196,6 +184,7 @@ if (isset($_GET['id'])) {
     </tbody>
   </table>
 </div>
+
 
     <!-- Pagination -->
     <nav>
@@ -253,7 +242,7 @@ if (isset($_GET['id'])) {
               <div class="col-md-6">
                 <h5 class="section-title">Upload Image</h5>
                 <div class="image-upload mb-3">
-                  <img id="productImagePreview" src="https://via.placeholder.com/120" alt="Preview">
+                  <img id="productImagePreview" src="https://via.placeholder.com/120" alt="Preview" class="img-fluid">
                   <div class="add-image">+</div>
                   <input type="file" id="productImageInput" name="productImage" accept="image/*">
                 </div>
@@ -335,6 +324,24 @@ if (isset($_GET['id'])) {
     }
   });
 </script>
+<script>
+  // Function to search products via AJAX
+function searchProducts() {
+    var searchQuery = document.getElementById('productSearch').value; // Get search input value
 
+    // Create a new XMLHttpRequest
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'searchProducts.php?q=' + encodeURIComponent(searchQuery), true); // Send query parameter
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            // On success, update the product list with the response
+            document.getElementById('productList').innerHTML = xhr.responseText;
+        } else {
+            console.error('Search failed:', xhr.statusText);
+        }
+    };
+    xhr.send(); // Send the request
+}
+</script>
 </body>
 </html>
